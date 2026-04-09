@@ -81,48 +81,83 @@
 
     console.log('Initializing slider auto-scroll...');
 
-    let autoplayStarted = false;
-
-    // Method 1: Try carousel API
-    if (typeof carousel.next === 'function') {
-      console.log('Using carousel.next() method');
-      setInterval(() => {
-        carousel.next();
-      }, {{ section.settings.autoplay_duration }});
-      autoplayStarted = true;
+    const list = carousel.querySelector('.slider-list');
+    if (!list) {
+      console.warn('Slider list not found');
+      return;
     }
 
-    // Method 2: Try scrolling
-    if (!autoplayStarted) {
-      const list = carousel.querySelector('.slider-list');
-      if (list) {
-        console.log('Using scrollBy method for slider');
+    const duration = {{ section.settings.autoplay_duration }} * 1000; // Convert seconds to milliseconds
+    const gap = {{ section.settings.gap }} || 20;
+    console.log('Slider auto-scroll duration:', duration + 'ms', 'Gap:', gap);
 
-        const getSlideWidth = () => {
-          const slide = list.querySelector('.slider-slide');
-          return slide ? slide.offsetWidth + ({{ section.settings.gap }} || 20) : 150;
-        };
+    // Get all original slides
+    const originalSlides = Array.from(list.querySelectorAll('.slider-slide'));
+    const slideCount = originalSlides.length;
 
-        let slideWidth = getSlideWidth();
+    console.log('Total slides:', slideCount);
 
-        setInterval(() => {
-          list.scrollBy({
-            left: slideWidth,
-            behavior: 'smooth'
-          });
+    if (slideCount === 0) {
+      console.warn('No slides found');
+      return;
+    }
 
-          setTimeout(() => {
-            if (list.scrollLeft >= list.scrollWidth - list.clientWidth - 100) {
-              list.scrollLeft = 0;
-              console.log('Slider reset to start');
-            }
-          }, 300);
-        }, {{ section.settings.autoplay_duration }});
-        autoplayStarted = true;
+    // Clone all original slides to end for infinite loop
+    originalSlides.forEach(slide => {
+      const clone = slide.cloneNode(true);
+      list.appendChild(clone);
+    });
+    console.log('Cloned ' + slideCount + ' slides for infinite loop');
+
+    const getSlideWidth = () => {
+      const slide = list.querySelector('.slider-slide');
+      if (!slide) return 150;
+      return slide.offsetWidth + gap;
+    };
+
+    let slideWidth = getSlideWidth();
+    const scrollDistancePerCycle = slideWidth * slideCount; // Total distance to scroll before reset
+
+    console.log('Slide width:', slideWidth, 'px');
+    console.log('Scroll distance per cycle:', scrollDistancePerCycle, 'px');
+
+    let startTime = null;
+    let animationRunning = true;
+
+    function smoothScroll(timestamp) {
+      if (!startTime) {
+        startTime = timestamp;
       }
+
+      if (!animationRunning) return;
+
+      const elapsed = timestamp - startTime;
+
+      // Calculate progress through one complete cycle (all original slides)
+      const cycleProgress = (elapsed % duration) / duration;
+
+      // Calculate scroll position for this frame
+      const targetScroll = cycleProgress * scrollDistancePerCycle;
+
+      // Direct scroll without smooth behavior
+      list.scrollLeft = targetScroll;
+
+      // Invisible reset when reaching cloned slides
+      if (targetScroll >= scrollDistancePerCycle - slideWidth) {
+        // Instantly reset to start without animation
+        list.scrollLeft = 0;
+        startTime = timestamp;
+      }
+
+      // Continue animation loop
+      requestAnimationFrame(smoothScroll);
     }
 
-    console.log('Slider auto-scroll initialized');
+    // Start animation
+    setTimeout(() => {
+      requestAnimationFrame(smoothScroll);
+      console.log('✓ Carousel auto-scroll started - continuous infinite loop');
+    }, 200);
   }
 
   if (document.readyState === 'complete') {
@@ -161,16 +196,17 @@
 
 .slider-wrapper .slider-list {
   display: flex !important;
-  scroll-behavior: smooth !important;
+  scroll-behavior: auto !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
-  -webkit-overflow-scrolling: touch !important;
+  -webkit-overflow-scrolling: auto !important;
   width: 100% !important;
   padding: 0 !important;
   margin: 0 !important;
   gap: 0 !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
+  will-change: scroll-position !important;
 }
 
 .slider-wrapper .slider-list::-webkit-scrollbar {
@@ -414,11 +450,11 @@
     {
       "type": "range",
       "id": "autoplay_duration",
-      "label": "Auto-Scroll Speed (ms)",
-      "min": 1000,
-      "max": 8000,
-      "step": 500,
-      "default": 2500
+      "label": "Auto-Scroll Speed (Seconds)",
+      "min": 3,
+      "max": 20,
+      "step": 1,
+      "default": 12
     }
   ],
   "blocks": [
