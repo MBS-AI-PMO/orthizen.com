@@ -156,9 +156,9 @@
       "settings": {
         "width": "fullwidth",
         "fullwidth_margin": 0,
-        "heading_title": "New Products",
+        "heading_title": "Find The Perfect Shoe For You",
         "heading_align": "center",
-        "collection": "right-sidebar",
+        "collection": "shoe",
         "limit": 12,
         "columns_size": 4,
         "distinct_color_scheme": false,
@@ -274,9 +274,9 @@
       "settings": {
         "width": "fullwidth",
         "fullwidth_margin": 0,
-        "heading_title": "Trending Products",
+        "heading_title": "Finish 12-Hour Shifts Without Foot Pain",
         "heading_align": "center",
-        "collection": "grid-4-columns",
+        "collection": "shoe",
         "limit": 12,
         "columns_size": 4,
         "distinct_color_scheme": false,
