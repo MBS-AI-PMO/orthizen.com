@@ -151,6 +151,24 @@
         "padding_bottom": 50
       }
     },
+    "home_featured_product_YxQPzx": {
+      "type": "home-featured-product",
+      "name": "Featured Product",
+      "settings": {
+        "featured_product": "orthora™-pro-12-hour-shift-shoes-for-heel-plantar-fasciitis-relief-unisex-1",
+        "subtitle": "OUR BESTSELLER",
+        "title": "Featured Product",
+        "show_view_btn": false,
+        "view_btn_text": "",
+        "width": "box",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "product-v2": {
       "type": "product-v2",
       "settings": {
@@ -593,6 +611,7 @@
   "order": [
     "slideshow-v2",
     "policy-v2",
+    "home_featured_product_YxQPzx",
     "product-v2",
     "benefits-v1",
     "banner-v8",
