@@ -51,6 +51,12 @@
             "collection": "box-container"
           }
         },
+        "collection_DKGFtF": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
         "f6d6ef68-e996-4fcd-b6da-b107087546af": {
           "type": "collection",
           "settings": {
@@ -98,6 +104,7 @@
         "3be361b1-1ee2-4f6b-b8b6-590e4f6dbe76",
         "ffcfc673-ace0-4528-992e-5f0d62796909",
         "517f4c7b-a4e9-40db-97bf-00ded2faf142",
+        "collection_DKGFtF",
         "f6d6ef68-e996-4fcd-b6da-b107087546af",
         "9a0a0ca3-7c22-4c1c-ba2d-259e2e497b33",
         "500a2519-10b2-4423-846d-71b7877204cb",
