@@ -50,6 +50,21 @@
             "padding_bottom": 0
           }
         },
+        "star_rating_3G3Nt7": {
+          "type": "star_rating",
+          "settings": {
+            "auto_calculate": true,
+            "rating": 50,
+            "review_count": "17,920",
+            "review_label": "Reviews",
+            "star_color": "#ffb800",
+            "empty_color": "#e0e0e0",
+            "star_size": 18,
+            "link_url": "",
+            "padding_top": 0,
+            "padding_bottom": 8
+          }
+        },
         "b1d95bc4-490b-4b8c-914a-89b1323d2a43": {
           "type": "price",
           "settings": {
@@ -280,6 +295,7 @@
       "block_order": [
         "b9220087-e178-48b9-a33a-095a4119abaf",
         "bedc5e2d-642d-4448-8569-c7fcfd527042",
+        "star_rating_3G3Nt7",
         "b1d95bc4-490b-4b8c-914a-89b1323d2a43",
         "b1d95bc4-490b-4b8c-914a-89b1323d2a41",
         "4dabf9d3-3372-4f5a-9edf-1e1f03527b1k",
@@ -603,6 +619,11 @@
         "padding_top": 50,
         "padding_bottom": 0
       }
+    },
+    "quick_view_content_gNqNzE": {
+      "type": "quick-view-content",
+      "name": "t:sections.quick_view_content.presets.name",
+      "settings": {}
     }
   },
   "order": [
@@ -611,6 +632,7 @@
     "image-slider",
     "product-information-tabs",
     "reviews",
-    "product-recommendations"
+    "product-recommendations",
+    "quick_view_content_gNqNzE"
   ]
 }
