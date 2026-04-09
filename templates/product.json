@@ -379,7 +379,121 @@
         "padding_bottom": 40,
         "padding_left": 20,
         "padding_right": 20,
-        "autoplay_duration": 20
+        "autoplay_duration": 15
+      }
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "blocks": {
+        "review-1": {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Maria Johnson",
+            "author_role": "Nurse - Hospital",
+            "rating": 5,
+            "review_text": "I work 12-hour shifts in the hospital and these shoes have literally been a lifesaver. My feet feel amazing even after the longest and most demanding days. The arch support is incredible!",
+            "review_date": "2 weeks ago"
+          }
+        },
+        "review-2": {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "James Rodriguez",
+            "author_role": "Warehouse Manager",
+            "rating": 5,
+            "review_text": "Best work shoes I've ever owned in 15 years. Superior arch support and cushioning that actually lasts. The durability is outstanding!",
+            "review_date": "1 month ago"
+          }
+        },
+        "review-3": {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Sarah Williams",
+            "author_role": "Retail Manager",
+            "rating": 5,
+            "review_text": "My plantar fasciitis pain reduced significantly within the first week. I can now work my full shifts without constant pain. Highly recommend!",
+            "review_date": "3 weeks ago"
+          }
+        },
+        "review-4": {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Michael Chen",
+            "author_role": "Healthcare Professional",
+            "rating": 5,
+            "review_text": "Comfortable from day one with no break-in period needed. Finally found shoes that don't hurt my feet despite 8+ hours daily use!",
+            "review_date": "1 month ago"
+          }
+        },
+        "review-5": {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Emma Davis",
+            "author_role": "Restaurant Manager",
+            "rating": 5,
+            "review_text": "Standing all day is no longer painful. These are game-changers for anyone on their feet. The slip-resistant sole is great too!",
+            "review_date": "2 weeks ago"
+          }
+        },
+        "review-6": {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "David Martinez",
+            "author_role": "Factory Worker",
+            "rating": 5,
+            "review_text": "After 10 years of factory work, my feet were in bad shape. These shoes have changed everything. The pain has significantly reduced!",
+            "review_date": "2 weeks ago"
+          }
+        },
+        "review-7": {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Jennifer Lee",
+            "author_role": "Teacher",
+            "rating": 5,
+            "review_text": "As a teacher on my feet all day, these shoes are perfect. The support is firm, cushioning is just right, and they look professional!",
+            "review_date": "3 weeks ago"
+          }
+        },
+        "review-8": {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Robert Wilson",
+            "author_role": "Construction Supervisor",
+            "rating": 5,
+            "review_text": "Finally found shoes with real comfort and stability for job sites. The durability is impressive and they're built to last!",
+            "review_date": "1 week ago"
+          }
+        }
+      },
+      "block_order": [
+        "review-1",
+        "review-2",
+        "review-3",
+        "review-4",
+        "review-5",
+        "review-6",
+        "review-7",
+        "review-8"
+      ],
+      "settings": {
+        "title": "Customer Reviews",
+        "description": "See what our customers have to say",
+        "title_font_size": 2.2,
+        "subtitle_font_size": 1,
+        "author_font_size": 1.1,
+        "role_font_size": 0.8,
+        "text_font_size": 0.9,
+        "date_font_size": 0.8,
+        "card_padding": 25,
+        "review_gap": 20,
+        "header_margin": 30,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 20,
+        "padding_right": 20
       }
     },
     "product-information-tabs": {
@@ -453,6 +567,7 @@
     "breadcrumb-v1",
     "main-product",
     "image-slider",
+    "reviews",
     "product-information-tabs",
     "product-recommendations"
   ]
