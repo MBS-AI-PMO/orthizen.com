@@ -62,11 +62,11 @@
 <style>
   .benefits-v1__header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: {{ section.settings.header_margin }}px;
   }
 
   .benefits-v1__subtitle {
-    font-size: 0.875rem;
+    font-size: {{ section.settings.subtitle_font_size }}rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--color-text-secondary, #666);
@@ -74,10 +74,11 @@
   }
 
   .benefits-v1__title {
-    font-size: 2.5rem;
+    font-size: {{ section.settings.title_font_size }}rem;
     font-weight: 600;
     margin: 0;
     color: var(--color-text, #000);
+    line-height: 1.2;
   }
 
   .benefits-v1__item {
@@ -85,13 +86,13 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 20px;
-    padding: 20px 15px;
+    gap: {{ section.settings.item_gap }}px;
+    padding: {{ section.settings.item_padding }}px;
   }
 
   .benefits-v1__icon {
-    width: 120px;
-    height: 120px;
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,31 +112,66 @@
   }
 
   .benefits-v1__item-title {
-    font-size: 1.5rem;
+    font-size: {{ section.settings.item_title_font_size }}rem;
     font-weight: 600;
     margin: 0;
     color: var(--color-text, #000);
   }
 
   .benefits-v1__description {
-    font-size: 1rem;
+    font-size: {{ section.settings.description_font_size }}rem;
     line-height: 1.7;
     margin: 0;
     color: var(--color-text-secondary, #666);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .benefits-v1__title {
-      font-size: 1.75rem;
-    }
-
-    .benefits-v1__header {
-      margin-bottom: 30px;
+      font-size: calc({{ section.settings.title_font_size }}rem - 0.3rem);
     }
 
     .benefits-v1__icon {
-      width: 100px;
-      height: 100px;
+      width: calc({{ section.settings.icon_size }}px * 0.9);
+      height: calc({{ section.settings.icon_size }}px * 0.9);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .benefits-v1__title {
+      font-size: calc({{ section.settings.title_font_size }}rem - 0.75rem);
+    }
+
+    .benefits-v1__header {
+      margin-bottom: calc({{ section.settings.header_margin }}px * 0.75);
+    }
+
+    .benefits-v1__icon {
+      width: calc({{ section.settings.icon_size }}px * 0.75);
+      height: calc({{ section.settings.icon_size }}px * 0.75);
+    }
+
+    .benefits-v1__item-title {
+      font-size: calc({{ section.settings.item_title_font_size }}rem - 0.2rem);
+    }
+
+    .benefits-v1__description {
+      font-size: calc({{ section.settings.description_font_size }}rem - 0.05rem);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .benefits-v1__item {
+      gap: calc({{ section.settings.item_gap }}px * 0.75);
+      padding: calc({{ section.settings.item_padding }}px * 0.6);
+    }
+
+    .benefits-v1__icon {
+      width: calc({{ section.settings.icon_size }}px * 0.6);
+      height: calc({{ section.settings.icon_size }}px * 0.6);
+    }
+
+    .benefits-v1__title {
+      font-size: calc({{ section.settings.title_font_size }}rem - 1rem);
     }
   }
 </style>
@@ -156,6 +192,96 @@
       "type": "text",
       "id": "subtitle",
       "label": "t:sections.benefits_v1.settings.subtitle.label"
+    },
+    {
+      "type": "header",
+      "content": "Typography & Font Sizes"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title Font Size (rem)",
+      "min": 1.5,
+      "max": 4,
+      "step": 0.1,
+      "default": 2.5
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "label": "Subtitle Font Size (rem)",
+      "min": 0.7,
+      "max": 1.2,
+      "step": 0.1,
+      "default": 0.9
+    },
+    {
+      "type": "range",
+      "id": "item_title_font_size",
+      "label": "Item Title Font Size (rem)",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.5
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Description Font Size (rem)",
+      "min": 0.8,
+      "max": 1.5,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "header_margin",
+      "label": "Header Bottom Margin (px)",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 10,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Carousel Gap (px)",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "label": "Item Internal Gap (px)",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "item_padding",
+      "label": "Item Padding (px)",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon Size (px)",
+      "min": 80,
+      "max": 200,
+      "step": 10,
+      "default": 120
     },
     {
       "type": "select",
@@ -183,16 +309,6 @@
       "label": "t:sections.all.fullwidth_margin.label",
       "default": 0,
       "visible_if": "{{ section.settings.width == 'fullwidth' }}"
-    },
-    {
-      "type": "range",
-      "id": "gap",
-      "min": 0,
-      "max": 80,
-      "step": 1,
-      "unit": "px",
-      "label": "t:sections.benefits_v1.settings.gap.label",
-      "default": 30
     },
     {
       "type": "header",
