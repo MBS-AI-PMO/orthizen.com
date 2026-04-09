@@ -73,6 +73,15 @@
             </div>
           </xo-animate>
 
+        {% when 'star_rating' %}
+          <xo-animate
+            xo-cascade
+            {{ block.shopify_attributes }}
+            style='padding-top:{{ block.settings.padding_top | append: 'px' }}; padding-bottom:{{ block.settings.padding_bottom | append: 'px'}}'
+          >
+            {% render 'product-star-rating', block: block, product: product %}
+          </xo-animate>
+
         {% when 'price' %}
           <xo-animate
             xo-cascade

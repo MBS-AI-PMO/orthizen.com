@@ -623,6 +623,72 @@
       ]
     },
     {
+      "type": "star_rating",
+      "name": "Star Rating",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star rating (× 10, e.g. 49 = 4.9)",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "default": 49
+        },
+        {
+          "type": "text",
+          "id": "review_count",
+          "label": "Review count",
+          "default": "17,920"
+        },
+        {
+          "type": "text",
+          "id": "review_label",
+          "label": "Review label",
+          "default": "Reviews"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Filled star color",
+          "default": "#FFB800"
+        },
+        {
+          "type": "color",
+          "id": "empty_color",
+          "label": "Empty star color",
+          "default": "#E0E0E0"
+        },
+        {
+          "type": "range",
+          "id": "star_size",
+          "label": "Star size (px)",
+          "min": 16,
+          "max": 48,
+          "step": 2,
+          "default": 28
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link (optional – scrolls to reviews)"
+        },
+        {
+          "type": "number",
+          "id": "padding_top",
+          "label": "Padding top",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "id": "padding_bottom",
+          "label": "Padding bottom",
+          "default": 8
+        }
+      ]
+    },
+    {
       "type": "price",
       "name": "t:sections.main_product.blocks.price.name",
       "limit": 1,
