@@ -367,14 +367,14 @@
       ],
       "settings": {
         "title": "★★★★★ 4.9/5.0 — Loved by 500,000+ American Workers",
-        "title_font_size": 2.2,
+        "title_font_size": 2.7,
         "image_height": 300,
         "image_width": 20,
         "gap": 10,
         "border_radius": 10,
-        "header_margin": 25,
+        "header_margin": 30,
         "padding_top": 40,
-        "padding_bottom": 30
+        "padding_bottom": 40
       }
     },
     "product-information-tabs": {
