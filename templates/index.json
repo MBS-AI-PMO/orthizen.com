@@ -155,9 +155,9 @@
       "settings": {
         "width": "fullwidth",
         "fullwidth_margin": 0,
-        "heading_title": "New Products",
+        "heading_title": "Find The Perfect Shoe For You",
         "heading_align": "center",
-        "collection": "right-sidebar",
+        "collection": "shoe",
         "limit": 12,
         "columns_size": 4,
         "distinct_color_scheme": false,
