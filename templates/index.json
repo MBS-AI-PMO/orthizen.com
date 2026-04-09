@@ -183,7 +183,7 @@
         "benefit_1": {
           "type": "benefit",
           "settings": {
-            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 200\"><defs><style>.foot-circle{fill:none;stroke:#22a347;stroke-width:6}.foot-shape{fill:#f5deb3}.pain-point{fill:#e74c3c}.pain-line{stroke:#e74c3c;stroke-width:2;stroke-linecap:round}</style></defs><circle cx=\"100\" cy=\"100\" r=\"85\" class=\"foot-circle\"/><g transform=\"translate(100,100)\"><path class=\"foot-shape\" d=\"M -30,-25 Q -35,0 -25,35 Q -15,40 -5,35 L 0,20 L 5,35 Q 15,40 25,35 Q 35,0 30,-25 Q 15,-30 0,-28 Q -15,-30 -30,-25\" stroke=\"#333\" stroke-width=\"1.5\"/><circle class=\"pain-point\" cx=\"-15\" cy=\"-10\" r=\"6\"/><line class=\"pain-line\" x1=\"-20\" y1=\"-20\" x2=\"-30\" y2=\"-35\"/><line class=\"pain-line\" x1=\"-15\" y1=\"-18\" x2=\"-15\" y2=\"-35\"/><line class=\"pain-line\" x1=\"-10\" y1=\"-20\" x2=\"0\" y2=\"-35\"/></g></svg>",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 200 200\"><defs><style>.foot-circle{fill:none;stroke:#22a347;stroke-width:6}.foot-shape{fill:#f5deb3}.pain-point{fill:#e74c3c}.pain-line{stroke:#e74c3c;stroke-width:2;stroke-linecap:round}</style></defs><circle cx=\"100\" cy=\"100\" r=\"85\" class=\"foot-circle\"></circle><g transform=\"translate(100,100)\"><path class=\"foot-shape\" d=\"M -30,-25 Q -35,0 -25,35 Q -15,40 -5,35 L 0,20 L 5,35 Q 15,40 25,35 Q 35,0 30,-25 Q 15,-30 0,-28 Q -15,-30 -30,-25\" stroke=\"#333\" stroke-width=\"1.5\"></path><circle class=\"pain-point\" cx=\"-15\" cy=\"-10\" r=\"6\"></circle><line class=\"pain-line\" x1=\"-20\" y1=\"-20\" x2=\"-30\" y2=\"-35\"></line><line class=\"pain-line\" x1=\"-15\" y1=\"-18\" x2=\"-15\" y2=\"-35\"></line><line class=\"pain-line\" x1=\"-10\" y1=\"-20\" x2=\"0\" y2=\"-35\"></line></g></svg>",
             "title": "General Foot Relief",
             "description": "Sore feet or general pain in the feet cause discomfort and prevent you from carrying out your daily tasks. Would you like to feel young again? Then you need shoes that provide relief and make you feel like you're walking on clouds."
           }
@@ -191,7 +191,7 @@
         "benefit_2": {
           "type": "benefit",
           "settings": {
-            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 200\"><defs><style>.foot-circle{fill:none;stroke:#22a347;stroke-width:6}.foot-shape{fill:#f5deb3}.pain-point{fill:#e74c3c}.pain-line{stroke:#e74c3c;stroke-width:2;stroke-linecap:round}</style></defs><circle cx=\"100\" cy=\"100\" r=\"85\" class=\"foot-circle\"/><g transform=\"translate(100,100)\"><path class=\"foot-shape\" d=\"M -20,-30 L -15,35 Q -5,45 5,35 L 10,-30 Q 0,-35 -20,-30\" stroke=\"#333\" stroke-width=\"1.5\"/><path class=\"foot-shape\" d=\"M 8,-28 L 12,12 L 18,-25\" stroke=\"#333\" stroke-width=\"1.5\" fill=\"none\"/><path class=\"foot-shape\" d=\"M 20,-26 L 22,8 L 28,-24\" stroke=\"#333\" stroke-width=\"1.5\" fill=\"none\"/><circle class=\"pain-point\" cx=\"-10\" cy=\"32\" r=\"7\"/><line class=\"pain-line\" x1=\"-18\" y1=\"25\" x2=\"-30\" y2=\"15\"/><line class=\"pain-line\" x1=\"-10\" y1=\"24\" x2=\"-10\" y2=\"8\"/><line class=\"pain-line\" x1=\"-2\" y1=\"25\" x2=\"10\" y2=\"15\"/></g></svg>",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 200 200\"><defs><style>.foot-circle{fill:none;stroke:#22a347;stroke-width:6}.foot-shape{fill:#f5deb3}.pain-point{fill:#e74c3c}.pain-line{stroke:#e74c3c;stroke-width:2;stroke-linecap:round}</style></defs><circle cx=\"100\" cy=\"100\" r=\"85\" class=\"foot-circle\"></circle><g transform=\"translate(100,100)\"><path class=\"foot-shape\" d=\"M -20,-30 L -15,35 Q -5,45 5,35 L 10,-30 Q 0,-35 -20,-30\" stroke=\"#333\" stroke-width=\"1.5\"></path><path class=\"foot-shape\" d=\"M 8,-28 L 12,12 L 18,-25\" stroke=\"#333\" stroke-width=\"1.5\" fill=\"none\"></path><path class=\"foot-shape\" d=\"M 20,-26 L 22,8 L 28,-24\" stroke=\"#333\" stroke-width=\"1.5\" fill=\"none\"></path><circle class=\"pain-point\" cx=\"-10\" cy=\"32\" r=\"7\"></circle><line class=\"pain-line\" x1=\"-18\" y1=\"25\" x2=\"-30\" y2=\"15\"></line><line class=\"pain-line\" x1=\"-10\" y1=\"24\" x2=\"-10\" y2=\"8\"></line><line class=\"pain-line\" x1=\"-2\" y1=\"25\" x2=\"10\" y2=\"15\"></line></g></svg>",
             "title": "Plantar Fasciitis",
             "description": "Plantar fasciitis usually begins with a dull, intermittent pain in the heel and gradually increases to create persistent discomfort. You need shoes that support your feet and thus alleviate this discomfort."
           }
@@ -199,7 +199,7 @@
         "benefit_3": {
           "type": "benefit",
           "settings": {
-            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 200\"><defs><style>.foot-circle{fill:none;stroke:#22a347;stroke-width:6}.foot-shape{fill:#f5deb3}.pain-point{fill:#e74c3c}.pain-line{stroke:#e74c3c;stroke-width:2;stroke-linecap:round}</style></defs><circle cx=\"100\" cy=\"100\" r=\"85\" class=\"foot-circle\"/><g transform=\"translate(100,100)\"><path class=\"foot-shape\" d=\"M -25,-28 Q -30,5 -20,38 Q -10,42 0,38 L 5,15 L 12,38 Q 20,42 28,38 Q 32,5 25,-28 Q 5,-32 -25,-28\" stroke=\"#333\" stroke-width=\"1.5\"/><ellipse class=\"foot-shape\" cx=\"-28\" cy=\"-15\" rx=\"8\" ry=\"12\" stroke=\"#333\" stroke-width=\"1.5\"/><circle class=\"pain-point\" cx=\"-25\" cy=\"-12\" r=\"6\"/><line class=\"pain-line\" x1=\"-32\" y1=\"-22\" x2=\"-42\" y2=\"-38\"/><line class=\"pain-line\" x1=\"-25\" y1=\"-20\" x2=\"-25\" y2=\"-38\"/><line class=\"pain-line\" x1=\"-18\" y1=\"-22\" x2=\"-8\" y2=\"-38\"/></g></svg>",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 200 200\"><defs><style>.foot-circle{fill:none;stroke:#22a347;stroke-width:6}.foot-shape{fill:#f5deb3}.pain-point{fill:#e74c3c}.pain-line{stroke:#e74c3c;stroke-width:2;stroke-linecap:round}</style></defs><circle cx=\"100\" cy=\"100\" r=\"85\" class=\"foot-circle\"></circle><g transform=\"translate(100,100)\"><path class=\"foot-shape\" d=\"M -25,-28 Q -30,5 -20,38 Q -10,42 0,38 L 5,15 L 12,38 Q 20,42 28,38 Q 32,5 25,-28 Q 5,-32 -25,-28\" stroke=\"#333\" stroke-width=\"1.5\"></path><ellipse class=\"foot-shape\" cx=\"-28\" cy=\"-15\" rx=\"8\" ry=\"12\" stroke=\"#333\" stroke-width=\"1.5\"></ellipse><circle class=\"pain-point\" cx=\"-25\" cy=\"-12\" r=\"6\"></circle><line class=\"pain-line\" x1=\"-32\" y1=\"-22\" x2=\"-42\" y2=\"-38\"></line><line class=\"pain-line\" x1=\"-25\" y1=\"-20\" x2=\"-25\" y2=\"-38\"></line><line class=\"pain-line\" x1=\"-18\" y1=\"-22\" x2=\"-8\" y2=\"-38\"></line></g></svg>",
             "title": "Bunions/Hallux Valgus",
             "description": "Pain caused by bunions is often due to ill-fitting shoes. You need shoes with a wide toe box that give your feet some room to breathe and alleviate the discomfort caused by bunions."
           }
@@ -489,6 +489,7 @@
         "symptom_9",
         "symptom_10"
       ],
+      "name": "Pain Section",
       "settings": {
         "title": "Foot Pain Doesn't Stop at Your Feet.",
         "description": "Every day, we hear from customers like you who are struggling with the following problems:",
@@ -497,8 +498,9 @@
         "color_scheme": "",
         "background_type": "color",
         "background_color": "",
-        "padding_top": 50,
-        "padding_bottom": 50
+        "background_gradient": "",
+        "padding_top": 5,
+        "padding_bottom": 5
       }
     },
     "faq-v2": {
