@@ -58,7 +58,7 @@
             "review_label": "Reviews",
             "star_color": "#ffb800",
             "empty_color": "#e0e0e0",
-            "star_size": 28,
+            "star_size": 18,
             "link_url": "",
             "padding_top": 0,
             "padding_bottom": 8
