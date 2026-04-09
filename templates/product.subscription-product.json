@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumb-v1": {
@@ -35,10 +44,6 @@
             "padding_bottom": 0
           }
         },
-        "judge_me_reviews_preview_badge_h3WD8N": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        },
         "b1d95bc4-490b-4b8c-914a-89b1323d2a43": {
           "type": "price",
           "settings": {
@@ -75,16 +80,13 @@
           }
         },
         "subscriptions_app_block_PBiz8C": {
-          "type": "shopify:\/\/apps\/subscriptions\/blocks\/app-block\/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
+          "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
           "settings": {
-            "color_text_title": "#6d7175",
+            "subscription_policy_url": "shopify://policies/privacy-policy",
             "color_text_body": "#6d7175",
             "dividers_color": "#e5e1e1",
-            "bacgkround_color": "#ffffff",
             "border_thickness": 1,
             "border_radius": 8,
-            "supporting_text_title": "Purchase options",
-            "subscription_policy_url": "shopify:\/\/policies\/privacy-policy",
             "product": "{{product}}"
           }
         },
@@ -131,8 +133,8 @@
             "share": true,
             "sizeguide_type": "page",
             "sizeguide_page": "size-guide",
-            "sizeguide_image": "shopify:\/\/shop_images\/sizeguide.png",
-            "sizeguide_content": "<h4>Sizes for this Product.<\/h4><p>This is an approximate conversion table to help you find your size. Measure around the fullest part, place the tape close under the arms and make sure the tape is flat across the back (Unit: centimeter).<\/p><p>SizeUSBustBody WaistFullest HipXS23224 - 2533 - 34S434 - 3526 - 2735 - 36M636 - 3728 - 2937 - 38L838 - 3930 - 3139 - 40XL1040 - 4232 - 3341 - 42XXL1240 - 4134 - 343 - 44<\/p><h4>How to Measure.<\/h4><h5>1. Bust<\/h5><p>Measure at the fullest part of your chest, keeping the tape parallel to the floor.<\/p><h5>2. Body Waist<\/h5><p>Measure at the smallest part of your waist. This is usually below the rib cage and above the hip bone.<\/p><h5>3. Fullest Hip<\/h5><p>Measure at the fullest part of your seat, keeping the tape parallel to the floor.<\/p>",
+            "sizeguide_image": "shopify://shop_images/sizeguide.png",
+            "sizeguide_content": "<h4>Sizes for this Product.</h4><p>This is an approximate conversion table to help you find your size. Measure around the fullest part, place the tape close under the arms and make sure the tape is flat across the back (Unit: centimeter).</p><p>SizeUSBustBody WaistFullest HipXS23224 - 2533 - 34S434 - 3526 - 2735 - 36M636 - 3728 - 2937 - 38L838 - 3930 - 3139 - 40XL1040 - 4232 - 3341 - 42XXL1240 - 4134 - 343 - 44</p><h4>How to Measure.</h4><h5>1. Bust</h5><p>Measure at the fullest part of your chest, keeping the tape parallel to the floor.</p><h5>2. Body Waist</h5><p>Measure at the smallest part of your waist. This is usually below the rib cage and above the hip bone.</p><h5>3. Fullest Hip</h5><p>Measure at the fullest part of your seat, keeping the tape parallel to the floor.</p>",
             "padding_top": 0,
             "padding_bottom": 30
           }
@@ -152,9 +154,9 @@
           "disabled": true,
           "settings": {
             "buy_othersite_title": "BUY ON",
-            "image": "shopify:\/\/shop_images\/ebay-logo.png",
+            "image": "shopify://shop_images/ebay-logo.png",
             "image_width": 60,
-            "link": "https:\/\/www.ebay.com\/",
+            "link": "https://www.ebay.com/",
             "padding_top": 0,
             "padding_bottom": 30
           }
@@ -163,9 +165,9 @@
           "type": "trustbadge",
           "disabled": true,
           "settings": {
-            "trustbadge_heading": "<p>Guarantee Safe Checkout<\/p>",
+            "trustbadge_heading": "<p>Guarantee Safe Checkout</p>",
             "trustbadge_position": "above",
-            "trustbadge_image": "shopify:\/\/shop_images\/payment_methods_940a3571-dee7-40.png",
+            "trustbadge_image": "shopify://shop_images/payment_methods_940a3571-dee7-40.png",
             "trustbadge_width": "80%",
             "trustbadge_background": "#f8f8f8",
             "padding_top": 0,
@@ -184,9 +186,9 @@
           "type": "shipping",
           "settings": {
             "show_delivery": true,
-            "delivery": "<p>Estimate delivery times: <strong>12-26 days<\/strong> (International), <strong>3-6 days<\/strong> (United States).<\/p>",
+            "delivery": "<p>Estimate delivery times: <strong>12-26 days</strong> (International), <strong>3-6 days</strong> (United States).</p>",
             "show_return": true,
-            "return": "<p>Return within <strong>45 days<\/strong> of purchase. Duties & taxes are non-refundable.<\/p>",
+            "return": "<p>Return within <strong>45 days</strong> of purchase. Duties & taxes are non-refundable.</p>",
             "padding_top": 0,
             "padding_bottom": 30
           }
@@ -221,7 +223,7 @@
           "type": "richtext",
           "disabled": true,
           "settings": {
-            "richtext": "<p>Rich text block<\/p>",
+            "richtext": "<p>Rich text block</p>",
             "padding_top": 0,
             "padding_bottom": 30
           }
@@ -269,7 +271,6 @@
       "block_order": [
         "b9220087-e178-48b9-a33a-095a4119abaf",
         "bedc5e2d-642d-4448-8569-c7fcfd527042",
-        "judge_me_reviews_preview_badge_h3WD8N",
         "b1d95bc4-490b-4b8c-914a-89b1323d2a43",
         "b1d95bc4-490b-4b8c-914a-89b1323d2a41",
         "4dabf9d3-3372-4f5a-9edf-1e1f03527b1k",
@@ -331,16 +332,11 @@
           "settings": {
             "header": "Shipping & return"
           }
-        },
-        "judge_me_reviews_review_widget_GGYDz3": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
         }
       },
       "block_order": [
         "tab1",
-        "tab2",
-        "judge_me_reviews_review_widget_GGYDz3"
+        "tab2"
       ],
       "settings": {
         "width": "box",
