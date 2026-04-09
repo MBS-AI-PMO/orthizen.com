@@ -460,6 +460,16 @@
             "review_date": "2 weeks ago"
           }
         },
+        "customer_review_aGjT4g": {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "John Doe",
+            "author_role": "Verified Customer",
+            "rating": 5,
+            "review_text": "Great product! Highly recommend it. Excellent quality and fast shipping.",
+            "review_date": "3 months ago"
+          }
+        },
         "review-2": {
           "type": "customer_review",
           "settings": {
@@ -533,6 +543,7 @@
       },
       "block_order": [
         "review-1",
+        "customer_review_aGjT4g",
         "review-2",
         "review-3",
         "review-4",
@@ -546,15 +557,15 @@
         "description": "See what our customers have to say",
         "show_write_form": true,
         "max_columns": 3,
-        "title_font_size": 2.2,
-        "subtitle_font_size": 1,
-        "author_font_size": 1.1,
+        "title_font_size": 2.7,
+        "subtitle_font_size": 1.1,
+        "author_font_size": 1.3,
         "role_font_size": 0.8,
-        "text_font_size": 0.9,
-        "date_font_size": 0.8,
-        "card_padding": 25,
-        "review_gap": 20,
-        "header_margin": 30,
+        "text_font_size": 1.2,
+        "date_font_size": 0.9,
+        "card_padding": 15,
+        "review_gap": 10,
+        "header_margin": 15,
         "margin_top": 0,
         "margin_bottom": 0,
         "padding_top": 40,
