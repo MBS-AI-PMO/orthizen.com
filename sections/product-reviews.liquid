@@ -152,6 +152,30 @@
       {% endif %}
     </div>
   </xo-container>
+
+  {%- comment -%}
+    Hidden data block — read by product-star-rating.liquid to auto-calculate
+    the aggregate rating and review count from the blocks entered in this section.
+  {%- endcomment -%}
+  {%- liquid
+    assign r_count  = 0
+    assign r_sum    = 0
+    for block in section.blocks
+      if block.type == 'customer_review'
+        assign r_count = r_count | plus: 1
+        assign r_sum   = r_sum   | plus: block.settings.rating
+      endif
+    endfor
+    if r_count > 0
+      assign r_avg_x10 = r_sum | times: 10 | divided_by: r_count
+    else
+      assign r_avg_x10 = 0
+    endif
+  -%}
+  <script type="application/json" id="psr-review-data">
+    { "count": {{ r_count }}, "avgX10": {{ r_avg_x10 }} }
+  </script>
+
 </section>
 
 <script>

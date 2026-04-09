@@ -628,6 +628,17 @@
       "limit": 1,
       "settings": [
         {
+          "type": "checkbox",
+          "id": "auto_calculate",
+          "label": "Auto-calculate from Reviews section",
+          "info": "When enabled, the rating and count are calculated from the blocks in your Product Reviews section on this page. Manual values below are used as fallback.",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Manual / Fallback values"
+        },
+        {
           "type": "range",
           "id": "rating",
           "label": "Star rating (× 10, e.g. 49 = 4.9)",

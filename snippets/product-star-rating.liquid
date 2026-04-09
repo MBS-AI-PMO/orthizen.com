@@ -10,6 +10,7 @@
 {% endcomment %}
 
 {%- liquid
+  assign psr_id      = 'psr-' | append: block.id
   assign rating_raw  = block.settings.rating
   assign star_color  = block.settings.star_color  | default: '#FFB800'
   assign empty_color = block.settings.empty_color | default: '#E0E0E0'
@@ -26,7 +27,7 @@
   assign link_text = block.settings.link_text
 -%}
 
-<div class="psr" {{ block.shopify_attributes }}>
+<div class="psr" id="{{ psr_id }}" {{ block.shopify_attributes }}>
 
   {%- comment -%} ── star track ── {%- endcomment -%}
   <div class="psr__stars" aria-label="{{ rating_whole }}.{{ rating_decimal }} out of 5 stars">
@@ -133,3 +134,55 @@
     .psr__count  { font-size: 1.25rem; }
   }
 </style>
+
+<script>
+(function () {
+  'use strict';
+
+  var AUTO = {{ block.settings.auto_calculate | json }};
+
+  /* ── format integer with commas, e.g. 12345 → "12,345" ── */
+  function fmtCount(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  /* ── push calculated stats into the DOM ── */
+  function applyStats(avgX10, count) {
+    var whole   = Math.floor(avgX10 / 10);
+    var decimal = avgX10 % 10;
+    var fillPct = avgX10 * 2; /* avgX10 / 50 * 100 */
+
+    var scoreEl  = document.querySelector('#{{ psr_id }} .psr__score');
+    var filledEl = document.querySelector('#{{ psr_id }} .psr__row--filled');
+    var trackEl  = document.querySelector('#{{ psr_id }} .psr__stars');
+    var countEl  = document.querySelector('#{{ psr_id }} .psr__count');
+
+    if (scoreEl)  scoreEl.textContent  = whole + '.' + decimal;
+    if (filledEl) filledEl.style.width = fillPct + '%';
+    if (trackEl)  trackEl.setAttribute('aria-label', whole + '.' + decimal + ' out of 5 stars');
+
+    if (countEl) {
+      var label = '{{ block.settings.review_label | escape }}';
+      countEl.textContent = '(' + fmtCount(count) + ' ' + label + ')';
+    }
+  }
+
+  /* ── read the JSON data tag published by product-reviews.liquid ── */
+  function tryAutoCalculate() {
+    var dataEl = document.getElementById('psr-review-data');
+    if (!dataEl) return;
+    try {
+      var data = JSON.parse(dataEl.textContent);
+      if (data && data.count > 0) applyStats(data.avgX10, data.count);
+    } catch (e) { /* silently ignore parse errors */ }
+  }
+
+  if (AUTO) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', tryAutoCalculate);
+    } else {
+      tryAutoCalculate();
+    }
+  }
+})();
+</script>
