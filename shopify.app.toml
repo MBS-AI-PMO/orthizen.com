@@ -1,0 +1,6 @@
+# This file stores your theme configuration
+scopes = "write_themes"
+
+[build]
+  command = "npm run build"
+  cwd = "./"

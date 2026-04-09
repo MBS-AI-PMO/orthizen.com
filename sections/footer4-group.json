@@ -1,0 +1,81 @@
+{
+  "name": "t:sections.footers.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer-v3",
+      "blocks": {
+        "de32145c-493c-41b7-9998-8149a57a245f": {
+          "type": "information",
+          "settings": {
+            "logo": "shopify://shop_images/logo.png",
+            "logo_width": 120,
+            "description": "Sophisticated simplicity for the independent mind.",
+            "address": "Address: 1234 Heaven Stress,USA.",
+            "phone": "Phone: (+84) 1800 68 68",
+            "email": "Email: hello@domain.com"
+          }
+        },
+        "50a95fe0-3b44-4af1-9ae6-dd44ca44831e": {
+          "type": "menu",
+          "settings": {
+            "heading": "About us",
+            "menu": "footer-1"
+          }
+        },
+        "8eb40709-87ec-4c26-9628-e41c259b8b39": {
+          "type": "menu",
+          "settings": {
+            "heading": "Categories",
+            "menu": "footer-2"
+          }
+        },
+        "d48f0e89-a5b5-447e-8f96-db80b9bc8090": {
+          "type": "instagram",
+          "settings": {
+            "heading": "Instagram",
+            "image1": "shopify://shop_images/instagram2.jpg",
+            "link1": "https://www.instagram.com",
+            "image2": "shopify://shop_images/instagram3.jpg",
+            "link2": "https://www.instagram.com",
+            "image3": "shopify://shop_images/instagram4.jpg",
+            "link3": "https://www.instagram.com",
+            "image4": "shopify://shop_images/instagram5.jpg",
+            "link4": "https://www.instagram.com",
+            "image5": "shopify://shop_images/instagram6.jpg",
+            "link5": "https://www.instagram.com",
+            "image6": "shopify://shop_images/instagram7.jpg",
+            "link6": "https://www.instagram.com"
+          }
+        }
+      },
+      "block_order": [
+        "de32145c-493c-41b7-9998-8149a57a245f",
+        "50a95fe0-3b44-4af1-9ae6-dd44ca44831e",
+        "8eb40709-87ec-4c26-9628-e41c259b8b39",
+        "d48f0e89-a5b5-447e-8f96-db80b9bc8090"
+      ],
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "copyright": "© Copyright {{ 'now' | date: '%Y' }} | <a href='https://keton-store-newdemo.myshopify.com/' rel='nofollow' target='_blank' class='footer-v21__theme-name'>Keton</a> By <a href='https://shopify.pxf.io/9gPaY0' rel='nofollow' target='_blank' class='footer-v21__shop-name'> ThemeOcean.</a><a href='https://shopify.pxf.io/9gPaY0' rel='nofollow' target='_blank' class='footer-v21__powered-shopify'> Powered by Shopify.</a>",
+        "image_payment": "shopify://shop_images/payment_footer.png",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "#f9f9f9",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_overlay": "",
+        "overlay_opacity": 0.5,
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "keton-theme",
+  "version": "1.0.0",
+  "description": "Keton Sports Shoes Shopify Theme",
+  "scripts": {
+    "build": "echo 'Theme is ready for development'"
+  },
+  "keywords": [],
+  "author": "ThemeOcean",
+  "license": "ISC"
+}

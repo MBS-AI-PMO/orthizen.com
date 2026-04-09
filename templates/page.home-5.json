@@ -1,0 +1,268 @@
+{
+  "sections": {
+    "slideshow-v3": {
+      "type": "slideshow-v3",
+      "blocks": {
+        "61db5fa9-dcf1-46fc-8bdc-4113692462c2": {
+          "type": "slideshow",
+          "settings": {
+            "subtitle": "UP TO 40% SALE",
+            "subtitle_font_size": 1.4,
+            "subtitle_font_weight": 400,
+            "subtitle_animation": "fade-up",
+            "title": "FALCON SHOES.",
+            "title_font_size": 7.4,
+            "title_font_weight": 500,
+            "title_animation": "fade-up",
+            "description": "Strappy criss-cross accents and delicate hardware",
+            "description_font_size": 1.6,
+            "description_font_weight": 400,
+            "description_animation": "fade-up",
+            "button_text": "shop now",
+            "button_link": "shopify://collections/all",
+            "button_mode": "light",
+            "button_style": "secondary",
+            "button_size": "sm",
+            "button_radius": 0.8,
+            "button_padding": 1.4,
+            "button_animation": "fade-up",
+            "video": "",
+            "background_image_desktop": "shopify://shop_images/slide21-3.jpg",
+            "background_image_mobile": "shopify://shop_images/slide21-3.jpg",
+            "color_scheme": "inverse",
+            "background_color": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "61db5fa9-dcf1-46fc-8bdc-4113692462c2"
+      ],
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "autoplay": false,
+        "speed": 5,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "banner-v9": {
+      "type": "banner-v9",
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "hover": "hover1",
+        "gap": 30,
+        "subtitle": "About us",
+        "title": "Save Big On Shoes From Last Season",
+        "description": "We don’t think bridal should be uncomfortable or kept in a box. We don’t think you should be pressured into not feeling like yourself. Our dresses are unusual, figure flattering and above all comfortable. They are made to stand out in the bridal world and to make your guests salute you for being you.",
+        "image1": "shopify://shop_images/ba161-1.jpg",
+        "image2": "shopify://shop_images/ba161-2.jpg",
+        "link_banner": "shopify://pages/about-us-1",
+        "button_text": "More about us",
+        "button_mode": "light",
+        "button_style": "primary",
+        "button_size": "sm",
+        "button_radius": 0.8,
+        "button_padding": 1.4,
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 100,
+        "padding_bottom": 50
+      }
+    },
+    "product-v2": {
+      "type": "product-v2",
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "heading_title": "New Products",
+        "heading_align": "center",
+        "collection": "right-sidebar",
+        "limit": 12,
+        "columns_size": 4,
+        "distinct_color_scheme": false,
+        "product_card_color_scheme": "",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "banner-v8": {
+      "type": "banner-v8",
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "hover": "hover1",
+        "gap": 30,
+        "subtitle1": "",
+        "title1": "men's shoes",
+        "image1": "shopify://shop_images/ba159-1.jpg",
+        "link1": "shopify://collections/all",
+        "button1_text": "shop now",
+        "button1_mode": "dark",
+        "button1_style": "secondary",
+        "button1_size": "sm",
+        "button1_radius": 0.8,
+        "button1_padding": 1.4,
+        "subtitle2": "",
+        "title2": "Women's shoes",
+        "image2": "shopify://shop_images/ba159-2.jpg",
+        "link2": "shopify://collections/all",
+        "button2_text": "shop now",
+        "button2_mode": "dark",
+        "button2_style": "secondary",
+        "button2_size": "sm",
+        "button2_radius": 0.8,
+        "button2_padding": 1.4,
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "product-v7-2": {
+      "type": "product-v2",
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "heading_title": "Latest Products",
+        "heading_align": "center",
+        "collection": "right-sidebar",
+        "limit": 12,
+        "columns_size": 4,
+        "distinct_color_scheme": false,
+        "product_card_color_scheme": "",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "policy-v2": {
+      "type": "policy-v2",
+      "blocks": {
+        "24244653-9127-404a-af8e-09f5b9b641c0": {
+          "type": "policy",
+          "settings": {
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewbox=\"0 0 512 512\" style=\"enable-background:new 0 0 512 512;\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\"> <g> <g> <path d=\"M469.51,317c7.14-7.97,11.49-18.49,11.49-30c0-24.81-20.19-45-45-45h-87.34c8.65-26.25,12.34-61.08,12.34-76.01V151    c0-33.08-26.92-60-60-60h-15c-6.88,0-12.88,4.68-14.55,11.36l-8.17,32.69c-11.45,45.78-47.8,96.29-85.42,105.47    C171.27,223.84,155,212,136,212H46c-8.28,0-15,6.72-15,15v270c0,8.28,6.72,15,15,15h90c17.89,0,33.37-10.49,40.62-25.65    l51.54,17.18c16.85,5.62,34.41,8.47,52.18,8.47H406c24.81,0,45-20.19,45-45c0-5.85-1.12-11.45-3.16-16.58    C466.92,445.21,481,427.72,481,407c0-11.51-4.35-22.03-11.49-30c7.14-7.97,11.49-18.49,11.49-30S476.65,324.97,469.51,317z     M151,467c0,8.27-6.73,15-15,15H61V242h75c8.27,0,15,6.73,15,15V467z M406,332h30c8.27,0,15,6.73,15,15c0,8.27-6.73,15-15,15h-30    c-8.28,0-15,6.72-15,15c0,8.28,6.72,15,15,15h30c8.27,0,15,6.73,15,15c0,8.27-6.73,15-15,15h-30c-8.28,0-15,6.72-15,15    c0,8.28,6.72,15,15,15c8.27,0,15,6.73,15,15c0,8.27-6.73,15-15,15H280.34c-14.54,0-28.91-2.33-42.7-6.93L181,456.19V270.58    c23.53-4.47,46.56-19.37,67.35-43.76c20.3-23.82,36.76-55.4,44.03-84.49l5.33-21.33H301c16.54,0,30,13.46,30,30v14.99    c0,20.14-6.3,58.77-14.36,76.01H286c-8.28,0-15,6.72-15,15c0,8.28,6.72,15,15,15h150c8.27,0,15,6.73,15,15c0,8.27-6.73,15-15,15    h-30c-8.28,0-15,6.72-15,15C391,325.28,397.72,332,406,332z\"></path> </g> </g> <g> <g> <circle cx=\"106\" cy=\"437\" r=\"15\"></circle> </g> </g> <g> <g> <path d=\"M316,0c-8.284,0-15,6.716-15,15v31c0,8.284,6.716,15,15,15s15-6.716,15-15V15C331,6.716,324.284,0,316,0z\"></path> </g> </g> <g> <g> <path d=\"M252.36,66.148l-21.213-21.213c-5.857-5.858-15.355-5.858-21.213,0c-5.858,5.858-5.858,15.355,0,21.213l21.213,21.213    c5.857,5.857,15.356,5.858,21.213,0C258.218,81.503,258.218,72.006,252.36,66.148z\"></path> </g> </g> <g> <g> <path d=\"M422.066,44.935c-5.857-5.858-15.355-5.858-21.213,0L379.64,66.147c-5.858,5.858-5.858,15.355,0,21.213    c5.857,5.858,15.355,5.859,21.213,0.001l21.213-21.213C427.924,60.29,427.924,50.793,422.066,44.935z\"></path> </g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg>",
+            "title": "100% Satisfaction",
+            "subtitle": "If you are unable"
+          }
+        },
+        "1acc457d-4d5d-4ad3-b5ea-71bcf72c41f0": {
+          "type": "policy",
+          "settings": {
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Capa_1\" height=\"512\" viewbox=\"0 0 512.03 512.03\" width=\"512\"><g><path d=\"m241.069 0h30v91h-30z\"></path><path d=\"m96.217 46h30v70.294h-30z\" transform=\"matrix(.707 -.707 .707 .707 -24.805 102.409)\"></path><path d=\"m365.775 66.147h70.295v30h-70.295z\" transform=\"matrix(.707 -.707 .707 .707 60.047 307.261)\"></path><path d=\"m256.071 512.03 255.799-253.852-67.523-107.178h-376.549l-67.638 107.173zm68.188-241.03-68.19 177.976-68.19-177.976zm-121.977-30 53.787-53.787 53.787 53.787zm154.103 30h99.975l-161.309 160.082zm25.897-30 51.11-51.11 32.198 51.11zm-36.213-6.213-53.787-53.787h107.574zm-180 0-53.787-53.787h107.574zm-36.213 6.213h-83.382l32.262-51.12zm25.897 30 61.347 160.116-161.41-160.116z\"></path></g></svg>",
+            "title": "Save 20% You",
+            "subtitle": "Use credit card"
+          }
+        },
+        "8b393cbe-e067-40a3-a09d-6051b48d494c": {
+          "type": "policy",
+          "settings": {
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Capa_1\" height=\"512\" viewbox=\"0 0 511.995 511.995\" width=\"512\"><g><path d=\"m308.167 241.52c0-28.766-23.403-52.169-52.17-52.169s-52.17 23.403-52.17 52.169c0 28.767 23.403 52.17 52.17 52.17s52.17-23.404 52.17-52.17zm-52.169 22.169c-12.225 0-22.17-9.945-22.17-22.17 0-12.224 9.945-22.169 22.17-22.169s22.17 9.945 22.17 22.169c-.001 12.225-9.946 22.17-22.17 22.17z\"></path><path d=\"m425.684 424.352v-132.322l-51.65-32.948c.615-14.332.261-28.762-1.117-43.191-7.162-74.973-41.384-144.771-96.362-196.535l-20.557-19.356-20.558 19.356c-54.978 51.765-89.2 121.563-96.362 196.535-1.378 14.429-1.732 28.859-1.117 43.191l-51.65 32.948v132.321l90.003-28.282c3.744 6.784 7.752 13.436 12.017 19.945v62.315h30v-48.333h22.667v23.252h30v-23.252h22.667v48.333h30v-62.315c4.265-6.508 8.273-13.161 12.017-19.945zm-30-115.874v75.001l-46.66-14.662c10.468-24.35 17.778-49.975 21.762-76.222zm-139.694-267.28c27.301 25.706 48.392 55.971 63.081 88.684h-126.153c14.687-32.713 35.775-62.979 63.072-88.684zm-139.679 342.281v-75.001l24.898-15.883c3.983 26.247 11.293 51.872 21.762 76.222zm124.687-10.983v27.499h-27.316c-47.563-72.299-57.394-161.126-32.242-240.114h149.112c25.156 78.987 15.325 167.815-32.238 240.114h-27.316v-27.499z\"></path><path d=\"m240.998 483.495h30v28.5h-30z\"></path></g></svg>",
+            "title": "Fast Shipment",
+            "subtitle": "Load any computer’s"
+          }
+        },
+        "d572b09a-4ddf-4bc1-bb10-df491fdc2bea": {
+          "type": "policy",
+          "settings": {
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" height=\"512\" viewbox=\"0 0 511.336 511.336\" width=\"512\"><path d=\"m383.666 160.009h-117.662l-.008-96.342c-.001-17.91-21.071-27.594-34.666-15.942l-224 192c-9.769 8.372-9.776 23.511 0 31.889l224 192c13.558 11.622 34.665 2.02 34.666-15.942l.008-96.342h117.662c35.106 0 59.151 14.841 73.508 45.37 11.712 24.905 12.16 50.896 12.163 51.09.066 11.555 9.451 20.881 20.998 20.88 11.563 0 21.001-9.366 21.001-21v-160c0-70.392-57.273-127.661-127.67-127.661zm85.67 181.802c-23.141-22.635-52.915-32.481-85.67-32.481h-138.66c-11.597 0-20.999 9.401-21 20.998l-.006 71.686-170.736-146.345 170.736-146.344c.007 86.025.007 59.162 0 125.009-.001 11.599 9.399 21.002 20.998 21.003 11.549 0 21.001-9.351 21.002-20.997l.004-32.33h117.663c47.239 0 85.67 38.427 85.67 85.66v54.141z\"></path></svg>",
+            "title": "60-Day Return",
+            "subtitle": "Delivered to your door"
+          }
+        }
+      },
+      "block_order": [
+        "24244653-9127-404a-af8e-09f5b9b641c0",
+        "1acc457d-4d5d-4ad3-b5ea-71bcf72c41f0",
+        "8b393cbe-e067-40a3-a09d-6051b48d494c",
+        "d572b09a-4ddf-4bc1-bb10-df491fdc2bea"
+      ],
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "gap": 30,
+        "limit": 4,
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "instagram-v2": {
+      "type": "instagram-v2",
+      "settings": {
+        "width": "fullwidth",
+        "fullwidth_margin": 0,
+        "icon_heading": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"70\" height=\"70\" viewbox=\"0 0 50 50\" fill=\"none\">\n  <g clip-path=\"url(#clip0_11_25)\">\n    <path d=\"M34.375 0H15.625C6.99687 0 0 6.99687 0 15.625V34.375C0 43.0031 6.99687 50 15.625 50H34.375C43.0031 50 50 43.0031 50 34.375V15.625C50 6.99687 43.0031 0 34.375 0ZM45.3125 34.375C45.3125 40.4062 40.4062 45.3125 34.375 45.3125H15.625C9.59375 45.3125 4.6875 40.4062 4.6875 34.375V15.625C4.6875 9.59375 9.59375 4.6875 15.625 4.6875H34.375C40.4062 4.6875 45.3125 9.59375 45.3125 15.625V34.375Z\" fill=\"url(#paint0_linear_11_25)\"></path>\n    <path d=\"M25 12.5C18.0969 12.5 12.5 18.0969 12.5 25C12.5 31.9031 18.0969 37.5 25 37.5C31.9031 37.5 37.5 31.9031 37.5 25C37.5 18.0969 31.9031 12.5 25 12.5ZM25 32.8125C20.6937 32.8125 17.1875 29.3063 17.1875 25C17.1875 20.6906 20.6937 17.1875 25 17.1875C29.3063 17.1875 32.8125 20.6906 32.8125 25C32.8125 29.3063 29.3063 32.8125 25 32.8125Z\" fill=\"url(#paint1_linear_11_25)\"></path>\n    <path d=\"M38.4375 13.2281C39.3574 13.2281 40.1031 12.4824 40.1031 11.5625C40.1031 10.6426 39.3574 9.89685 38.4375 9.89685C37.5176 9.89685 36.7719 10.6426 36.7719 11.5625C36.7719 12.4824 37.5176 13.2281 38.4375 13.2281Z\" fill=\"url(#paint2_linear_11_25)\"></path>\n  </g>\n  <defs>\n    <lineargradient id=\"paint0_linear_11_25\" x1=\"4.57703\" y1=\"45.4233\" x2=\"45.423\" y2=\"4.57672\" gradientunits=\"userSpaceOnUse\">\n      <stop stop-color=\"#FFC107\"></stop>\n      <stop offset=\"0.507\" stop-color=\"#F44336\"></stop>\n      <stop offset=\"0.99\" stop-color=\"#9C27B0\"></stop>\n    </lineargradient>\n    <lineargradient id=\"paint1_linear_11_25\" x1=\"16.1614\" y1=\"33.8386\" x2=\"33.8386\" y2=\"16.1614\" gradientunits=\"userSpaceOnUse\">\n      <stop stop-color=\"#FFC107\"></stop>\n      <stop offset=\"0.507\" stop-color=\"#F44336\"></stop>\n      <stop offset=\"0.99\" stop-color=\"#9C27B0\"></stop>\n    </lineargradient>\n    <lineargradient id=\"paint2_linear_11_25\" x1=\"37.2598\" y1=\"12.7404\" x2=\"39.6152\" y2=\"10.3848\" gradientunits=\"userSpaceOnUse\">\n      <stop stop-color=\"#FFC107\"></stop>\n      <stop offset=\"0.507\" stop-color=\"#F44336\"></stop>\n      <stop offset=\"0.99\" stop-color=\"#9C27B0\"></stop>\n    </lineargradient>\n    <clippath id=\"clip0_11_25\">\n      <rect width=\"50\" height=\"50\" fill=\"white\"></rect>\n    </clippath>\n  </defs>\n</svg>",
+        "icon_image": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 448 512\"><path d=\"M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z\"></path></svg>",
+        "title": "Instagram",
+        "access_token": "",
+        "open_mode": "newtab",
+        "limit": 5,
+        "auto_play": false,
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "slideshow-v3",
+    "banner-v9",
+    "product-v2",
+    "banner-v8",
+    "product-v7-2",
+    "policy-v2",
+    "instagram-v2"
+  ]
+}

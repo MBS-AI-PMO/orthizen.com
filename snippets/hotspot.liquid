@@ -1,0 +1,105 @@
+{% comment %}
+  Renders a hotspot
+
+  Accepts:
+  - index: {Number} The index number of hotspot style number (optional)
+  - type: {String} The trigger type of product (optional)
+  - open_as: {String} The display type of product (optional)
+  - mode: {String} The type color of hotspot (optional)
+  - style: {String} The style of hotspot (optional)
+  - top: {Number} The top position of hotspot (optional)
+  - left: {Number} The left position of hotspot (optional)
+  - product: {Object} The product of hotspot (required)
+  - media_aspect_ratio: {String} The setting changes the aspect ratio of the article image, if shown (optional)
+  - placement: {String} The display position of product (optional)
+
+  Usage:
+  {% render 'hotspot',
+    index: index,
+    type: type,
+    open_as: open_as,
+    mode: mode,
+    style: style,
+    top: top,
+    left: left,
+    product: product,
+    placement: placement
+  %}
+
+  *** Import schema when hotspot is not block:
+  ...hotspotBlockSchema({ idDefault: 'hotspot1' })
+{% endcomment %}
+
+
+
+{% liquid
+  assign min = 100000000
+  assign max = 999999999
+  assign range = max | minus: min | plus: 1
+  assign random_offset = 'now' | date: '%N' | modulo: range
+  assign random_number = min | plus: random_offset
+%}
+
+{% capture hotspot_trigger %}
+  {% case mode %}
+    {% when 'dark' %}
+      {% assign bg_hotspot_animation = '#000' %}
+    {% when 'light' %}
+      {% assign bg_hotspot_animation = '#fff' %}
+    {% when 'accent' %}
+      {% assign bg_hotspot_animation = 'rgba(var(--color-accent))' %}
+  {% endcase %}
+  <div class='hotspot__trigger hotspot__trigger--{{ style }}' style='--bg-hotspot-animation: {{ bg_hotspot_animation }}'>
+    {% case style %}
+      {% when 'simple' %}
+        {% render 'button', class: 'hostpot__trigger-button', mode: mode %}
+      {% when 'plus' %}
+        {% render 'button', class: 'hostpot__trigger-button', mode: mode, icon: 'plus', icon_size: '12',  %}
+      {% else %}
+        {% render 'button', class: 'hostpot__trigger-button', mode: mode, number: index  %}
+    {% endcase %}
+  </div>
+{% endcapture %}
+
+<div class='xo-hotspot' style='--top: {{ top }}; --left: {{ left }}'>
+  {% case open_as %}
+    {% when 'quickview' %}
+      <xo-product-quick-view-trigger xo-modal-name='quick-view' xo-product-url='{{ shop.url }}/products/{{ product.handle }}/?section_id=quick-view-content'>
+        {{ hotspot_trigger }}
+      </xo-product-quick-view-trigger>
+    {% else %}
+      <xo-popover-trigger xo-name='hotspot-{{ random_number }}' xo-type='{{ type }}'>
+        {{ hotspot_trigger }}
+      </xo-popover-trigger>
+  {% endcase %}
+</div>
+<xo-popover xo-name='hotspot-{{ random_number }}' xo-portal xo-placement='{{ placement | default: 'right-top'  }}'>
+  {% if product %}
+    <xo-product xo-product-id='{{ product.id }}' xo-section-id='{{section.id}}' class='hotspot__product'>
+      <div class='xo-product-card__header'>
+        <a href='{{ product.url }}'>
+          {% render 'product-image', product: product, media_aspect_ratio: media_aspect_ratio %}
+        </a>
+        <div class='xo-product-card__badge'>
+          {% render 'badge-sale', product: product, use_variant: true %}
+        </div>
+        {% render 'badge-sold-out', product: product, use_variant: true %}
+      </div>
+      <div class='xo-product-card__information'>
+        <h2 class='xo-product-card__title'>
+          <a href='{{ product.url }}'>
+            {{ product.title | escape }}
+          </a>
+        </h2>
+        <div class='xo-product-card__price'>
+          <div class='xo-product-card__price-inner'>
+            {% render 'price', product: product, use_variant: true, reverse: false, card: true %}
+          </div>
+        </div>
+      </div>
+      {% render 'product-data', product: product %}
+    </xo-product>
+  {% else %}
+    {% render 'product-card-placeholder' %}
+  {% endif %}
+</xo-popover>
