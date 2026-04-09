@@ -248,6 +248,7 @@
         "cf661f36-a23b-409f-861a-2488ca0df2b0",
         "542c09ae-815b-45a4-81fd-1b6a2bbf3c78"
       ],
+      "disabled": true,
       "settings": {
         "width": "fullwidth",
         "fullwidth_margin": 0,
