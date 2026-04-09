@@ -493,6 +493,8 @@
       "settings": {
         "title": "Foot Pain Doesn't Stop at Your Feet.",
         "description": "Every day, we hear from customers like you who are struggling with the following problems:",
+        "image_left": "shopify://shop_images/i8_082adc2e-0eba-44f3-a706-b670b114f32a.avif",
+        "image_right": "shopify://shop_images/i7_bd0889c0-fa3f-4ed7-bf3a-f7711e5bf2fd.avif",
         "width": "wide",
         "fullwidth_margin": 0,
         "color_scheme": "",
