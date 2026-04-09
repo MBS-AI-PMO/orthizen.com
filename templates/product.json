@@ -148,6 +148,14 @@
             "padding_bottom": 30
           }
         },
+        "benefits-grid": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<style>\n  .product-benefits-grid {\n    display: grid;\n    grid-template-columns: repeat(4, 1fr);\n    gap: 20px;\n    margin: 30px 0;\n  }\n  .product-benefit-item {\n    text-align: center;\n    padding: 20px;\n  }\n  .product-benefit-item h4 {\n    font-weight: 700;\n    font-size: 1.05rem;\n    margin: 12px 0 8px 0;\n    color: #000;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n  }\n  .product-benefit-item p {\n    font-size: 0.85rem;\n    color: #666;\n    margin: 0;\n    line-height: 1.4;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n  }\n  @media (max-width: 1024px) {\n    .product-benefits-grid {\n      grid-template-columns: repeat(2, 1fr);\n    }\n  }\n  @media (max-width: 576px) {\n    .product-benefits-grid {\n      grid-template-columns: 1fr;\n      gap: 15px;\n    }\n    .product-benefit-item {\n      padding: 15px;\n    }\n  }\n</style>\n<section class=\"product-benefits-grid\">\n  <div class=\"product-benefit-item\">\n    <h4>45-Day Comfort Guarantee</h4>\n    <p>Feel real relief or get a full refund.</p>\n  </div>\n  <div class=\"product-benefit-item\">\n    <h4>Trusted by 500,000+ Workers</h4>\n    <p>Built for long shifts on hard concrete floors.</p>\n  </div>\n  <div class=\"product-benefit-item\">\n    <h4>Free Shipping & Free Exchanges</h4>\n    <p>Fast, tracked delivery right to your door.</p>\n  </div>\n  <div class=\"product-benefit-item\">\n    <h4>Finish 12-Hour Shifts Without Foot Pain</h4>\n    <p>Support that lasts your entire shift.</p>\n  </div>\n</section>",
+            "padding_top": 20,
+            "padding_bottom": 20
+          }
+        },
         "941018d2-7613-4b60-aa2c-94962df06c94": {
           "type": "trustbadge",
           "settings": {

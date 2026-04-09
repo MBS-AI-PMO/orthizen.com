@@ -294,6 +294,15 @@
             %}
           </xo-animate>
 
+        {% when 'bulk_discount' %}
+          <xo-animate
+            xo-cascade
+            {{ block.shopify_attributes }}
+            style='padding-top:{{ block.settings.padding_top | append: 'px' }}; padding-bottom:{{ block.settings.padding_bottom | append: 'px'}}'
+          >
+            {% render 'bulk-discount', block: block, product: product %}
+          </xo-animate>
+
         {% when 'text' %}
           {% case block.settings.text_style %}
             {% when 'capitalize' %}

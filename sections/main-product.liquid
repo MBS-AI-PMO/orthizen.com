@@ -1406,6 +1406,130 @@
       ]
     },
     {
+      "type": "bulk_discount",
+      "name": "Bulk Discount",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section heading",
+          "default": "How Many Pairs Do You Need?"
+        },
+        {
+          "type": "header",
+          "content": "Option 1 (Single)"
+        },
+        {
+          "type": "number",
+          "id": "option1_qty",
+          "label": "Quantity",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "option1_label",
+          "label": "Label",
+          "default": "Buy 1 Pair"
+        },
+        {
+          "type": "text",
+          "id": "option1_badge",
+          "label": "Badge text (optional)"
+        },
+        {
+          "type": "range",
+          "id": "option1_discount",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Discount %",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Option 2 (Double)"
+        },
+        {
+          "type": "number",
+          "id": "option2_qty",
+          "label": "Quantity",
+          "default": 2
+        },
+        {
+          "type": "text",
+          "id": "option2_label",
+          "label": "Label",
+          "default": "Buy 2 Pairs"
+        },
+        {
+          "type": "text",
+          "id": "option2_badge",
+          "label": "Badge text (optional)",
+          "default": "Most Popular"
+        },
+        {
+          "type": "range",
+          "id": "option2_discount",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Discount %",
+          "default": 10
+        },
+        {
+          "type": "header",
+          "content": "Option 3 (Triple)"
+        },
+        {
+          "type": "number",
+          "id": "option3_qty",
+          "label": "Quantity",
+          "default": 3
+        },
+        {
+          "type": "text",
+          "id": "option3_label",
+          "label": "Label",
+          "default": "Buy 3 Pairs"
+        },
+        {
+          "type": "text",
+          "id": "option3_badge",
+          "label": "Badge text (optional)",
+          "default": "Best Value"
+        },
+        {
+          "type": "range",
+          "id": "option3_discount",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Discount %",
+          "default": 20
+        },
+        {
+          "type": "header",
+          "content": "Spacing"
+        },
+        {
+          "type": "number",
+          "id": "padding_top",
+          "label": "Padding top",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "id": "padding_bottom",
+          "label": "Padding bottom",
+          "default": 20
+        }
+      ]
+    },
+    {
       "type": "image",
       "name": "t:sections.main_product.blocks.image.name",
       "settings": [

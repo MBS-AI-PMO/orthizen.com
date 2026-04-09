@@ -1,0 +1,410 @@
+{% comment %}
+  Renders a bulk discount / multi-quantity selector for the product page.
+
+  Accepts:
+  - block:   {Object}  Block object from main-product section (required)
+  - product: {Product} Shopify product object (required)
+
+  Usage:
+  {% render 'bulk-discount', block: block, product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign bd_id       = 'bulk-discount-' | append: block.id
+  assign cur_variant = product.selected_or_first_available_variant
+  assign base_price  = cur_variant.price
+
+  assign o1_qty  = block.settings.option1_qty
+  assign o1_disc = block.settings.option1_discount
+  assign o1_raw  = base_price | times: o1_qty
+  if o1_disc > 0
+    assign o1_mult  = 100 | minus: o1_disc
+    assign o1_total = o1_raw | times: o1_mult | divided_by: 100
+  else
+    assign o1_total = o1_raw
+  endif
+  assign o1_per     = o1_total | divided_by: o1_qty
+  assign o1_savings = o1_raw | minus: o1_total
+
+  assign o2_qty  = block.settings.option2_qty
+  assign o2_disc = block.settings.option2_discount
+  assign o2_raw  = base_price | times: o2_qty
+  if o2_disc > 0
+    assign o2_mult  = 100 | minus: o2_disc
+    assign o2_total = o2_raw | times: o2_mult | divided_by: 100
+  else
+    assign o2_total = o2_raw
+  endif
+  assign o2_per     = o2_total | divided_by: o2_qty
+  assign o2_savings = o2_raw | minus: o2_total
+
+  assign o3_qty  = block.settings.option3_qty
+  assign o3_disc = block.settings.option3_discount
+  assign o3_raw  = base_price | times: o3_qty
+  if o3_disc > 0
+    assign o3_mult  = 100 | minus: o3_disc
+    assign o3_total = o3_raw | times: o3_mult | divided_by: 100
+  else
+    assign o3_total = o3_raw
+  endif
+  assign o3_per     = o3_total | divided_by: o3_qty
+  assign o3_savings = o3_raw | minus: o3_total
+-%}
+
+<div class="bulk-discount"
+     id="{{ bd_id }}"
+     data-section-id="{{ section.id }}"
+     data-product-id="{{ product.id }}"
+     data-base-price="{{ base_price }}">
+
+  {%- if block.settings.title != blank -%}
+    <p class="bulk-discount__title">{{ block.settings.title }}</p>
+  {%- endif -%}
+
+  <div class="bulk-discount__options">
+
+    {%- comment -%}── Option 1 ──{%- endcomment -%}
+    {%- if o1_qty > 0 -%}
+      <label class="bulk-discount__option bulk-discount__option--selected"
+             data-qty="{{ o1_qty }}"
+             data-discount="{{ o1_disc }}"
+             data-raw="{{ o1_raw }}">
+        <input type="radio" name="bd-{{ block.id }}" class="bulk-discount__radio-input" value="{{ o1_qty }}" checked>
+        <span class="bulk-discount__radio-dot"></span>
+        <div class="bulk-discount__body">
+          <div class="bulk-discount__left">
+            <span class="bulk-discount__label">{{ block.settings.option1_label }}</span>
+            <div class="bulk-discount__badges">
+              {%- if block.settings.option1_badge != blank -%}
+                <span class="bulk-discount__badge bulk-discount__badge--highlight">{{ block.settings.option1_badge }}</span>
+              {%- endif -%}
+              {%- if o1_disc > 0 -%}
+                <span class="bulk-discount__badge bulk-discount__badge--off">{{ o1_disc }}% OFF</span>
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="bulk-discount__right">
+            <span class="bulk-discount__total">{{ o1_total | money }}</span>
+            {%- if o1_qty > 1 -%}
+              <span class="bulk-discount__per-item">{{ o1_per | money }} each</span>
+            {%- endif -%}
+            {%- if o1_disc > 0 -%}
+              <span class="bulk-discount__savings">Save {{ o1_savings | money }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      </label>
+    {%- endif -%}
+
+    {%- comment -%}── Option 2 ──{%- endcomment -%}
+    {%- if o2_qty > 0 -%}
+      <label class="bulk-discount__option"
+             data-qty="{{ o2_qty }}"
+             data-discount="{{ o2_disc }}"
+             data-raw="{{ o2_raw }}">
+        <input type="radio" name="bd-{{ block.id }}" class="bulk-discount__radio-input" value="{{ o2_qty }}">
+        <span class="bulk-discount__radio-dot"></span>
+        <div class="bulk-discount__body">
+          <div class="bulk-discount__left">
+            <span class="bulk-discount__label">{{ block.settings.option2_label }}</span>
+            <div class="bulk-discount__badges">
+              {%- if block.settings.option2_badge != blank -%}
+                <span class="bulk-discount__badge bulk-discount__badge--highlight">{{ block.settings.option2_badge }}</span>
+              {%- endif -%}
+              {%- if o2_disc > 0 -%}
+                <span class="bulk-discount__badge bulk-discount__badge--off">{{ o2_disc }}% OFF</span>
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="bulk-discount__right">
+            <span class="bulk-discount__total">{{ o2_total | money }}</span>
+            {%- if o2_qty > 1 -%}
+              <span class="bulk-discount__per-item">{{ o2_per | money }} each</span>
+            {%- endif -%}
+            {%- if o2_disc > 0 -%}
+              <span class="bulk-discount__savings">Save {{ o2_savings | money }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      </label>
+    {%- endif -%}
+
+    {%- comment -%}── Option 3 ──{%- endcomment -%}
+    {%- if o3_qty > 0 -%}
+      <label class="bulk-discount__option"
+             data-qty="{{ o3_qty }}"
+             data-discount="{{ o3_disc }}"
+             data-raw="{{ o3_raw }}">
+        <input type="radio" name="bd-{{ block.id }}" class="bulk-discount__radio-input" value="{{ o3_qty }}">
+        <span class="bulk-discount__radio-dot"></span>
+        <div class="bulk-discount__body">
+          <div class="bulk-discount__left">
+            <span class="bulk-discount__label">{{ block.settings.option3_label }}</span>
+            <div class="bulk-discount__badges">
+              {%- if block.settings.option3_badge != blank -%}
+                <span class="bulk-discount__badge bulk-discount__badge--highlight">{{ block.settings.option3_badge }}</span>
+              {%- endif -%}
+              {%- if o3_disc > 0 -%}
+                <span class="bulk-discount__badge bulk-discount__badge--off">{{ o3_disc }}% OFF</span>
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="bulk-discount__right">
+            <span class="bulk-discount__total">{{ o3_total | money }}</span>
+            {%- if o3_qty > 1 -%}
+              <span class="bulk-discount__per-item">{{ o3_per | money }} each</span>
+            {%- endif -%}
+            {%- if o3_disc > 0 -%}
+              <span class="bulk-discount__savings">Save {{ o3_savings | money }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      </label>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<style>
+  .bulk-discount {
+    --bd-accent:     #2a6041;
+    --bd-accent-bg:  #eaf4ee;
+    --bd-border:     #dee2e6;
+    --bd-radius:     0.9rem;
+    --bd-off-bg:     #e63946;
+    --bd-hi-bg:      #ff6b35;
+  }
+
+  .bulk-discount__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin: 0 0 1.1rem;
+  }
+
+  .bulk-discount__options {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+  }
+
+  .bulk-discount__option {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    border: 2px solid var(--bd-border);
+    border-radius: var(--bd-radius);
+    padding: 1.1rem 1.3rem;
+    cursor: pointer;
+    transition: border-color .2s, background .2s, box-shadow .2s;
+    user-select: none;
+  }
+
+  .bulk-discount__option:hover {
+    border-color: var(--bd-accent);
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  }
+
+  .bulk-discount__option--selected {
+    border-color: var(--bd-accent);
+    background: var(--bd-accent-bg);
+    box-shadow: 0 2px 10px rgba(42,96,65,.18);
+  }
+
+  .bulk-discount__radio-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0; height: 0;
+  }
+
+  .bulk-discount__radio-dot {
+    width: 1.9rem;
+    min-width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    border: 2px solid var(--bd-border);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color .2s, background .2s;
+    flex-shrink: 0;
+  }
+
+  .bulk-discount__option--selected .bulk-discount__radio-dot {
+    border-color: var(--bd-accent);
+    background: var(--bd-accent);
+  }
+
+  .bulk-discount__option--selected .bulk-discount__radio-dot::after {
+    content: '';
+    width: .75rem;
+    height: .75rem;
+    background: #fff;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .bulk-discount__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    gap: .8rem;
+    flex-wrap: wrap;
+  }
+
+  .bulk-discount__left {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+  }
+
+  .bulk-discount__label {
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+
+  .bulk-discount__badges {
+    display: flex;
+    gap: .45rem;
+    flex-wrap: wrap;
+  }
+
+  .bulk-discount__badge {
+    font-size: .85rem;
+    font-weight: 700;
+    padding: .2rem .6rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    white-space: nowrap;
+    color: #fff;
+  }
+
+  .bulk-discount__badge--highlight { background: var(--bd-hi-bg); }
+  .bulk-discount__badge--off       { background: var(--bd-off-bg); }
+
+  .bulk-discount__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .2rem;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .bulk-discount__total {
+    font-size: 1.55rem;
+    font-weight: 700;
+  }
+
+  .bulk-discount__per-item {
+    font-size: 1.05rem;
+    opacity: .65;
+  }
+
+  .bulk-discount__savings {
+    font-size: 1.05rem;
+    color: var(--bd-accent);
+    font-weight: 600;
+  }
+
+  @media (max-width: 550px) {
+    .bulk-discount__option  { padding: .9rem 1rem; gap: .8rem; }
+    .bulk-discount__label   { font-size: 1.2rem; }
+    .bulk-discount__total   { font-size: 1.35rem; }
+    .bulk-discount__badge   { font-size: .78rem; }
+  }
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  var bd = document.getElementById('{{ bd_id }}');
+  if (!bd) return;
+
+  var sectionId = bd.dataset.sectionId;
+  var productId = bd.dataset.productId;
+  var options   = bd.querySelectorAll('.bulk-discount__option');
+
+  /* ── money formatter ── */
+  function fmtMoney(cents) {
+    if (window.Shopify && window.Shopify.formatMoney) {
+      return Shopify.formatMoney(cents);
+    }
+    return '$' + (cents / 100).toFixed(2);
+  }
+
+  /* ── re-render all prices after a variant change ── */
+  function refreshPrices(basePrice) {
+    options.forEach(function (opt) {
+      var qty      = parseInt(opt.dataset.qty,      10) || 1;
+      var disc     = parseInt(opt.dataset.discount, 10) || 0;
+      var rawTotal = basePrice * qty;
+      var total    = disc > 0 ? Math.round(rawTotal * (100 - disc) / 100) : rawTotal;
+      var perItem  = Math.round(total / qty);
+      var savings  = rawTotal - total;
+
+      var totalEl   = opt.querySelector('.bulk-discount__total');
+      var perEl     = opt.querySelector('.bulk-discount__per-item');
+      var savingsEl = opt.querySelector('.bulk-discount__savings');
+
+      if (totalEl)                  totalEl.textContent   = fmtMoney(total);
+      if (perEl   && qty > 1)       perEl.textContent     = fmtMoney(perItem) + ' each';
+      if (savingsEl && disc > 0)    savingsEl.textContent = 'Save ' + fmtMoney(savings);
+
+      opt.dataset.raw = String(rawTotal);
+    });
+  }
+
+  /* ── update the product form quantity input ── */
+  function setQty(qty) {
+    var inp = document.getElementById('quantity-' + sectionId);
+    if (!inp) return;
+    inp.value = qty;
+    inp.dispatchEvent(new Event('change', { bubbles: true }));
+    inp.dispatchEvent(new Event('input',  { bubbles: true }));
+    /* Also bump xo-cart-quantity if exposed */
+    var xoQty = inp.closest('xo-cart-quantity');
+    if (xoQty && typeof xoQty.setValue === 'function') xoQty.setValue(qty);
+  }
+
+  /* ── option click handler ── */
+  options.forEach(function (opt) {
+    opt.addEventListener('click', function () {
+      options.forEach(function (o) {
+        o.classList.remove('bulk-discount__option--selected');
+        var r = o.querySelector('.bulk-discount__radio-input');
+        if (r) r.checked = false;
+      });
+      this.classList.add('bulk-discount__option--selected');
+      var radio = this.querySelector('.bulk-discount__radio-input');
+      if (radio) radio.checked = true;
+      setQty(parseInt(this.dataset.qty, 10) || 1);
+    });
+  });
+
+  /* ── watch variant changes via price-element mutations ── */
+  var priceEl = document.querySelector('[xo-unique-id="product-price-' + productId + '"]');
+  if (priceEl) {
+    var lastVid = null;
+    function onVariantChange() {
+      var form = document.querySelector('[data-type="add-to-cart-form"]');
+      if (!form) return;
+      var idInput = form.querySelector('input[name="id"]');
+      if (!idInput || idInput.value === lastVid) return;
+      lastVid = idInput.value;
+      fetch('/variants/' + lastVid + '.js')
+        .then(function (r) { return r.json(); })
+        .then(function (v) { if (v && v.price) refreshPrices(v.price); })
+        .catch(function () {});
+    }
+    new MutationObserver(function () { setTimeout(onVariantChange, 60); })
+      .observe(priceEl, { childList: true, subtree: true, characterData: true });
+  }
+})();
+</script>
