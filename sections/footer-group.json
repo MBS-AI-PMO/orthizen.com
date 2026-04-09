@@ -24,18 +24,18 @@
             "phone": "Phone: (+84) 1800 68 68"
           }
         },
-        "9eb858f7-0036-4727-9925-b37e697f469e": {
-          "type": "menu",
-          "settings": {
-            "heading": "About us",
-            "menu": "footer"
-          }
-        },
         "2dcc3ebc-a2a9-4e8b-86a7-a89a4630a2bb": {
           "type": "menu",
           "settings": {
             "heading": "Categories",
-            "menu": "customer-account-main-menu"
+            "menu": "main-menu-2"
+          }
+        },
+        "9eb858f7-0036-4727-9925-b37e697f469e": {
+          "type": "menu",
+          "settings": {
+            "heading": "About us",
+            "menu": "information-menu"
           }
         },
         "2dcc3ebc-a2a9-4e8b-86a7-a89a4630a2bc": {
@@ -66,8 +66,8 @@
       },
       "block_order": [
         "7f808e41-68d4-4aca-ad5d-bc68ee36cc22",
-        "9eb858f7-0036-4727-9925-b37e697f469e",
         "2dcc3ebc-a2a9-4e8b-86a7-a89a4630a2bb",
+        "9eb858f7-0036-4727-9925-b37e697f469e",
         "2dcc3ebc-a2a9-4e8b-86a7-a89a4630a2bc",
         "35d8fac8-113c-46f6-bf0e-e0d721af7e64"
       ],

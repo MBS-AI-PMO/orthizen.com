@@ -411,6 +411,42 @@
         "autoplay_duration": 15
       }
     },
+    "product-information-tabs": {
+      "type": "product-information-tabs",
+      "blocks": {
+        "tab1": {
+          "type": "description",
+          "settings": {
+            "header": "Product description"
+          }
+        },
+        "tab2": {
+          "type": "shipping",
+          "settings": {
+            "header": "Shipping & return"
+          }
+        }
+      },
+      "block_order": [
+        "tab1",
+        "tab2"
+      ],
+      "settings": {
+        "width": "box",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
     "reviews": {
       "type": "product-reviews",
       "blocks": {
@@ -527,42 +563,6 @@
         "padding_right": 20
       }
     },
-    "product-information-tabs": {
-      "type": "product-information-tabs",
-      "blocks": {
-        "tab1": {
-          "type": "description",
-          "settings": {
-            "header": "Product description"
-          }
-        },
-        "tab2": {
-          "type": "shipping",
-          "settings": {
-            "header": "Shipping & return"
-          }
-        }
-      },
-      "block_order": [
-        "tab1",
-        "tab2"
-      ],
-      "settings": {
-        "width": "box",
-        "color_scheme": "",
-        "background_type": "color",
-        "background_color": "",
-        "background_gradient": "",
-        "use_parallax": true,
-        "background_image_animation": "none",
-        "background_video_url": "",
-        "background_video_animation": "none",
-        "background_overlay": "",
-        "background_margin": 0,
-        "padding_top": 50,
-        "padding_bottom": 0
-      }
-    },
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
@@ -598,8 +598,8 @@
     "breadcrumb-v1",
     "main-product",
     "image-slider",
-    "reviews",
     "product-information-tabs",
+    "reviews",
     "product-recommendations"
   ]
 }
