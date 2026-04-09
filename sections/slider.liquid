@@ -141,8 +141,12 @@
   all: initial;
   display: block;
   width: 100%;
+  margin-top: {{ section.settings.margin_top }}px !important;
+  margin-bottom: {{ section.settings.margin_bottom }}px !important;
   padding-top: {{ section.settings.padding_top }}px !important;
   padding-bottom: {{ section.settings.padding_bottom }}px !important;
+  padding-left: {{ section.settings.padding_left }}px !important;
+  padding-right: {{ section.settings.padding_right }}px !important;
 }
 
 .slider-wrapper * {
@@ -333,16 +337,34 @@
     {
       "type": "range",
       "id": "header_margin",
-      "label": "Header Margin (px)",
-      "min": 20,
-      "max": 80,
+      "label": "Space Below Title (px)",
+      "min": 10,
+      "max": 100,
       "step": 5,
       "default": 40
     },
     {
       "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top (px)",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom (px)",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
       "id": "padding_top",
-      "label": "Spacing From Top (px)",
+      "label": "Padding Top (px)",
       "min": 0,
       "max": 100,
       "step": 10,
@@ -351,11 +373,29 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "Spacing From Bottom (px)",
+      "label": "Padding Bottom (px)",
       "min": 0,
       "max": 100,
       "step": 10,
       "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left (px)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right (px)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 20
     }
   ],
   "blocks": [
