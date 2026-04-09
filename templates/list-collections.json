@@ -1,19 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main-page-heading": {
       "type": "main-page-heading",
       "settings": {
-        "padding_top": 60,
-        "padding_bottom": 20,
+        "title_tag": "h1",
         "title": "All Collections",
-        "description": "<p>Our new cozy collection is made with environmentally friendly materials and<br>simple to care for so you can stay cozy wherever.<\/p>"
+        "description": "<p>Our new cozy collection is made with environmentally friendly materials and<br>simple to care for so you can stay cozy wherever.</p>",
+        "align": "center",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 60,
+        "padding_bottom": 20
       }
     },
     "main": {
-      "type" : "main-list-collections",
-      "settings": {
-        "padding_top": 20
-      },
+      "type": "main-list-collections",
       "blocks": {
         "3be361b1-1ee2-4f6b-b8b6-590e4f6dbe76": {
           "type": "collection",
@@ -87,7 +105,31 @@
         "7404e6e3-b5bb-44f3-ba36-2ebacfb51ef6",
         "e87f8941-994b-40da-bd91-0d9a247d7d2f",
         "b951cdf9-06dc-46b5-8d67-40639eb8b4a4"
-      ]
+      ],
+      "settings": {
+        "width": "box",
+        "list_type": "all",
+        "sort": "alphabetical",
+        "collection_loadtype": "infinity",
+        "collections_per_page": 12,
+        "columns_desktop": 4,
+        "columns_mobile": "1",
+        "collection_card_show_product_count": true,
+        "collection_card_aspect_ratio": "3/4",
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 20,
+        "padding_bottom": 50
+      }
     }
   },
   "order": [
