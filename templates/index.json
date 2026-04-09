@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "slideshow-v2": {
@@ -15,7 +24,7 @@
             "title_font_size": 6.4,
             "title_font_weight": 500,
             "title_animation": "fade-up",
-            "description": "Elevate your athletic performance with every step,<br> ensuring comfort, support, and style.",
+            "description": "Elevate your athletic performance with every step, ensuring comfort, support, and style.",
             "description_font_size": 1.6,
             "description_font_weight": 500,
             "description_animation": "fade-up",
@@ -28,8 +37,8 @@
             "button_padding": 1.4,
             "button_animation": "fade-up",
             "video": "",
-            "background_image_desktop": "shopify://shop_images/slide40-1.jpg",
-            "background_image_mobile": "shopify://shop_images/slide40-1.jpg",
+            "background_image_desktop": "shopify://shop_images/slide40-1.webp",
+            "background_image_mobile": "shopify://shop_images/slide40-1.webp",
             "color_scheme": "background-1",
             "background_color": "",
             "background_gradient": ""
@@ -47,7 +56,7 @@
             "title_font_size": 6.4,
             "title_font_weight": 500,
             "title_animation": "fade-up",
-            "description": "Elevate your athletic performance with every step,<br> ensuring comfort, support, and style.",
+            "description": "Elevate your athletic performance with every step, ensuring comfort, support, and style.",
             "description_font_size": 1.6,
             "description_font_weight": 500,
             "description_animation": "fade-up",
@@ -60,8 +69,7 @@
             "button_padding": 1.4,
             "button_animation": "fade-up",
             "video": "",
-            "background_image_desktop": "shopify://shop_images/slide40-25.jpg",
-            "background_image_mobile": "shopify://shop_images/slide40-25.jpg",
+            "background_image_desktop": "shopify://shop_images/slide40-25.webp",
             "color_scheme": "inverse",
             "background_color": "",
             "background_gradient": ""
@@ -177,7 +185,6 @@
         "gap": 30,
         "subtitle1": "",
         "title1": "men's shoes",
-        "image1": "shopify://shop_images/ba159-1.jpg",
         "link1": "shopify://collections/all",
         "button1_text": "shop now",
         "button1_mode": "dark",
@@ -187,7 +194,6 @@
         "button1_padding": 1.4,
         "subtitle2": "",
         "title2": "Women's shoes",
-        "image2": "shopify://shop_images/ba159-2.jpg",
         "link2": "shopify://collections/all",
         "button2_text": "shop now",
         "button2_mode": "dark",
@@ -298,7 +304,6 @@
         "gap": 30,
         "subtitle1": "HOKAS",
         "title1": "Pro Flex",
-        "image1": "shopify://shop_images/ba159-4.jpg",
         "link1": "shopify://collections/all",
         "button1_text": "shop now",
         "button1_mode": "light",
@@ -308,7 +313,6 @@
         "button1_padding": 1.4,
         "subtitle2": "BRIDOKS",
         "title2": "Power Lift",
-        "image2": "shopify://shop_images/ba159-3.jpg",
         "link2": "shopify://collections/all",
         "button2_text": "shop now",
         "button2_mode": "light",
