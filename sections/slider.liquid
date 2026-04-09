@@ -88,7 +88,7 @@
       console.log('Using carousel.next() method');
       setInterval(() => {
         carousel.next();
-      }, 2500);
+      }, {{ section.settings.autoplay_duration }});
       autoplayStarted = true;
     }
 
@@ -117,7 +117,7 @@
               console.log('Slider reset to start');
             }
           }, 300);
-        }, 2500);
+        }, {{ section.settings.autoplay_duration }});
         autoplayStarted = true;
       }
     }
@@ -169,6 +169,20 @@
   padding: 0 !important;
   margin: 0 !important;
   gap: 0 !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.slider-wrapper .slider-list::-webkit-scrollbar {
+  display: none !important;
+}
+
+.slider-wrapper .slider-list::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+.slider-wrapper .slider-list::-webkit-scrollbar-thumb {
+  display: none !important;
 }
 
 .slider-wrapper .slider-slide {
@@ -396,6 +410,15 @@
       "max": 80,
       "step": 5,
       "default": 20
+    },
+    {
+      "type": "range",
+      "id": "autoplay_duration",
+      "label": "Auto-Scroll Speed (ms)",
+      "min": 1000,
+      "max": 8000,
+      "step": 500,
+      "default": 2500
     }
   ],
   "blocks": [
