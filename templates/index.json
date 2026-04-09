@@ -179,6 +179,7 @@
     },
     "banner-v8": {
       "type": "banner-v8",
+      "disabled": true,
       "settings": {
         "width": "fullwidth",
         "fullwidth_margin": 0,
@@ -249,6 +250,7 @@
         "cf661f36-a23b-409f-861a-2488ca0df2b0",
         "542c09ae-815b-45a4-81fd-1b6a2bbf3c78"
       ],
+      "disabled": true,
       "settings": {
         "width": "fullwidth",
         "fullwidth_margin": 0,
@@ -297,6 +299,7 @@
     },
     "banner_v159_EU8aap": {
       "type": "banner-v8",
+      "disabled": true,
       "name": "BANNER V8",
       "settings": {
         "width": "fullwidth",
@@ -408,6 +411,7 @@
     },
     "instagram-v2": {
       "type": "instagram-v2",
+      "disabled": true,
       "settings": {
         "width": "fullwidth",
         "fullwidth_margin": 0,
