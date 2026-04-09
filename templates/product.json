@@ -618,6 +618,18 @@
         "padding_top": 50,
         "padding_bottom": 0
       }
+    },
+    "slideshow_v3_Ykr37F": {
+      "type": "slideshow-v3",
+      "name": "t:sections.slideshow_v3.presets.name",
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "autoplay": false,
+        "speed": 5,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
     }
   },
   "order": [
@@ -626,6 +638,7 @@
     "image-slider",
     "product-information-tabs",
     "reviews",
-    "product-recommendations"
+    "product-recommendations",
+    "slideshow_v3_Ykr37F"
   ]
 }
