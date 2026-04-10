@@ -21,7 +21,33 @@
 
 {% liquid
   assign block_buy_button = section.blocks | where: 'type', 'buy_button' | first
+  assign img_ar = section.settings.image_aspect_ratio
+  assign img_mh = section.settings.image_max_height
 %}
+
+{%- comment -%}── Product image size / aspect-ratio override ──{%- endcomment -%}
+{%- if img_ar != 'auto' or img_mh > 0 -%}
+<style>
+  {%- if img_ar != 'auto' -%}
+  /* Override aspect ratio for all product media styles in this section */
+  #shopify-section-{{ section.id }} [class*='xo-product-info-media'] .xo-image:not(.xo-image--svg) {
+    --xo-ratio-percent: {{ img_ar }} !important;
+  }
+  {%- endif -%}
+  {%- if img_mh > 0 -%}
+  /* Cap maximum height of the image area */
+  #shopify-section-{{ section.id }} [class*='xo-product-info-media'] .xo-image:not(.xo-image--svg) {
+    max-height: {{ img_mh }}px;
+    overflow: hidden;
+  }
+  /* Keep inner carousel at same cap so arrows stay in frame */
+  #shopify-section-{{ section.id }} [class*='xo-product-info-media'] xo-carousel-list,
+  #shopify-section-{{ section.id }} [class*='xo-product-info-media'] xo-carousel-slide {
+    max-height: {{ img_mh }}px;
+  }
+  {%- endif -%}
+</style>
+{%- endif -%}
 
 <div {% render 'section-attr', style: 'z-index:99; position: relative' %}>
   {% render 'section-bg-image' %}
@@ -284,6 +310,35 @@
       "id": "product_360",
       "label": "t:sections.main_product.settings.product_360.label",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Image size"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "info": "Controls the height of the product image. 'Auto' uses the image's natural proportions.",
+      "default": "auto",
+      "options": [
+        { "value": "auto",   "label": "Auto (natural image ratio)" },
+        { "value": "0.75",   "label": "Portrait – 3:4 (tall)" },
+        { "value": "1",      "label": "Square – 1:1" },
+        { "value": "1.3333", "label": "Landscape – 4:3" },
+        { "value": "1.7778", "label": "Widescreen – 16:9 (short)" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "image_max_height",
+      "label": "Max image height (px)",
+      "info": "Caps the image height. Set to 0 to disable. Recommended: 500–700 px if the image appears too tall.",
+      "min": 0,
+      "max": 900,
+      "step": 50,
+      "unit": "px",
+      "default": 0
     },
     {
       "type": "select",
