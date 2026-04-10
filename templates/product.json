@@ -328,6 +328,8 @@
         "video_autoplay": false,
         "video_modal": false,
         "product_360": false,
+        "image_aspect_ratio": "auto",
+        "image_max_height": 0,
         "thumbnail_mobile": "thumbnail",
         "sticky_desktop": true,
         "sticky_mobile": true,
