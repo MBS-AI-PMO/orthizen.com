@@ -11,6 +11,16 @@
   "name": "t:sections.headers.name",
   "type": "header",
   "sections": {
+    "top-bar": {
+      "type": "top-bar",
+      "blocks": {
+        "tb-block-1": { "type": "announcement", "settings": { "emoji": "🚚", "text": "FREE SHIPPING on all orders over $50" } },
+        "tb-block-2": { "type": "announcement", "settings": { "emoji": "⭐", "text": "Rated 4.9\/5 by 17,000+ happy customers" } },
+        "tb-block-3": { "type": "announcement", "settings": { "emoji": "🔄", "text": "30-Day hassle-free returns" } }
+      },
+      "block_order": ["tb-block-1", "tb-block-2", "tb-block-3"],
+      "settings": {}
+    },
     "header": {
       "type": "header",
       "settings": {
@@ -189,6 +199,7 @@
     }
   },
   "order": [
+    "top-bar",
     "header",
     "search",
     "mega-menu-v1",
