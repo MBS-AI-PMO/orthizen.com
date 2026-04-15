@@ -13,7 +13,7 @@
           {% assign align = 'end' %}
       {% endcase %}
       <div class='product-v7__heading' style='--align:{{ align }}'>
-        <h2 class='product-v7__title product-v7__title--{{section.settings.heading_align}}'>{{ section.settings.heading_title }}</h2>
+        <h2 class='product-v7__title product-v7__title--{{section.settings.heading_align}} product-v7__title--truncate' style='--mobile-char-limit:{{ section.settings.mobile_title_limit }}ch'>{{ section.settings.heading_title }}</h2>
       </div>
     </xo-animate>
     <xo-animate>
@@ -28,13 +28,14 @@
               perView: 3,
             },
             767: {
-              perView: {{ section.settings.mobile_columns }},
+              perView: 2,
             },
             575: {
-              perView: {{ section.settings.mobile_columns }},
+              perView: 2,
             },
           }
         '
+        class='product-v7__carousel'
       >
         <xo-carousel-inner>
           <xo-carousel-list role='list' aria-label='{{ 'general.slider.name' | t }}'>
@@ -73,6 +74,67 @@
     </xo-animate>
   </xo-container>
 </div>
+
+<style>
+  .product-v7__title--truncate {
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  @media (max-width: 767px) {
+    .product-v7__heading {
+      margin-bottom: 15px !important;
+    }
+
+    .product-v7__title--truncate {
+      font-size: 1rem;
+      line-height: 1.2;
+      max-width: var(--mobile-char-limit, 30ch);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin: 0 !important;
+    }
+
+    .product-v7__carousel {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 15px !important;
+      width: 100% !important;
+    }
+
+    .product-v7__carousel xo-carousel-inner {
+      display: contents !important;
+    }
+
+    .product-v7__carousel xo-carousel-list {
+      display: contents !important;
+      width: 100% !important;
+    }
+
+    .product-v7__carousel xo-carousel-slide {
+      display: block !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .product-v7__carousel xo-carousel-slide:nth-child(n+5) {
+      display: none !important;
+    }
+
+    .product-v7__pagination {
+      display: none !important;
+    }
+
+    /* Hide carousel controls on mobile */
+    .product-v7__carousel::before,
+    .product-v7__carousel::after {
+      display: none !important;
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -114,6 +176,13 @@
       "default": "Section title"
     },
     {
+      "type": "number",
+      "id": "mobile_title_limit",
+      "label": "Mobile title character limit",
+      "info": "Maximum characters to display on mobile (< 768px). Leave empty for no limit.",
+      "default": 30
+    },
+    {
       "type": "select",
       "id": "heading_align",
       "label": "t:sections.product_v2.settings.heading_align.label",
@@ -141,7 +210,7 @@
     {
       "type": "range",
       "id": "limit",
-      "min": 2,
+      "min": 4,
       "max": 20,
       "step": 1,
       "label": "t:sections.product_v2.settings.products.label",
@@ -155,18 +224,6 @@
       "step": 1,
       "label": "t:sections.product_v2.settings.columns.label",
       "default": 4
-    },
-    {
-      "type": "select",
-      "id": "mobile_columns",
-      "label": "Mobile columns",
-      "info": "Number of products visible per row on mobile screens (< 768px).",
-      "default": "1",
-      "options": [
-        { "value": "1", "label": "1 product" },
-        { "value": "2", "label": "2 products" },
-        { "value": "3", "label": "3 products" }
-      ]
     },
     {
       "type": "header",
