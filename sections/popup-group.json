@@ -21,6 +21,7 @@
     },
     "popup-sale-notification": {
       "type": "popup-sale-notification",
+      "disabled": true,
       "settings": {
         "color_scheme": "",
         "content_width": 500,
