@@ -21040,15 +21040,9 @@ xo-modal[xo-placement*=-left] .xo-modal-pickup__footer, xo-modal[xo-placement*=-
 .xo-product-info-content__title {
   color: rgba(var(--color-foreground));
   font-weight: 500;
-  font-size: var(--fz);
+  font-size: clamp(1.4rem, 6vw, var(--fz));
   line-height: 1.11;
   letter-spacing: -0.01em;
-}
-
-@media (max-width: 768px) {
-  .xo-product-info-content__title {
-    font-size: var(--mobile-fz, 1.5rem);
-  }
 }
 
 .xo-product-info-content__description {

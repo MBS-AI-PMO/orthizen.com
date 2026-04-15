@@ -46,7 +46,6 @@
           "type": "title",
           "settings": {
             "font_size": 3.5,
-            "mobile_font_size": 0.8,
             "padding_top": 0,
             "padding_bottom": 0
           }
@@ -73,9 +72,9 @@
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 100\"><path d=\"M30 50 Q30 30 50 20 Q70 30 70 50 Q70 75 50 85 Q30 75 30 50\" stroke=\"currentColor\" stroke-width=\"3\" fill=\"none\"></path><circle cx=\"50\" cy=\"50\" r=\"8\" fill=\"currentColor\"></circle></svg>",
             "icon_image": "shopify://shop_images/icon-2.webp",
             "text": "Relieves heel, knee & back pain",
-            "icon_size": 40,
-            "text_font_size": 1.2,
-            "icon_text_gap": 10,
+            "icon_size": 60,
+            "text_font_size": 1,
+            "icon_text_gap": 15,
             "padding_top": 0,
             "padding_bottom": 0
           }
@@ -87,9 +86,9 @@
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 100\"><path d=\"M50 15 L65 35 L50 45 L65 55 L50 65 Q35 75 25 85 Q20 80 20 70 Q20 60 30 50 Q20 45 20 35 Q20 25 25 20 Q35 25 50 35 Z\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\"></path><circle cx=\"50\" cy=\"50\" r=\"25\" stroke=\"currentColor\" stroke-width=\"3\" fill=\"none\"></circle></svg>",
             "icon_image": "shopify://shop_images/safety_1.webp",
             "text": "Developed with podiatrists",
-            "icon_size": 40,
-            "text_font_size": 1.2,
-            "icon_text_gap": 10,
+            "icon_size": 60,
+            "text_font_size": 1,
+            "icon_text_gap": 15,
             "padding_top": 0,
             "padding_bottom": 0
           }
@@ -101,9 +100,9 @@
             "icon_svg": "",
             "icon_image": "shopify://shop_images/fast.webp",
             "text": "Free shipping & free exchanges",
-            "icon_size": 40,
-            "text_font_size": 1.2,
-            "icon_text_gap": 10,
+            "icon_size": 60,
+            "text_font_size": 1,
+            "icon_text_gap": 15,
             "padding_top": 0,
             "padding_bottom": 0
           }

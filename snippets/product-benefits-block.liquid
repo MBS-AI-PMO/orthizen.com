@@ -16,10 +16,11 @@
   .product-benefits__container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 16px;
     align-items: start;
     width: 100%;
     padding: 20px 0;
+    margin: 0;
   }
 
   .product-benefits__item {
@@ -31,8 +32,8 @@
   }
 
   .product-benefits__icon {
-    width: var(--icon-size, 32px);
-    height: var(--icon-size, 32px);
+    width: var(--icon-size, 60px);
+    height: var(--icon-size, 60px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,8 +55,8 @@
   }
 
   .product-benefits__text {
-    font-size: var(--text-font-size, 1.6rem);
-    line-height: 1.4;
+    font-size: var(--text-font-size, 1rem);
+    line-height: 1.5;
     color: #666;
     margin: 0;
     font-weight: 400;
@@ -71,25 +72,52 @@
   @media (max-width: 768px) {
     .product-benefits__container {
       grid-template-columns: 1fr;
-      gap: 12px;
-      padding: 15px 0;
+      gap: 18px;
+      padding: 20px 0;
+      margin: 8px 0;
     }
 
     .product-benefits__item {
       flex-direction: row;
       text-align: left;
-      gap: var(--icon-text-gap, 10px);
-      align-items: center;
+      gap: 15px;
+      align-items: flex-start;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
     }
 
     .product-benefits__icon {
-      width: calc(var(--icon-size, 32px) * 0.85);
-      height: calc(var(--icon-size, 32px) * 0.85);
-      min-width: calc(var(--icon-size, 32px) * 0.85);
+      width: 60px;
+      height: 60px;
+      min-width: 60px;
+      margin-top: 2px;
     }
 
     .product-benefits__text {
-      font-size: calc(var(--text-font-size, 1.6rem) * 0.9);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-benefits__container {
+      gap: 16px;
+      padding: 15px 0;
+    }
+
+    .product-benefits__item {
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .product-benefits__icon {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+    }
+
+    .product-benefits__text {
+      font-size: 0.9rem;
     }
   }
 </style>

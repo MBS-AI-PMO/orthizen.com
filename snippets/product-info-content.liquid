@@ -56,7 +56,7 @@
             style='padding-top:{{ block.settings.padding_top | append: 'px' }}; padding-bottom:{{ block.settings.padding_bottom | append: 'px'}}'
           >
             <div class='xo-product-info-content__header'>
-              <h1 class='xo-product-info-content__title' style='--fz:{{ block.settings.font_size | append: 'rem'}}; --mobile-fz:{{ block.settings.mobile_font_size | default: 1.5 | append: 'rem'}}' {{ block.shopify_attributes }}>
+              <h1 class='xo-product-info-content__title' style='--fz:{{ block.settings.font_size | append: 'rem'}}' {{ block.shopify_attributes }}>
                 {{ product.title | escape }}
               </h1>
               {% if section.settings.wishlist %}
