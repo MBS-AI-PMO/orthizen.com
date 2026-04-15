@@ -665,10 +665,10 @@
   "order": [
     "breadcrumb-v1",
     "main-product",
+    "product-benefits",
     "image-slider",
     "product-information-tabs",
     "reviews",
-    "product-benefits",
     "product-recommendations",
     "quick_view_content_gNqNzE"
   ]
