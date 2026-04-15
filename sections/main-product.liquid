@@ -72,31 +72,6 @@
       margin: 12px 0 20px 0 !important;
     }
 
-    /* Product Benefits Container */
-    .product-benefits__container {
-      gap: 18px !important;
-      padding: 0 !important;
-      margin: 0 !important;
-    }
-
-    .product-benefits__item {
-      gap: 15px !important;
-      align-items: flex-start !important;
-      padding: 0 !important;
-    }
-
-    .product-benefits__icon {
-      min-width: 60px !important;
-      width: 60px !important;
-      height: 60px !important;
-      margin-top: 2px !important;
-    }
-
-    .product-benefits__text {
-      font-size: 0.95rem !important;
-      line-height: 1.5 !important;
-      margin: 0 !important;
-    }
 
     /* Price section spacing */
     .xo-product-info-content__price {
@@ -1751,43 +1726,56 @@
     },
     {
       "type": "product-benefits",
-      "name": "Product Benefit",
+      "name": "Product Benefits",
+      "limit": 1,
       "settings": [
         {
-          "type": "select",
-          "id": "icon_type",
-          "label": "Icon type",
-          "options": [
-            {
-              "value": "svg",
-              "label": "SVG code"
-            },
-            {
-              "value": "image",
-              "label": "Image"
-            }
-          ],
-          "default": "svg"
+          "type": "header",
+          "content": "Benefit 1"
         },
         {
           "type": "textarea",
-          "id": "icon_svg",
-          "label": "SVG Icon code",
-          "info": "Paste your SVG code here (only for SVG type)",
+          "id": "benefit1_icon",
+          "label": "Benefit 1 - Icon (SVG)",
           "placeholder": "<svg>...</svg>"
         },
         {
-          "type": "image_picker",
-          "id": "icon_image",
-          "label": "Icon image",
-          "info": "Upload your icon image (only for Image type)"
+          "type": "text",
+          "id": "benefit1_text",
+          "label": "Benefit 1 - Text",
+          "default": "Relieves heel, knee & back pain"
+        },
+        {
+          "type": "header",
+          "content": "Benefit 2"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit2_icon",
+          "label": "Benefit 2 - Icon (SVG)",
+          "placeholder": "<svg>...</svg>"
         },
         {
           "type": "text",
-          "id": "text",
-          "label": "Benefit text",
-          "placeholder": "Enter benefit text here",
-          "default": "Product benefit"
+          "id": "benefit2_text",
+          "label": "Benefit 2 - Text",
+          "default": "Developed with podiatrists"
+        },
+        {
+          "type": "header",
+          "content": "Benefit 3"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit3_icon",
+          "label": "Benefit 3 - Icon (SVG)",
+          "placeholder": "<svg>...</svg>"
+        },
+        {
+          "type": "text",
+          "id": "benefit3_text",
+          "label": "Benefit 3 - Text",
+          "default": "Free shipping & free exchanges"
         },
         {
           "type": "header",
@@ -1797,9 +1785,9 @@
           "type": "range",
           "id": "icon_size",
           "label": "Icon Size (px)",
-          "min": 20,
+          "min": 30,
           "max": 80,
-          "step": 2,
+          "step": 5,
           "unit": "px",
           "default": 60
         },
@@ -1808,32 +1796,32 @@
           "id": "text_font_size",
           "label": "Text Font Size (rem)",
           "min": 0.8,
-          "max": 2.5,
+          "max": 2,
           "step": 0.1,
           "unit": "rem",
-          "default": 1
+          "default": 1.1
         },
         {
           "type": "range",
-          "id": "icon_text_gap",
-          "label": "Icon to Text Gap (px)",
-          "min": 5,
-          "max": 30,
-          "step": 1,
+          "id": "item_gap",
+          "label": "Gap Between Items (px)",
+          "min": 10,
+          "max": 40,
+          "step": 5,
           "unit": "px",
-          "default": 10
+          "default": 20
         },
         {
           "type": "number",
           "id": "padding_top",
           "label": "Padding Top (px)",
-          "default": 0
+          "default": 20
         },
         {
           "type": "number",
           "id": "padding_bottom",
           "label": "Padding Bottom (px)",
-          "default": 0
+          "default": 20
         }
       ]
     },

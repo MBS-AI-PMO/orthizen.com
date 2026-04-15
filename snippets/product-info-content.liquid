@@ -15,25 +15,6 @@
 >
   <xo-collapse-provider>
     {% for block in section.blocks %}
-      {% liquid
-        assign is_benefits_start = false
-        assign is_benefits_end = false
-        if block.type == 'product-benefits'
-          assign prev_index = forloop.index0 | minus: 1
-          if forloop.first
-            assign is_benefits_start = true
-          elsif section.blocks[prev_index].type != 'product-benefits'
-            assign is_benefits_start = true
-          endif
-          assign next_index = forloop.index0 | plus: 1
-          if forloop.last
-            assign is_benefits_end = true
-          elsif section.blocks[next_index].type != 'product-benefits'
-            assign is_benefits_end = true
-          endif
-        endif
-      %}
-
       {% case block.type %}
         {% when '@app' %}
           <xo-animate xo-cascade>
@@ -426,21 +407,7 @@
           </div>
 
         {% when 'product-benefits' %}
-          {% if is_benefits_start %}
-            <div class='product-benefits__container'>
-          {% endif %}
-
-          <xo-animate
-            xo-cascade
-            {{ block.shopify_attributes }}
-            style='padding-top:{{ block.settings.padding_top | append: 'px' }}; padding-bottom:{{ block.settings.padding_bottom | append: 'px'}}'
-          >
-            {% render 'product-benefits-block', block: block %}
-          </xo-animate>
-
-          {% if is_benefits_end %}
-            </div>
-          {% endif %}
+          {% render 'product-benefits-block', block: block %}
 
         {% when 'complementary' %}
           <xo-animate

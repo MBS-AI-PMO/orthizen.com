@@ -1,123 +1,116 @@
-<div class="product-benefits__item" {{ block.shopify_attributes }} style='--icon-size: {{ block.settings.icon_size | default: 32 }}px; --text-font-size: {{ block.settings.text_font_size | default: 1.6 }}rem; --icon-text-gap: {{ block.settings.icon_text_gap | default: 10 }}px; padding-top:{{ block.settings.padding_top | append: 'px' }}; padding-bottom:{{ block.settings.padding_bottom | append: 'px'}}'>
-  {% if block.settings.icon_type == 'svg' and block.settings.icon_svg != blank %}
-    <div class="product-benefits__icon">
-      {{ block.settings.icon_svg }}
-    </div>
-  {% elsif block.settings.icon_type == 'image' and block.settings.icon_image %}
-    <div class="product-benefits__icon product-benefits__icon--image">
-      {% render 'image', image: block.settings.icon_image, alt: block.settings.text %}
-    </div>
-  {% endif %}
+<div class="benefits-container" style="padding-top: {{ block.settings.padding_top }}px; padding-bottom: {{ block.settings.padding_bottom }}px;">
 
-  <p class="product-benefits__text">{{ block.settings.text }}</p>
+  <div class="benefit-item">
+    <div class="benefit-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <path d="M30 50 Q30 30 50 20 Q70 30 70 50 Q70 75 50 85 Q30 75 30 50" stroke="#000" stroke-width="2.5" fill="none"></path>
+        <circle cx="50" cy="50" r="8" fill="#000"></circle>
+      </svg>
+    </div>
+    <p class="benefit-text">{{ block.settings.benefit1_text }}</p>
+  </div>
+
+  <div class="benefit-item">
+    <div class="benefit-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <path d="M50 15 L65 35 L50 45 L65 55 L50 65 Q35 75 25 85 Q20 80 20 70 Q20 60 30 50 Q20 45 20 35 Q20 25 25 20 Q35 25 50 35 Z" stroke="#000" stroke-width="2.5" fill="none"></path>
+        <circle cx="50" cy="50" r="25" stroke="#000" stroke-width="2.5" fill="none"></circle>
+      </svg>
+    </div>
+    <p class="benefit-text">{{ block.settings.benefit2_text }}</p>
+  </div>
+
+  <div class="benefit-item">
+    <div class="benefit-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <path d="M15 55 L20 50 L30 60 L50 35 L60 45" stroke="#000" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+        <rect x="25" y="65" width="50" height="20" stroke="#000" stroke-width="2" fill="none"></rect>
+        <circle cx="35" cy="85" r="4" fill="#000"></circle>
+        <circle cx="65" cy="85" r="4" fill="#000"></circle>
+      </svg>
+    </div>
+    <p class="benefit-text">{{ block.settings.benefit3_text }}</p>
+  </div>
+
 </div>
 
 <style>
-  .product-benefits__container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    align-items: start;
+  .benefits-container {
     width: 100%;
-    padding: 20px 0;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.item_gap }}px;
   }
 
-  .product-benefits__item {
+  .benefit-item {
     display: flex;
     flex-direction: row;
     align-items: center;
-    text-align: left;
-    gap: var(--icon-text-gap, 10px);
+    gap: 15px;
+    width: 100%;
   }
 
-  .product-benefits__icon {
-    width: var(--icon-size, 60px);
-    height: var(--icon-size, 60px);
+  .benefit-icon {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    min-width: {{ block.settings.icon_size }}px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    margin-right: 0;
   }
 
-  .product-benefits__icon svg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    color: #666;
-  }
-
-  .product-benefits__icon--image img {
+  .benefit-icon svg {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
 
-  .product-benefits__text {
-    font-size: var(--text-font-size, 1rem);
+  .benefit-text {
+    font-size: {{ block.settings.text_font_size }}rem;
     line-height: 1.5;
     color: #666;
     margin: 0;
     font-weight: 400;
   }
 
-  @media (max-width: 1024px) {
-    .product-benefits__container {
-      grid-template-columns: 1fr;
-      gap: 20px;
+  /* Desktop - Keep same */
+  @media (min-width: 769px) {
+    .benefits-container {
+      gap: {{ block.settings.item_gap | plus: 2 }}px;
     }
   }
 
+  /* Tablet/Mobile - Slight adjustments */
   @media (max-width: 768px) {
-    .product-benefits__container {
-      grid-template-columns: 1fr;
-      gap: 18px;
-      padding: 20px 0;
-      margin: 8px 0;
+    .benefits-container {
+      gap: {{ block.settings.item_gap }}px;
     }
 
-    .product-benefits__item {
-      flex-direction: row;
-      text-align: left;
-      gap: 15px;
-      align-items: flex-start;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
+    .benefit-item {
+      gap: 12px;
+      align-items: center;
     }
 
-    .product-benefits__icon {
-      width: 60px;
-      height: 60px;
-      min-width: 60px;
-      margin-top: 2px;
-    }
-
-    .product-benefits__text {
-      font-size: 0.95rem;
-      line-height: 1.5;
+    .benefit-text {
+      font-size: {{ block.settings.text_font_size | minus: 0.1 }}rem;
     }
   }
 
   @media (max-width: 480px) {
-    .product-benefits__container {
-      gap: 16px;
-      padding: 15px 0;
+    .benefit-item {
+      gap: 10px;
+      align-items: center;
     }
 
-    .product-benefits__item {
-      gap: 12px;
-      align-items: flex-start;
+    .benefit-icon {
+      width: {{ block.settings.icon_size | minus: 10 }}px;
+      height: {{ block.settings.icon_size | minus: 10 }}px;
+      min-width: {{ block.settings.icon_size | minus: 10 }}px;
     }
 
-    .product-benefits__icon {
-      width: 50px;
-      height: 50px;
-      min-width: 50px;
-    }
-
-    .product-benefits__text {
-      font-size: 0.9rem;
+    .benefit-text {
+      font-size: {{ block.settings.text_font_size | minus: 0.2 }}rem;
     }
   }
 </style>
