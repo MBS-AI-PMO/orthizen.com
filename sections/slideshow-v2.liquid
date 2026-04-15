@@ -88,16 +88,17 @@
                         </h3>
                       </xo-animate>
                       <xo-animate xo-type='{{block.settings.button_animation}}' xo-order='9' xo-duration='700' xo-strength='3'>
-                        {% render 'button',
-                          text: block.settings.button_text,
-                          link: block.settings.button_link,
-                          mode: block.settings.button_mode,
-                          style: block.settings.button_style,
-                          size: block.settings.button_size,
-                          radius: block.settings.button_radius,
-                          padding: block.settings.button_padding,
-                          background_color: block.settings.button_color
-                        %}
+                        <div class='slideshow-v40__button' {% if block.settings.button_color %}style='--button-color: {{ block.settings.button_color }}'{% endif %}>
+                          {% render 'button',
+                            text: block.settings.button_text,
+                            link: block.settings.button_link,
+                            mode: block.settings.button_mode,
+                            style: block.settings.button_style,
+                            size: block.settings.button_size,
+                            radius: block.settings.button_radius,
+                            padding: block.settings.button_padding
+                          %}
+                        </div>
                       </xo-animate>
                     </div>
                     <xo-carousel-pagination class='slideshow-v40__pagination'></xo-carousel-pagination>
@@ -125,6 +126,16 @@
     --mobile-subtitle-size: {{ section.settings.mobile_subtitle_font_size }}rem;
     --mobile-title-size: {{ section.settings.mobile_title_font_size }}rem;
     --mobile-description-size: {{ section.settings.mobile_description_font_size }}rem;
+  }
+
+  /* Button color styling */
+  .slideshow-v40__button .xo-btn {
+    background-color: var(--button-color, transparent) !important;
+  }
+
+  .slideshow-v40__button .xo-btn:hover {
+    background-color: var(--button-color, transparent) !important;
+    opacity: 0.85;
   }
 
   /* Mobile: Stack image on top, text below */
@@ -648,7 +659,8 @@
           "type": "color",
           "id": "button_color",
           "label": "Button background color",
-          "info": "Custom button background color"
+          "info": "Custom button background color",
+          "default": "#1fb015"
         },
         {
           "type": "select",
