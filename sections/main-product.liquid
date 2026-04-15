@@ -1662,6 +1662,94 @@
       ]
     },
     {
+      "type": "product-benefits",
+      "name": "Product Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon type",
+          "options": [
+            {
+              "value": "svg",
+              "label": "SVG code"
+            },
+            {
+              "value": "image",
+              "label": "Image"
+            }
+          ],
+          "default": "svg"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "SVG Icon code",
+          "info": "Paste your SVG code here (only for SVG type)",
+          "placeholder": "<svg>...</svg>"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image",
+          "info": "Upload your icon image (only for Image type)"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit text",
+          "placeholder": "Enter benefit text here",
+          "default": "Product benefit"
+        },
+        {
+          "type": "header",
+          "content": "Sizing & Spacing"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon Size (px)",
+          "min": 20,
+          "max": 80,
+          "step": 2,
+          "unit": "px",
+          "default": 32
+        },
+        {
+          "type": "range",
+          "id": "text_font_size",
+          "label": "Text Font Size (rem)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "unit": "rem",
+          "default": 1.6
+        },
+        {
+          "type": "range",
+          "id": "icon_text_gap",
+          "label": "Icon to Text Gap (px)",
+          "min": 5,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 10
+        },
+        {
+          "type": "number",
+          "id": "padding_top",
+          "label": "Padding Top (px)",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "id": "padding_bottom",
+          "label": "Padding Bottom (px)",
+          "default": 0
+        }
+      ]
+    },
+    {
       "type": "image",
       "name": "t:sections.main_product.blocks.image.name",
       "settings": [
