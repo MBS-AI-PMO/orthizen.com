@@ -77,6 +77,10 @@
 </div>
 
 <style>
+  .product-v7__carousel {
+    --star-size: {{ section.settings.star_size }}rem;
+  }
+
   .product-v7__title--truncate {
     max-width: 100%;
     word-break: break-word;
@@ -100,12 +104,12 @@
     }
 
     /* Product card title character limit */
-    .product-v7__carousel xo-carousel-slide [class*="title"] {
+    .product-v7__carousel xo-carousel-slide .xo-product-card__title--mobile-limit {
+      overflow: hidden;
+      text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
       word-break: break-word;
     }
 
@@ -113,16 +117,17 @@
     .xo-product-card__rating {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       justify-content: center;
       margin-top: 8px;
-      font-size: 0.875rem;
+      font-size: 1rem;
     }
 
     .xo-product-card__stars {
       display: flex;
-      gap: 1px;
-      font-size: 1rem;
+      gap: 2px;
+      font-size: var(--star-size, 1.5rem);
+      line-height: 1;
     }
 
     .xo-star {
@@ -134,13 +139,14 @@
     }
 
     .xo-product-card__rating-value {
-      font-weight: 600;
+      font-weight: 700;
       color: #333;
-      margin: 0 2px;
+      font-size: 1.1rem;
+      margin: 0 3px;
     }
 
     .xo-product-card__review-count {
-      font-size: 0.875rem;
+      font-size: 0.95rem;
       color: #999;
     }
 
@@ -235,6 +241,17 @@
       "label": "Show product rating and reviews",
       "info": "Display star ratings and review count below product titles",
       "default": true
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "min": 1,
+      "max": 3,
+      "step": 0.1,
+      "unit": "rem",
+      "label": "Star size",
+      "info": "Control the size of rating stars (1-3 rem)",
+      "default": 1.5
     },
     {
       "type": "select",
