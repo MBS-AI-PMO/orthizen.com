@@ -112,6 +112,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     align-items: center;
+    margin-top: 40px;
   }
 
   .body-pain-map__image {
@@ -148,38 +149,65 @@
   }
 
   @media (max-width: 768px) {
-    .body-pain-map__symptoms {
+    .body-pain-map {
       grid-template-columns: 1fr;
+    }
+
+    .body-pain-map__symptoms {
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
     }
 
     .body-pain-map__images {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 30px;
     }
 
     .body-pain-map__title {
-      font-size: calc({{ section.settings.title_font_size }}rem - 1rem);
+      font-size: calc({{ section.settings.title_font_size }}rem - 0.5rem);
     }
 
     .body-pain-map__symptom {
-      font-size: calc({{ section.settings.symptom_font_size }}rem - 0.1rem);
+      font-size: calc({{ section.settings.symptom_font_size }}rem - 0.05rem);
     }
 
     .body-pain-map__image {
-      height: calc({{ section.settings.image_height }}px * 0.8);
+      height: calc({{ section.settings.image_height }}px * 0.7);
     }
   }
 
   @media (max-width: 576px) {
     .body-pain-map {
-      gap: {{ section.settings.content_gap | minus: 40 }}px;
+      gap: {{ section.settings.content_gap | minus: 30 }}px;
+    }
+
+    .body-pain-map__symptoms {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
     .body-pain-map__images {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .body-pain-map__column {
+      gap: 10px;
+    }
+
+    .body-pain-map__item {
+      gap: 8px;
+    }
+
+    .body-pain-map__checkmark {
+      width: 20px;
+      height: 20px;
     }
 
     .body-pain-map__image {
-      height: calc({{ section.settings.image_height }}px * 0.6);
+      height: calc({{ section.settings.image_height }}px * 0.5);
     }
   }
 </style>
