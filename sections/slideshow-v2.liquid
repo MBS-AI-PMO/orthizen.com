@@ -88,15 +88,18 @@
                         </h3>
                       </xo-animate>
                       <xo-animate xo-type='{{block.settings.button_animation}}' xo-order='9' xo-duration='700' xo-strength='3'>
-                        {% render 'button',
-                          text: block.settings.button_text,
-                          link: block.settings.button_link,
-                          mode: block.settings.button_mode,
-                          style: block.settings.button_style,
-                          size: block.settings.button_size,
-                          radius: block.settings.button_radius,
-                          padding: block.settings.button_padding
-                        %}
+                        <div style="{% if block.settings.button_color != blank %}--button-bg: {{ block.settings.button_color }};{% endif %}">
+                          {% render 'button',
+                            text: block.settings.button_text,
+                            link: block.settings.button_link,
+                            mode: block.settings.button_mode,
+                            style: block.settings.button_style,
+                            size: block.settings.button_size,
+                            radius: block.settings.button_radius,
+                            padding: block.settings.button_padding,
+                            custom_color: block.settings.button_color
+                          %}
+                        </div>
                       </xo-animate>
                     </div>
                     <xo-carousel-pagination class='slideshow-v40__pagination'></xo-carousel-pagination>
@@ -193,6 +196,15 @@
     .slideshow-v40__text {
       padding: 20px 15px !important;
     }
+  }
+
+  /* Custom button color styling */
+  [style*="--button-bg"] .button {
+    background-color: var(--button-bg) !important;
+  }
+
+  [style*="--button-bg"] .button:hover {
+    opacity: 0.9;
   }
 </style>
 
@@ -642,6 +654,12 @@
             }
           ],
           "default": "secondary"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Button background color",
+          "info": "Custom button background color"
         },
         {
           "type": "select",
