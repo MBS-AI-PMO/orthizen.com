@@ -65,46 +65,20 @@
             "padding_bottom": 8
           }
         },
-        "product-benefits-1": {
+        "product-benefits-block": {
           "type": "product-benefits",
           "settings": {
-            "icon_type": "image",
-            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 100\"><path d=\"M30 50 Q30 30 50 20 Q70 30 70 50 Q70 75 50 85 Q30 75 30 50\" stroke=\"currentColor\" stroke-width=\"3\" fill=\"none\"></path><circle cx=\"50\" cy=\"50\" r=\"8\" fill=\"currentColor\"></circle></svg>",
-            "icon_image": "shopify://shop_images/icon-2.webp",
-            "text": "Relieves heel, knee & back pain",
+            "benefit1_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M30 50 Q30 30 50 20 Q70 30 70 50 Q70 75 50 85 Q30 75 30 50\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\"></path><circle cx=\"50\" cy=\"50\" r=\"8\" fill=\"#000\"></circle></svg>",
+            "benefit1_text": "Relieves heel, knee & back pain",
+            "benefit2_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M50 15 L65 35 L50 45 L65 55 L50 65 Q35 75 25 85 Q20 80 20 70 Q20 60 30 50 Q20 45 20 35 Q20 25 25 20 Q35 25 50 35 Z\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\"></path><circle cx=\"50\" cy=\"50\" r=\"25\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\"></circle></svg>",
+            "benefit2_text": "Developed with podiatrists",
+            "benefit3_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M15 55 L20 50 L30 60 L50 35 L60 45\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\"></path><rect x=\"25\" y=\"65\" width=\"50\" height=\"20\" stroke=\"#000\" stroke-width=\"2\" fill=\"none\"></rect><circle cx=\"35\" cy=\"85\" r=\"4\" fill=\"#000\"></circle><circle cx=\"65\" cy=\"85\" r=\"4\" fill=\"#000\"></circle></svg>",
+            "benefit3_text": "Free shipping & free exchanges",
             "icon_size": 60,
-            "text_font_size": 1,
-            "icon_text_gap": 15,
-            "padding_top": 0,
-            "padding_bottom": 0
-          }
-        },
-        "product-benefits-2": {
-          "type": "product-benefits",
-          "settings": {
-            "icon_type": "image",
-            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 100\"><path d=\"M50 15 L65 35 L50 45 L65 55 L50 65 Q35 75 25 85 Q20 80 20 70 Q20 60 30 50 Q20 45 20 35 Q20 25 25 20 Q35 25 50 35 Z\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\"></path><circle cx=\"50\" cy=\"50\" r=\"25\" stroke=\"currentColor\" stroke-width=\"3\" fill=\"none\"></circle></svg>",
-            "icon_image": "shopify://shop_images/safety_1.webp",
-            "text": "Developed with podiatrists",
-            "icon_size": 60,
-            "text_font_size": 1,
-            "icon_text_gap": 15,
-            "padding_top": 0,
-            "padding_bottom": 0
-          }
-        },
-        "product-benefits-3": {
-          "type": "product-benefits",
-          "settings": {
-            "icon_type": "image",
-            "icon_svg": "",
-            "icon_image": "shopify://shop_images/fast.webp",
-            "text": "Free shipping & free exchanges",
-            "icon_size": 60,
-            "text_font_size": 1,
-            "icon_text_gap": 15,
-            "padding_top": 0,
-            "padding_bottom": 0
+            "text_font_size": 1.1,
+            "item_gap": 20,
+            "padding_top": 20,
+            "padding_bottom": 20
           }
         },
         "addon_buttons_MGW7hE": {
@@ -339,9 +313,7 @@
         "b9220087-e178-48b9-a33a-095a4119abaf",
         "bedc5e2d-642d-4448-8569-c7fcfd527042",
         "star_rating_3G3Nt7",
-        "product-benefits-1",
-        "product-benefits-2",
-        "product-benefits-3",
+        "product-benefits-block",
         "addon_buttons_MGW7hE",
         "b1d95bc4-490b-4b8c-914a-89b1323d2a41",
         "4dabf9d3-3372-4f5a-9edf-1e1f03527b1k",
