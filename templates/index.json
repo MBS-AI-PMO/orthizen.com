@@ -46,6 +46,7 @@
         },
         "cc090156-b66e-4887-ad09-78f94b043fa1": {
           "type": "slideshow",
+          "disabled": true,
           "settings": {
             "reverse_layout": false,
             "subtitle": "Higher State",
@@ -132,6 +133,7 @@
         "8b393cbe-e067-40a3-a09d-6051b48d494c",
         "d572b09a-4ddf-4bc1-bb10-df491fdc2bea"
       ],
+      "disabled": true,
       "settings": {
         "width": "fullwidth",
         "fullwidth_margin": 0,
