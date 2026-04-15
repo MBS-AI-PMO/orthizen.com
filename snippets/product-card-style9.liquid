@@ -144,6 +144,22 @@
           </a>
         </h2>
 
+        {% if show_rating and product.metafields.reviews.rating %}
+          <div class='xo-product-card__rating'>
+            <span class='xo-product-card__stars'>
+              {% for i in (1..5) %}
+                <span class='xo-star {% if i <= product.metafields.reviews.rating %}xo-star--filled{% endif %}'>★</span>
+              {% endfor %}
+            </span>
+            <span class='xo-product-card__rating-value'>
+              {{ product.metafields.reviews.rating | round: 1 }}
+            </span>
+            {% if product.metafields.reviews.rating_count %}
+              <span class='xo-product-card__review-count'>({{ product.metafields.reviews.rating_count }} {% if product.metafields.reviews.rating_count == 1 %}Review{% else %}Reviews{% endif %})</span>
+            {% endif %}
+          </div>
+        {% endif %}
+
         {% if show_description%}
           <div class='xo-product-card__description'>
             {{ product.description | strip_html | truncate: 230 }}
