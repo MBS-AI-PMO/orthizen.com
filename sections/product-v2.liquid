@@ -104,15 +104,22 @@
       margin: 0 !important;
     }
 
-    /* Product card title character limit */
-    .product-v7__carousel xo-carousel-slide .xo-product-card__title--mobile-limit {
-      max-width: var(--char-limit);
+    /* Product card title character limit - 15 characters */
+    .xo-product-card__title--mobile-limit {
+      max-width: 15ch;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: normal;
+      white-space: nowrap;
       display: block;
       line-height: 1.3;
-      word-wrap: break-word;
+    }
+
+    .xo-product-card__title--mobile-limit a {
+      max-width: 15ch;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     /* Review stars styling */

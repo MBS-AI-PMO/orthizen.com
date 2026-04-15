@@ -182,6 +182,26 @@
   .hfp__skeleton { grid-template-columns: 1fr; gap: 2rem; }
   .hfp__title    { font-size: 1.8rem; }
   .hfp__wrap     { min-height: 28rem; }
+
+  /* Mobile: Show only one product image */
+  .hfp__wrap xo-carousel {
+    display: block !important;
+  }
+
+  .hfp__wrap xo-carousel-inner,
+  .hfp__wrap xo-carousel-list {
+    display: block !important;
+  }
+
+  .hfp__wrap xo-carousel-slide {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .hfp__wrap xo-carousel-slide:not(:first-child) {
+    display: none !important;
+  }
 }
 </style>
 
