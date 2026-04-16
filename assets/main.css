@@ -21067,8 +21067,21 @@ xo-modal[xo-placement*=-left] .xo-modal-pickup__footer, xo-modal[xo-placement*=-
 
 .xo-product-info-content__variants {
   display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.xo-product-info-content__variants > xo-animate {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .xo-product-info-content__variants {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 }
 
 .xo-product-info-content__variants--header {
