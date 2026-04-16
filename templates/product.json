@@ -75,10 +75,10 @@
             "benefit3_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M15 55 L20 50 L30 60 L50 35 L60 45\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\"></path><rect x=\"25\" y=\"65\" width=\"50\" height=\"20\" stroke=\"#000\" stroke-width=\"2\" fill=\"none\"></rect><circle cx=\"35\" cy=\"85\" r=\"4\" fill=\"#000\"></circle><circle cx=\"65\" cy=\"85\" r=\"4\" fill=\"#000\"></circle></svg>",
             "benefit3_text": "Free shipping & free exchanges",
             "icon_size": 60,
-            "text_font_size": 1.1,
-            "item_gap": 20,
-            "padding_top": 20,
-            "padding_bottom": 20
+            "text_font_size": 1,
+            "item_gap": 16,
+            "padding_top": 10,
+            "padding_bottom": 10
           }
         },
         "addon_buttons_MGW7hE": {

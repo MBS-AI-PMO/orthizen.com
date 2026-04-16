@@ -52,14 +52,15 @@
     display: flex;
     flex-direction: column;
     gap: {{ block.settings.item_gap }}px;
+    padding-top: {{ block.settings.padding_top }}px;
+    padding-bottom: {{ block.settings.padding_bottom }}px;
   }
 
   .benefit-item {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 15px;
-    width: 100%;
   }
 
   .benefit-icon {
@@ -81,38 +82,34 @@
   .benefit-text {
     font-size: {{ block.settings.text_font_size }}rem;
     line-height: 1.5;
-    color: #666;
+    color: #555;
     margin: 0;
     font-weight: 400;
+    text-align: left;
   }
 
-  /* Desktop - Keep same */
+  /* Desktop */
   @media (min-width: 769px) {
-    .benefits-container {
-      gap: {{ block.settings.item_gap | plus: 2 }}px;
+    .benefit-item {
+      align-items: center;
     }
   }
 
-  /* Tablet/Mobile - Slight adjustments */
+  /* Tablet/Mobile */
   @media (max-width: 768px) {
-    .benefits-container {
-      gap: {{ block.settings.item_gap }}px;
-    }
-
     .benefit-item {
       gap: 12px;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .benefit-text {
-      font-size: {{ block.settings.text_font_size | minus: 0.1 }}rem;
+      font-size: {{ block.settings.text_font_size | minus: 0.15 }}rem;
     }
   }
 
   @media (max-width: 480px) {
     .benefit-item {
       gap: 10px;
-      align-items: center;
     }
 
     .benefit-icon {
@@ -122,7 +119,7 @@
     }
 
     .benefit-text {
-      font-size: {{ block.settings.text_font_size | minus: 0.2 }}rem;
+      font-size: {{ block.settings.text_font_size | minus: 0.25 }}rem;
     }
   }
 </style>
