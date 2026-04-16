@@ -430,41 +430,60 @@
 
 <script>
   // Fix variants layout - ensure flex-direction: row on desktop, column on mobile
-  function fixVariantsLayout() {
-    const variantsContainer = document.querySelector('.xo-product-info-content__variants');
-    if (variantsContainer) {
-      const viewportWidth = window.innerWidth;
-      if (viewportWidth > 540) {
-        variantsContainer.style.flexDirection = 'row';
-        variantsContainer.style.display = 'flex';
-        variantsContainer.style.gap = '2rem';
-        variantsContainer.style.width = '100%';
-        variantsContainer.style.alignItems = 'flex-start';
+  (function() {
+    function applyVariantsLayout() {
+      const variantsContainer = document.querySelector('.xo-product-info-content__variants');
+      if (!variantsContainer) return;
 
+      const viewportWidth = window.innerWidth;
+      const isDesktop = viewportWidth > 540;
+
+      if (isDesktop) {
+        variantsContainer.style.cssText = 'flex-direction: row !important; display: flex !important; gap: 2rem !important; width: 100% !important; align-items: flex-start !important;';
         const animates = variantsContainer.querySelectorAll(':scope > xo-animate');
         animates.forEach((el) => {
-          el.style.width = 'calc(50% - 1rem)';
-          el.style.flexShrink = '0';
-          el.style.overflow = 'visible';
+          el.style.cssText = 'width: calc(50% - 1rem) !important; flex-shrink: 0 !important; overflow: visible !important;';
         });
       } else {
-        variantsContainer.style.flexDirection = 'column';
+        variantsContainer.style.cssText = 'flex-direction: column !important; display: flex !important;';
         const animates = variantsContainer.querySelectorAll(':scope > xo-animate');
         animates.forEach((el) => {
-          el.style.width = '100%';
-          el.style.flex = 'none';
+          el.style.cssText = 'width: 100% !important; flex: none !important;';
         });
       }
     }
-  }
 
-  // Run on DOMContentLoaded
-  document.addEventListener('DOMContentLoaded', fixVariantsLayout);
+    // Run as soon as possible
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyVariantsLayout);
+    } else {
+      applyVariantsLayout();
+    }
 
-  // Also run after a slight delay to catch any JavaScript that modifies the layout
-  setTimeout(fixVariantsLayout, 100);
-  setTimeout(fixVariantsLayout, 500);
+    // Apply with delays to catch any conflicting JavaScript
+    setTimeout(applyVariantsLayout, 50);
+    setTimeout(applyVariantsLayout, 200);
+    setTimeout(applyVariantsLayout, 500);
+    setTimeout(applyVariantsLayout, 1000);
 
-  // Re-run on window resize
-  window.addEventListener('resize', fixVariantsLayout);
+    // Watch for DOM changes and re-apply
+    const observer = new MutationObserver(() => {
+      applyVariantsLayout();
+    });
+
+    // Start observing after a brief delay
+    setTimeout(() => {
+      const variantsContainer = document.querySelector('.xo-product-info-content__variants');
+      if (variantsContainer) {
+        observer.observe(variantsContainer, {
+          attributes: true,
+          childList: true,
+          subtree: true
+        });
+      }
+    }, 100);
+
+    // Re-apply on window resize
+    window.addEventListener('resize', applyVariantsLayout);
+  })();
 </script>
