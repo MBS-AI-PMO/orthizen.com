@@ -427,3 +427,44 @@
     {% endfor %}
   </xo-collapse-provider>
 </div>
+
+<script>
+  // Fix variants layout - ensure flex-direction: row on desktop, column on mobile
+  function fixVariantsLayout() {
+    const variantsContainer = document.querySelector('.xo-product-info-content__variants');
+    if (variantsContainer) {
+      const viewportWidth = window.innerWidth;
+      if (viewportWidth > 540) {
+        variantsContainer.style.flexDirection = 'row';
+        variantsContainer.style.display = 'flex';
+        variantsContainer.style.gap = '2rem';
+        variantsContainer.style.width = '100%';
+        variantsContainer.style.alignItems = 'flex-start';
+
+        const animates = variantsContainer.querySelectorAll(':scope > xo-animate');
+        animates.forEach((el) => {
+          el.style.width = 'calc(50% - 1rem)';
+          el.style.flexShrink = '0';
+          el.style.overflow = 'visible';
+        });
+      } else {
+        variantsContainer.style.flexDirection = 'column';
+        const animates = variantsContainer.querySelectorAll(':scope > xo-animate');
+        animates.forEach((el) => {
+          el.style.width = '100%';
+          el.style.flex = 'none';
+        });
+      }
+    }
+  }
+
+  // Run on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', fixVariantsLayout);
+
+  // Also run after a slight delay to catch any JavaScript that modifies the layout
+  setTimeout(fixVariantsLayout, 100);
+  setTimeout(fixVariantsLayout, 500);
+
+  // Re-run on window resize
+  window.addEventListener('resize', fixVariantsLayout);
+</script>
