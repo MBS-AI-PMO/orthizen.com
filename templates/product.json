@@ -68,14 +68,17 @@
         "product-benefits-block": {
           "type": "product-benefits",
           "settings": {
-            "benefit1_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M30 50 Q30 30 50 20 Q70 30 70 50 Q70 75 50 85 Q30 75 30 50\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\"></path><circle cx=\"50\" cy=\"50\" r=\"8\" fill=\"#000\"></circle></svg>",
+            "benefit1_image": "shopify://shop_images/icon-2.webp",
+            "benefit1_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 100\"><path d=\"M30 50 Q30 30 50 20 Q70 30 70 50 Q70 75 50 85 Q30 75 30 50\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\"></path><circle cx=\"50\" cy=\"50\" r=\"8\" fill=\"#000\"></circle></svg>",
             "benefit1_text": "Relieves heel, knee & back pain",
-            "benefit2_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M50 15 L65 35 L50 45 L65 55 L50 65 Q35 75 25 85 Q20 80 20 70 Q20 60 30 50 Q20 45 20 35 Q20 25 25 20 Q35 25 50 35 Z\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\"></path><circle cx=\"50\" cy=\"50\" r=\"25\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\"></circle></svg>",
+            "benefit2_image": "shopify://shop_images/safety_1.webp",
+            "benefit2_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 100\"><path d=\"M50 15 L65 35 L50 45 L65 55 L50 65 Q35 75 25 85 Q20 80 20 70 Q20 60 30 50 Q20 45 20 35 Q20 25 25 20 Q35 25 50 35 Z\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\"></path><circle cx=\"50\" cy=\"50\" r=\"25\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\"></circle></svg>",
             "benefit2_text": "Developed with podiatrists",
-            "benefit3_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M15 55 L20 50 L30 60 L50 35 L60 45\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\"></path><rect x=\"25\" y=\"65\" width=\"50\" height=\"20\" stroke=\"#000\" stroke-width=\"2\" fill=\"none\"></rect><circle cx=\"35\" cy=\"85\" r=\"4\" fill=\"#000\"></circle><circle cx=\"65\" cy=\"85\" r=\"4\" fill=\"#000\"></circle></svg>",
+            "benefit3_image": "shopify://shop_images/fast.webp",
+            "benefit3_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 100\"><path d=\"M15 55 L20 50 L30 60 L50 35 L60 45\" stroke=\"#000\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\"></path><rect x=\"25\" y=\"65\" width=\"50\" height=\"20\" stroke=\"#000\" stroke-width=\"2\" fill=\"none\"></rect><circle cx=\"35\" cy=\"85\" r=\"4\" fill=\"#000\"></circle><circle cx=\"65\" cy=\"85\" r=\"4\" fill=\"#000\"></circle></svg>",
             "benefit3_text": "Free shipping & free exchanges",
             "icon_size": 60,
-            "text_font_size": 1,
+            "text_font_size": 1.5,
             "item_gap": 16,
             "padding_top": 10,
             "padding_bottom": 10
