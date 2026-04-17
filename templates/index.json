@@ -538,6 +538,71 @@
         "padding_bottom": 5
       }
     },
+    "product-features-v1": {
+      "type": "product-features-v1",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "title": "Smooth Knit Material",
+            "description": "Adapts to swelling, contours your foot, and eliminates pressure \u2013 perfect for all-day wear."
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "title": "Roomy Toe Box",
+            "description": "Provides relief and flexibility for wide feet, bunions, or sensitive toes."
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "title": "Targeted Arch Support",
+            "description": "Cradles your arch to reduce strain and support alignment \u2013 doctor recommended."
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "title": "Padded, Seamless Interior",
+            "description": "No rubbing, no irritation. Just soft, supportive cushioning for sensitive feet."
+          }
+        },
+        "feature_5": {
+          "type": "feature",
+          "settings": {
+            "title": "Shock Reducing Sole",
+            "description": "Engineered with heel-to-toe impact absorption to ease joint and muscle fatigue."
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4",
+        "feature_5"
+      ],
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "heading": "Engineered to Finish 12-Hour Shifts Without Foot, Knee or Back Pain",
+        "subheading": "Each feature of our shoes is carefully engineered to give you the support and the freedom to move comfortably.",
+        "heading_align": "center",
+        "image_ratio": "auto",
+        "reverse": false,
+        "gap": 40,
+        "icon_size": 44,
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
     "faq-v2": {
       "type": "faq-v2",
       "blocks": {
@@ -612,6 +677,7 @@
   },
   "order": [
     "slideshow-v2",
+    "product-features-v1",
     "policy-v2",
     "home_featured_product_YxQPzx",
     "product-v2",
