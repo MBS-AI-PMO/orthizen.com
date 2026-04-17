@@ -112,6 +112,7 @@
         "about_box_H4WGVe",
         "about_box_AgU79T"
       ],
+      "disabled": true,
       "settings": {
         "width": "box",
         "fullwidth_margin": 0,
@@ -202,6 +203,7 @@
         "c9c60d0c-f838-4413-a2f7-7d24fe3bb01c",
         "e39f17ad-cb3d-4c37-abde-02f352279f39"
       ],
+      "disabled": true,
       "settings": {
         "width": "box",
         "fullwidth_margin": 0,
@@ -247,6 +249,7 @@
     },
     "instagram_v3_LaTUA8": {
       "type": "instagram-v1",
+      "disabled": true,
       "settings": {
         "width": "fullwidth",
         "fullwidth_margin": 0,
