@@ -32,6 +32,7 @@
             "button_link": "shopify://collections/shoe",
             "button_mode": "dark",
             "button_style": "secondary",
+            "button_color": "#1fb015",
             "button_size": "sm",
             "button_radius": 0.8,
             "button_padding": 1.4,
@@ -65,6 +66,7 @@
             "button_link": "shopify://collections/shoe",
             "button_mode": "light",
             "button_style": "secondary",
+            "button_color": "#1fb015",
             "button_size": "sm",
             "button_radius": 0.8,
             "button_padding": 1.4,
@@ -88,6 +90,83 @@
         "autoplay": false,
         "speed": 5,
         "padding_top": 0,
+        "padding_bottom": 50,
+        "mobile_subtitle_font_size": 0.9,
+        "mobile_title_font_size": 1.8,
+        "mobile_description_font_size": 1
+      }
+    },
+    "product-features-v1": {
+      "type": "product-features-v1",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/callhero-icon1_e278fb64-d9b8-41b8-b404-8440ee692a6d.avif",
+            "title": "Smooth Knit Material",
+            "description": "Adapts to swelling, contours your foot, and eliminates pressure – perfect for all-day wear."
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/callhero-icon2_ae53b11d-4293-43e6-a4e5-a1e342a1d956.avif",
+            "title": "Roomy Toe Box",
+            "description": "Provides relief and flexibility for wide feet, bunions, or sensitive toes."
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/callhero-icon3_1e159774-5710-4a66-8696-30055d74af69.avif",
+            "title": "Targeted Arch Support",
+            "description": "Cradles your arch to reduce strain and support alignment – doctor recommended."
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/callhero-icon4_9059c672-cc0f-4834-a76e-e9b84b2f01cc.avif",
+            "title": "Padded, Seamless Interior",
+            "description": "No rubbing, no irritation. Just soft, supportive cushioning for sensitive feet."
+          }
+        },
+        "feature_5": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/callhero-icon5_be061b24-6df3-4b84-8997-8a082f8d43db.avif",
+            "title": "Shock Reducing Sole",
+            "description": "Engineered with heel-to-toe impact absorption to ease joint and muscle fatigue."
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4",
+        "feature_5"
+      ],
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "heading": "Engineered to Finish 12-Hour Shifts Without Foot, Knee or Back Pain",
+        "subheading": "Each feature of our shoes is carefully engineered to give you the support and the freedom to move comfortably.",
+        "heading_align": "center",
+        "image": "shopify://shop_images/hf_20260116_114222_ccdc73f2-4fa6-46e8-b0ca-d7d595670e17.webp",
+        "image_ratio": "auto",
+        "reverse": false,
+        "gap": 40,
+        "icon_size": 44,
+        "feature_card_bg": "#f4f6fb",
+        "feature_card_radius": 10,
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_margin": 0,
+        "padding_top": 50,
         "padding_bottom": 50
       }
     },
@@ -177,6 +256,9 @@
         "width": "fullwidth",
         "fullwidth_margin": 0,
         "heading_title": "Find The Perfect Shoe For You",
+        "mobile_product_title_limit": 25,
+        "show_product_rating": true,
+        "star_size": 1.5,
         "heading_align": "center",
         "collection": "shoe",
         "limit": 12,
@@ -358,6 +440,9 @@
         "width": "fullwidth",
         "fullwidth_margin": 0,
         "heading_title": "Finish 12-Hour Shifts Without Foot Pain",
+        "mobile_product_title_limit": 25,
+        "show_product_rating": true,
+        "star_size": 1.5,
         "heading_align": "center",
         "collection": "shoe",
         "limit": 12,
@@ -536,71 +621,6 @@
         "background_gradient": "",
         "padding_top": 5,
         "padding_bottom": 5
-      }
-    },
-    "product-features-v1": {
-      "type": "product-features-v1",
-      "blocks": {
-        "feature_1": {
-          "type": "feature",
-          "settings": {
-            "title": "Smooth Knit Material",
-            "description": "Adapts to swelling, contours your foot, and eliminates pressure \u2013 perfect for all-day wear."
-          }
-        },
-        "feature_2": {
-          "type": "feature",
-          "settings": {
-            "title": "Roomy Toe Box",
-            "description": "Provides relief and flexibility for wide feet, bunions, or sensitive toes."
-          }
-        },
-        "feature_3": {
-          "type": "feature",
-          "settings": {
-            "title": "Targeted Arch Support",
-            "description": "Cradles your arch to reduce strain and support alignment \u2013 doctor recommended."
-          }
-        },
-        "feature_4": {
-          "type": "feature",
-          "settings": {
-            "title": "Padded, Seamless Interior",
-            "description": "No rubbing, no irritation. Just soft, supportive cushioning for sensitive feet."
-          }
-        },
-        "feature_5": {
-          "type": "feature",
-          "settings": {
-            "title": "Shock Reducing Sole",
-            "description": "Engineered with heel-to-toe impact absorption to ease joint and muscle fatigue."
-          }
-        }
-      },
-      "block_order": [
-        "feature_1",
-        "feature_2",
-        "feature_3",
-        "feature_4",
-        "feature_5"
-      ],
-      "settings": {
-        "width": "box",
-        "fullwidth_margin": 0,
-        "heading": "Engineered to Finish 12-Hour Shifts Without Foot, Knee or Back Pain",
-        "subheading": "Each feature of our shoes is carefully engineered to give you the support and the freedom to move comfortably.",
-        "heading_align": "center",
-        "image_ratio": "auto",
-        "reverse": false,
-        "gap": 40,
-        "icon_size": 44,
-        "color_scheme": "",
-        "background_type": "color",
-        "background_color": "",
-        "background_gradient": "",
-        "background_margin": 0,
-        "padding_top": 50,
-        "padding_bottom": 50
       }
     },
     "faq-v2": {
