@@ -104,6 +104,29 @@
         "padding_bottom": 110
       }
     },
+    "breadcrumb_v1_fTdFMz": {
+      "type": "breadcrumb-v1",
+      "name": "t:sections.breadcrumb_v1.presets.name",
+      "settings": {
+        "width": "box",
+        "breadcrumb_align": "flex-start",
+        "breadcrumb_hide": false,
+        "breadcrumb_hide_mobile": false,
+        "breadcrumb_animation": "fade-down",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 25,
+        "padding_bottom": 25
+      }
+    },
     "main-collection": {
       "type": "main-collection",
       "settings": {
@@ -145,29 +168,6 @@
         "background_type": "color",
         "background_color": "",
         "background_gradient": "",
-        "background_margin": 0,
-        "padding_top": 50,
-        "padding_bottom": 50
-      }
-    },
-    "breadcrumb_v1_fTdFMz": {
-      "type": "breadcrumb-v1",
-      "name": "t:sections.breadcrumb_v1.presets.name",
-      "settings": {
-        "width": "box",
-        "breadcrumb_align": "center",
-        "breadcrumb_hide": false,
-        "breadcrumb_hide_mobile": false,
-        "breadcrumb_animation": "fade-down",
-        "color_scheme": "",
-        "background_type": "color",
-        "background_color": "",
-        "background_gradient": "",
-        "use_parallax": true,
-        "background_image_animation": "none",
-        "background_video_url": "",
-        "background_video_animation": "none",
-        "background_overlay": "",
         "background_margin": 0,
         "padding_top": 50,
         "padding_bottom": 50
