@@ -285,7 +285,8 @@
         "benefit_1": {
           "type": "benefit",
           "settings": {
-            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 200 200\"><defs><style>.foot-circle{fill:none;stroke:#22a347;stroke-width:6}.foot-shape{fill:#f5deb3}.pain-point{fill:#e74c3c}.pain-line{stroke:#e74c3c;stroke-width:2;stroke-linecap:round}</style></defs><circle cx=\"100\" cy=\"100\" r=\"85\" class=\"foot-circle\"></circle><g transform=\"translate(100,100)\"><path class=\"foot-shape\" d=\"M -30,-25 Q -35,0 -25,35 Q -15,40 -5,35 L 0,20 L 5,35 Q 15,40 25,35 Q 35,0 30,-25 Q 15,-30 0,-28 Q -15,-30 -30,-25\" stroke=\"#333\" stroke-width=\"1.5\"></path><circle class=\"pain-point\" cx=\"-15\" cy=\"-10\" r=\"6\"></circle><line class=\"pain-line\" x1=\"-20\" y1=\"-20\" x2=\"-30\" y2=\"-35\"></line><line class=\"pain-line\" x1=\"-15\" y1=\"-18\" x2=\"-15\" y2=\"-35\"></line><line class=\"pain-line\" x1=\"-10\" y1=\"-20\" x2=\"0\" y2=\"-35\"></line></g></svg>",
+            "svg": "",
+            "image_svg": "shopify://shop_images/pain-relief-3_1.webp",
             "title": "General Foot Relief",
             "description": "Sore feet or general pain in the feet cause discomfort and prevent you from carrying out your daily tasks. Would you like to feel young again? Then you need shoes that provide relief and make you feel like you're walking on clouds."
           }
@@ -293,7 +294,8 @@
         "benefit_2": {
           "type": "benefit",
           "settings": {
-            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 200 200\"><defs><style>.foot-circle{fill:none;stroke:#22a347;stroke-width:6}.foot-shape{fill:#f5deb3}.pain-point{fill:#e74c3c}.pain-line{stroke:#e74c3c;stroke-width:2;stroke-linecap:round}</style></defs><circle cx=\"100\" cy=\"100\" r=\"85\" class=\"foot-circle\"></circle><g transform=\"translate(100,100)\"><path class=\"foot-shape\" d=\"M -20,-30 L -15,35 Q -5,45 5,35 L 10,-30 Q 0,-35 -20,-30\" stroke=\"#333\" stroke-width=\"1.5\"></path><path class=\"foot-shape\" d=\"M 8,-28 L 12,12 L 18,-25\" stroke=\"#333\" stroke-width=\"1.5\" fill=\"none\"></path><path class=\"foot-shape\" d=\"M 20,-26 L 22,8 L 28,-24\" stroke=\"#333\" stroke-width=\"1.5\" fill=\"none\"></path><circle class=\"pain-point\" cx=\"-10\" cy=\"32\" r=\"7\"></circle><line class=\"pain-line\" x1=\"-18\" y1=\"25\" x2=\"-30\" y2=\"15\"></line><line class=\"pain-line\" x1=\"-10\" y1=\"24\" x2=\"-10\" y2=\"8\"></line><line class=\"pain-line\" x1=\"-2\" y1=\"25\" x2=\"10\" y2=\"15\"></line></g></svg>",
+            "svg": "",
+            "image_svg": "shopify://shop_images/pain-relief-2.webp",
             "title": "Plantar Fasciitis",
             "description": "Plantar fasciitis usually begins with a dull, intermittent pain in the heel and gradually increases to create persistent discomfort. You need shoes that support your feet and thus alleviate this discomfort."
           }
@@ -301,7 +303,8 @@
         "benefit_3": {
           "type": "benefit",
           "settings": {
-            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 200 200\"><defs><style>.foot-circle{fill:none;stroke:#22a347;stroke-width:6}.foot-shape{fill:#f5deb3}.pain-point{fill:#e74c3c}.pain-line{stroke:#e74c3c;stroke-width:2;stroke-linecap:round}</style></defs><circle cx=\"100\" cy=\"100\" r=\"85\" class=\"foot-circle\"></circle><g transform=\"translate(100,100)\"><path class=\"foot-shape\" d=\"M -25,-28 Q -30,5 -20,38 Q -10,42 0,38 L 5,15 L 12,38 Q 20,42 28,38 Q 32,5 25,-28 Q 5,-32 -25,-28\" stroke=\"#333\" stroke-width=\"1.5\"></path><ellipse class=\"foot-shape\" cx=\"-28\" cy=\"-15\" rx=\"8\" ry=\"12\" stroke=\"#333\" stroke-width=\"1.5\"></ellipse><circle class=\"pain-point\" cx=\"-25\" cy=\"-12\" r=\"6\"></circle><line class=\"pain-line\" x1=\"-32\" y1=\"-22\" x2=\"-42\" y2=\"-38\"></line><line class=\"pain-line\" x1=\"-25\" y1=\"-20\" x2=\"-25\" y2=\"-38\"></line><line class=\"pain-line\" x1=\"-18\" y1=\"-22\" x2=\"-8\" y2=\"-38\"></line></g></svg>",
+            "svg": "",
+            "image_svg": "shopify://shop_images/pain-relief-3.webp",
             "title": "Bunions/Hallux Valgus",
             "description": "Pain caused by bunions is often due to ill-fitting shoes. You need shoes with a wide toe box that give your feet some room to breathe and alleviate the discomfort caused by bunions."
           }
@@ -312,21 +315,26 @@
         "benefit_2",
         "benefit_3"
       ],
+      "name": "Comfort and mobility Benifits",
       "settings": {
         "title": "Shoes Proven To Increase Comfort & Foot Mobility",
         "subtitle": "",
         "title_font_size": 3.8,
         "subtitle_font_size": 1.2,
-        "item_title_font_size": 1.9,
-        "description_font_size": 1.4,
+        "item_title_font_size": 2,
+        "description_font_size": 1.5,
         "header_margin": 40,
         "gap": 30,
         "item_gap": 20,
         "item_padding": 20,
         "icon_size": 120,
-        "width": "box",
+        "mobile_icon_size": 94,
+        "mobile_item_title_font_size": 1.6,
+        "mobile_description_font_size": 1.5,
+        "mobile_description_line_height": 1.2,
+        "width": "fullwidth",
         "fullwidth_margin": 0,
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "background_type": "color",
         "background_color": "",
         "background_gradient": "",
