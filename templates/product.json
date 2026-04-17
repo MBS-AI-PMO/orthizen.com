@@ -79,7 +79,9 @@
             "benefit3_text": "Free shipping & free exchanges",
             "icon_size": 60,
             "text_font_size": 1.5,
-            "item_gap": 16,
+            "item_gap": 10,
+            "item_gap_mobile": 8,
+            "text_icon_gap": 15,
             "padding_top": 10,
             "padding_bottom": 10
           }
