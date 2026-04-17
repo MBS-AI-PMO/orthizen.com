@@ -1,14 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumb-v2": {
       "type": "breadcrumb-v2",
+      "disabled": true,
       "settings": {
         "color_scheme": "inverse",
+        "background_type": "color",
         "background_color": "#f3f3f3",
         "background_gradient": "",
-        "background_image_desktop": "shopify://shop_images/Breadcrumb.jpg",
-        "background_image_mobile": "shopify://shop_images/Breadcrumb.jpg",
         "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 110,
         "padding_bottom": 110
       }
@@ -17,36 +31,50 @@
       "type": "about-v1",
       "settings": {
         "width": "box",
+        "fullwidth_margin": 0,
         "reverse": false,
         "gap": 30,
         "title": "Our Story",
-        "subtitle": "THE HIGH STRESS FAVOUTIRE",
-        "description": "Praesent metus tellus, elementum eu, semper a, adipiscing nec, purus. Vestibulum volutpat pretium libero. In ut quam vitae odio lacinia tincidunt. Etiam ut purus mattis mauris sodales aliquam. Aenean massa.   In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Vivamus consectetuer hendrerit lacus. In hac habitasse platea dictumst. Ut tincidunt tincidunt erat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-        "image": "shopify://shop_images/about1_1.jpg",
+        "subtitle": "We Support the People Who Move the World.",
+        "description": "While the world sits at desks, you’re on the move. You’re the backbone of the hospital, the engine of the warehouse, and the face of the restaurant. You deserve a shoe that works as hard as you do.",
+        "image": "shopify://shop_images/Gemini_Generated_Image_9rew7o9rew7o9rew.png",
         "hover": "scale_down",
         "color_scheme": "background-1",
+        "background_type": "color",
         "background_color": "",
         "background_gradient": "",
         "use_parallax": true,
-        "padding_top": 50,
-        "padding_bottom": 0
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 25,
+        "padding_bottom": 25
       }
     },
     "about_v2_HkK8f8": {
       "type": "about-v1",
       "settings": {
         "width": "box",
+        "fullwidth_margin": 0,
         "reverse": true,
         "gap": 30,
         "title": "Who We Are ?",
         "subtitle": "THE HIGH STRESS FAVOUTIRE",
-        "description": "Praesent metus tellus, elementum eu, semper a, adipiscing nec, purus. Vestibulum volutpat pretium libero. In ut quam vitae odio lacinia tincidunt. Etiam ut purus mattis mauris sodales aliquam. Aenean massa.   In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Vivamus consectetuer hendrerit lacus. In hac habitasse platea dictumst. Ut tincidunt tincidunt erat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-        "image": "shopify://shop_images/about1_2.jpg",
+        "description": "We are a team obsessed with the science of standing. We saw millions of nurses, warehouse crews, and retail pros limping to their cars at the end of the day because the big-name brands ignored them. We decided to stop complaining and start engineering.Our Mission To provide a foundation that never quits. We’ve combined advanced podiatric support with industrial-grade durability to create a shoe that feels as good at the end of your double shift as it did when you clocked in.",
+        "image": "shopify://shop_images/Screenshot_2026-04-09_141732_edited.png",
         "hover": "scale_down",
         "color_scheme": "",
+        "background_type": "color",
         "background_color": "",
         "background_gradient": "",
         "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 70,
         "padding_bottom": 70
       }
@@ -86,15 +114,20 @@
       ],
       "settings": {
         "width": "box",
+        "fullwidth_margin": 0,
         "columns_limit": 3,
         "gap": 30,
         "auto_play": false,
         "color_scheme": "inverse",
+        "background_type": "color",
         "background_color": "",
         "background_gradient": "",
-        "background_image_desktop": "shopify://shop_images/about1_3.jpg",
-        "background_image_mobile": "shopify://shop_images/about1_3.jpg",
         "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 180,
         "padding_bottom": 180
       }
@@ -105,7 +138,6 @@
         "71cee2c3-d420-46da-bb4e-b3a85e067a07": {
           "type": "member",
           "settings": {
-            "image": "shopify://shop_images/avatar_01.jpg",
             "name": "Ferguson",
             "position": "Designer",
             "social_icon1": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 320 512\"><path d=\"M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z\"></path></svg>",
@@ -121,7 +153,6 @@
         "723e720f-fc35-4b24-938b-a824bfceafe7": {
           "type": "member",
           "settings": {
-            "image": "shopify://shop_images/avatar_02.jpg",
             "name": "Saga Norén",
             "position": "Developer",
             "social_icon1": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 320 512\"><path d=\"M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z\"></path></svg>",
@@ -137,7 +168,6 @@
         "c9c60d0c-f838-4413-a2f7-7d24fe3bb01c": {
           "type": "member",
           "settings": {
-            "image": "shopify://shop_images/avatar_03.jpg",
             "name": "Karen Ryan",
             "position": "Developer",
             "social_icon1": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 320 512\"><path d=\"M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z\"></path></svg>",
@@ -153,7 +183,6 @@
         "e39f17ad-cb3d-4c37-abde-02f352279f39": {
           "type": "member",
           "settings": {
-            "image": "shopify://shop_images/avatar_04.jpg",
             "name": "Adrian Stone",
             "position": "Ceo",
             "social_icon1": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 320 512\"><path d=\"M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z\"></path></svg>",
@@ -175,15 +204,22 @@
       ],
       "settings": {
         "width": "box",
+        "fullwidth_margin": 0,
         "title": "Behind The Brands",
         "description": "We are a female-founded, 100% woman-led team of collaborative dreamers who value innovation, curiosity and free-thinking fearlessness in everything that we do. We take immeasurable pride in our work, intentionally stitching love into the very fiber and fabric of our designs. We are small, but we are a mighty group of talented individuals dedicated to bringing you otherworldly designs with imagery to match.",
         "columns_limit": 3,
         "gap": 30,
         "auto_play": false,
         "color_scheme": "",
+        "background_type": "color",
         "background_color": "",
         "background_gradient": "",
         "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 70,
         "padding_bottom": 70
       }
@@ -196,11 +232,15 @@
         "subtitle": "It only takes a second to be the first to findout about our latest news",
         "button_mode": "dark",
         "color_scheme": "inverse",
+        "background_type": "color",
         "background_color": "",
         "background_gradient": "",
-        "background_image_desktop": "shopify://shop_images/newlletter_about.jpg",
-        "background_image_mobile": "shopify://shop_images/newlletter_about.jpg",
         "use_parallax": false,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 120,
         "padding_bottom": 120
       }
@@ -209,6 +249,7 @@
       "type": "instagram-v1",
       "settings": {
         "width": "fullwidth",
+        "fullwidth_margin": 0,
         "icon_heading": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"70\" height=\"70\" viewbox=\"0 0 50 50\" fill=\"none\">\n  <g clip-path=\"url(#clip0_11_25)\">\n    <path d=\"M34.375 0H15.625C6.99687 0 0 6.99687 0 15.625V34.375C0 43.0031 6.99687 50 15.625 50H34.375C43.0031 50 50 43.0031 50 34.375V15.625C50 6.99687 43.0031 0 34.375 0ZM45.3125 34.375C45.3125 40.4062 40.4062 45.3125 34.375 45.3125H15.625C9.59375 45.3125 4.6875 40.4062 4.6875 34.375V15.625C4.6875 9.59375 9.59375 4.6875 15.625 4.6875H34.375C40.4062 4.6875 45.3125 9.59375 45.3125 15.625V34.375Z\" fill=\"url(#paint0_linear_11_25)\"></path>\n    <path d=\"M25 12.5C18.0969 12.5 12.5 18.0969 12.5 25C12.5 31.9031 18.0969 37.5 25 37.5C31.9031 37.5 37.5 31.9031 37.5 25C37.5 18.0969 31.9031 12.5 25 12.5ZM25 32.8125C20.6937 32.8125 17.1875 29.3063 17.1875 25C17.1875 20.6906 20.6937 17.1875 25 17.1875C29.3063 17.1875 32.8125 20.6906 32.8125 25C32.8125 29.3063 29.3063 32.8125 25 32.8125Z\" fill=\"url(#paint1_linear_11_25)\"></path>\n    <path d=\"M38.4375 13.2281C39.3574 13.2281 40.1031 12.4824 40.1031 11.5625C40.1031 10.6426 39.3574 9.89685 38.4375 9.89685C37.5176 9.89685 36.7719 10.6426 36.7719 11.5625C36.7719 12.4824 37.5176 13.2281 38.4375 13.2281Z\" fill=\"url(#paint2_linear_11_25)\"></path>\n  </g>\n  <defs>\n    <lineargradient id=\"paint0_linear_11_25\" x1=\"4.57703\" y1=\"45.4233\" x2=\"45.423\" y2=\"4.57672\" gradientunits=\"userSpaceOnUse\">\n      <stop stop-color=\"#FFC107\"></stop>\n      <stop offset=\"0.507\" stop-color=\"#F44336\"></stop>\n      <stop offset=\"0.99\" stop-color=\"#9C27B0\"></stop>\n    </lineargradient>\n    <lineargradient id=\"paint1_linear_11_25\" x1=\"16.1614\" y1=\"33.8386\" x2=\"33.8386\" y2=\"16.1614\" gradientunits=\"userSpaceOnUse\">\n      <stop stop-color=\"#FFC107\"></stop>\n      <stop offset=\"0.507\" stop-color=\"#F44336\"></stop>\n      <stop offset=\"0.99\" stop-color=\"#9C27B0\"></stop>\n    </lineargradient>\n    <lineargradient id=\"paint2_linear_11_25\" x1=\"37.2598\" y1=\"12.7404\" x2=\"39.6152\" y2=\"10.3848\" gradientunits=\"userSpaceOnUse\">\n      <stop stop-color=\"#FFC107\"></stop>\n      <stop offset=\"0.507\" stop-color=\"#F44336\"></stop>\n      <stop offset=\"0.99\" stop-color=\"#9C27B0\"></stop>\n    </lineargradient>\n    <clippath id=\"clip0_11_25\">\n      <rect width=\"50\" height=\"50\" fill=\"white\"></rect>\n    </clippath>\n  </defs>\n</svg>",
         "icon_image": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 448 512\"><path d=\"M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z\"></path></svg>",
         "title": "Follow us on instagram",
@@ -217,8 +258,10 @@
         "limit": 6,
         "auto_play": false,
         "color_scheme": "",
+        "background_type": "color",
         "background_color": "",
         "background_gradient": "",
+        "background_margin": 0,
         "padding_top": 0,
         "padding_bottom": 0
       }
