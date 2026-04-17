@@ -342,11 +342,11 @@
         "367088f1-d502-47f7-b8b1-1c3f0e2221ae"
       ],
       "settings": {
-        "width": "box",
-        "layout": "style3",
+        "width": "wide",
+        "layout": "style4",
         "wishlist": true,
         "media_sticky": true,
-        "image_zoom_hover": true,
+        "image_zoom_hover": false,
         "image_zoom_click": true,
         "video_autoplay": false,
         "video_modal": false,
