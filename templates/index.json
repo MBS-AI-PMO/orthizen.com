@@ -323,6 +323,7 @@
         "subtitle_font_size": 1.2,
         "item_title_font_size": 2,
         "description_font_size": 1.5,
+        "description_color": "#000000",
         "header_margin": 40,
         "gap": 30,
         "item_gap": 20,
@@ -344,8 +345,8 @@
         "background_video_animation": "none",
         "background_overlay": "",
         "background_margin": 50,
-        "padding_top": 30,
-        "padding_bottom": 30
+        "padding_top": 5,
+        "padding_bottom": 5
       }
     },
     "banner-v8": {
