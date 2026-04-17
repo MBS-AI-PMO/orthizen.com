@@ -45,7 +45,7 @@
         "bedc5e2d-642d-4448-8569-c7fcfd527042": {
           "type": "title",
           "settings": {
-            "font_size": 3.5,
+            "font_size": 2.9,
             "padding_top": 0,
             "padding_bottom": 0
           }
@@ -343,7 +343,7 @@
       ],
       "settings": {
         "width": "wide",
-        "layout": "style4",
+        "layout": "style3",
         "wishlist": true,
         "media_sticky": true,
         "image_zoom_hover": false,
