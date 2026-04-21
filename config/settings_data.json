@@ -27,6 +27,8 @@
     "buttons_effect": "slide-up",
     "buttons_loading": "loader-3",
     "buttons_scale": 100,
+    "product_card_style_layout": "style1",
+    "product_card_show_badge": true,
     "product_card_image_padding": 0,
     "product_card_text_alignment": "center",
     "product_card_border_thickness": 0,
