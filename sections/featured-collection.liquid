@@ -23,6 +23,45 @@
   endif
 %}
 
+<style>
+  #shopify-section-{{ section.id }} .xo-product-card__title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+  }
+  @media (max-width: 599px) {
+    #shopify-section-{{ section.id }} xo-carousel {
+      display: block;
+    }
+    #shopify-section-{{ section.id }} xo-carousel-inner {
+      overflow: visible;
+    }
+    #shopify-section-{{ section.id }} xo-carousel-list {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px !important;
+      overflow: visible !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    #shopify-section-{{ section.id }} xo-carousel-slide {
+      display: block !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      flex: none !important;
+      transform: none !important;
+    }
+    #shopify-section-{{ section.id }} .featured-collection__pagination,
+    #shopify-section-{{ section.id }} xo-carousel-prev,
+    #shopify-section-{{ section.id }} xo-carousel-next,
+    #shopify-section-{{ section.id }} xo-carousel-pagination {
+      display: none !important;
+    }
+  }
+</style>
+
 <div {% render 'section-attr' %}>
   {% render 'section-bg-image' %}
   <xo-container>
