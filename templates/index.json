@@ -260,8 +260,8 @@
       "type": "home-featured-product",
       "settings": {
         "featured_product": "orthora™-pro-12-hour-shift-shoes-for-all-day-foot-knee-back-pain-relief-1",
-        "subtitle": "OUR BESTSELLER",
-        "title": "Featured Product",
+        "subtitle": "",
+        "title": "",
         "show_view_btn": true,
         "view_btn_text": "View Full Product Page",
         "width": "box",
@@ -269,8 +269,8 @@
         "background_type": "color",
         "background_color": "",
         "background_gradient": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 10,
+        "padding_bottom": 10
       }
     },
     "featured-collection-1": {
