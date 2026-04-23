@@ -298,8 +298,8 @@
         "background_video_animation": "none",
         "background_overlay": "",
         "background_margin": 0,
-        "padding_top": 36,
-        "padding_bottom": 44
+        "padding_top": 16,
+        "padding_bottom": 20
       }
     },
     "foot-conditions": {
@@ -314,7 +314,7 @@
             "title_font_weight": 700,
             "title_color": "#000000",
             "text": "Sore feet or general pain in the feet cause discomfort and prevent you from carrying out your daily tasks. You need shoes that provide relief and make you feel like you're walking on clouds.",
-            "text_font_size": 15,
+            "text_font_size": 17,
             "text_color": "#000000",
             "text_align": "center"
           }
@@ -328,7 +328,7 @@
             "title_font_weight": 700,
             "title_color": "#000000",
             "text": "Plantar fasciitis usually begins with a dull, intermittent pain in the heel and gradually increases to acute, persistent discomfort. You need shoes that support your feet and alleviate this discomfort.",
-            "text_font_size": 15,
+            "text_font_size": 17,
             "text_color": "#000000",
             "text_align": "center"
           }
@@ -342,7 +342,7 @@
             "title_font_weight": 700,
             "title_color": "#000000",
             "text": "Pain caused by bunions is often due to ill-fitting shoes. You need shoes with a wide toe box that give your feet room to breathe and alleviate discomfort.",
-            "text_font_size": 15,
+            "text_font_size": 18,
             "text_color": "#000000",
             "text_align": "center"
           }
@@ -357,7 +357,7 @@
         "bg_color": "#ffffff",
         "title": "Shoes Proven To Increase Comfort & Foot Mobility",
         "heading_font_size_desktop": 32,
-        "heading_font_size_mobile": 24,
+        "heading_font_size_mobile": 28,
         "heading_font_weight": 700,
         "heading_color": "#000000",
         "heading_text_align": "center",
