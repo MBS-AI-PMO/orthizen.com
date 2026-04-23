@@ -90,16 +90,13 @@
   #hero-{{ section.id }} {
     width: 100%;
     box-sizing: border-box;
-    padding-top: {{ section.settings.padding_top_desktop }}px;
-    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    overflow: hidden;
   }
   #hero-{{ section.id }} .hero-banner__container {
     max-width: 1500px;
     margin: 0 auto;
-    padding: 0 40px;
     display: flex;
-    align-items: center;
-    gap: 32px;
+    align-items: stretch;
     min-height: {{ section.settings.desktop_min_height }}px;
   }
   #hero-{{ section.id }} .hero-banner__container--image_right { flex-direction: row; }
@@ -108,11 +105,14 @@
   #hero-{{ section.id }} .hero-banner__content {
     flex: 0 0 {{ section.settings.desktop_content_max_width }};
     max-width: {{ section.settings.desktop_content_max_width }};
+    padding: {{ section.settings.padding_top_desktop }}px 40px {{ section.settings.padding_bottom_desktop }}px 40px;
     display: flex;
     flex-direction: column;
     gap: 16px;
     align-items: flex-start;
+    justify-content: center;
     text-align: {{ section.settings.desktop_text_align }};
+    box-sizing: border-box;
   }
   #hero-{{ section.id }} .hero-banner__expert-badge {
     display: inline-block;
@@ -194,30 +194,34 @@
   }
   #hero-{{ section.id }} .hero-banner__media {
     flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+    min-height: {{ section.settings.desktop_min_height }}px;
   }
-  #hero-{{ section.id }} .hero-banner__img { max-width: 100%; height: auto; display: block; }
+  #hero-{{ section.id }} .hero-banner__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: {{ section.settings.image_position_x }} {{ section.settings.image_position_y }};
+    display: block;
+  }
   #hero-{{ section.id }} .hero-banner__img--mobile { display: none; }
 
   @media (max-width: 768px) {
-    #hero-{{ section.id }} {
-      padding-top: {{ section.settings.padding_top_mobile }}px;
-      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-    }
     #hero-{{ section.id }} .hero-banner__container {
       flex-direction: column;
-      padding: 0 16px;
       min-height: unset;
-      gap: 20px;
     }
     #hero-{{ section.id }} .hero-banner__content {
       flex: none;
       max-width: 100%;
       width: 100%;
+      padding: {{ section.settings.padding_top_mobile }}px 16px {{ section.settings.padding_bottom_mobile }}px 16px;
       text-align: {{ section.settings.mobile_text_align }};
       align-items: {% if section.settings.mobile_text_align == 'center' %}center{% else %}flex-start{% endif %};
+      order: 1;
     }
     #hero-{{ section.id }} .hero-banner__expert-badge { font-size: {{ section.settings.expert_badge_font_size_mobile }}px; }
     #hero-{{ section.id }} .hero-banner__heading {
@@ -229,9 +233,13 @@
       margin: {{ section.settings.subtext_margin_mobile }};
     }
     #hero-{{ section.id }} .hero-banner__cta { width: {{ section.settings.cta_width_mobile }}; }
-    #hero-{{ section.id }} .hero-banner__media { width: 100%; order: -1; }
+    #hero-{{ section.id }} .hero-banner__media {
+      width: 100%;
+      order: 0;
+      min-height: {{ section.settings.mobile_image_height }}px;
+    }
     #hero-{{ section.id }} .hero-banner__img--desktop { display: none; }
-    #hero-{{ section.id }} .hero-banner__img--mobile { display: block; width: 100%; }
+    #hero-{{ section.id }} .hero-banner__img--mobile { display: block; }
   }
 </style>
 
@@ -587,6 +595,38 @@
       "type": "image_picker",
       "id": "mobile_image",
       "label": "Mobile image (optional)"
+    },
+    {
+      "type": "select",
+      "id": "image_position_x",
+      "label": "Image focal point (horizontal)",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right",  "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "image_position_y",
+      "label": "Image focal point (vertical)",
+      "options": [
+        { "value": "top",    "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_height",
+      "label": "Image height (mobile)",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 340
     },
     {
       "type": "header",
