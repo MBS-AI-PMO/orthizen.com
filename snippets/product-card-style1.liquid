@@ -65,6 +65,42 @@
   {% endcapture %}
 {% endcase %}
 
+<style>
+  .xo-product-card__stars {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  .xo-product-card__stars-track {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 2px;
+    color: #e0e0e0;
+  }
+  .xo-product-card__stars-track::before {
+    content: '★★★★★';
+  }
+  .xo-product-card__stars-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #FFB800;
+  }
+  .xo-product-card__stars-fill::before {
+    content: '★★★★★';
+  }
+  .xo-product-card__stars-count {
+    font-size: 12px;
+    color: rgba(0,0,0,0.55);
+    line-height: 1;
+  }
+</style>
+
 {% if product %}
   <xo-product xo-product-id='{{ product.id }}' xo-section-id='{{section.id}}'>
     {% capture render_header %}
@@ -134,6 +170,20 @@
           {{ product.title | escape }}
         </a>
       </h2>
+
+      {%- liquid
+        assign card_rating = product.metafields.reviews.rating.value
+        assign card_rating_count = product.metafields.reviews.rating_count.value
+      -%}
+      {%- if card_rating != blank -%}
+        <div class='xo-product-card__stars' aria-label='{{ card_rating }} out of 5 stars'>
+          {%- assign rating_pct = card_rating | times: 20 | round -%}
+          <span class='xo-product-card__stars-track' aria-hidden='true'>
+            <span class='xo-product-card__stars-fill' style='width:{{ rating_pct }}%'></span>
+          </span>
+          <span class='xo-product-card__stars-count'>({{ card_rating_count }})</span>
+        </div>
+      {%- endif -%}
 
       {% if show_description%}
         <div class='xo-product-card__description'>
