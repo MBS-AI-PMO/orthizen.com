@@ -18,33 +18,10 @@
     "popup-promotion": {
       "type": "popup-promotion",
       "settings": {}
-    },
-    "popup-sale-notification": {
-      "type": "popup-sale-notification",
-      "disabled": true,
-      "settings": {
-        "color_scheme": "",
-        "content_width": 500,
-        "product_list": [
-          "orthora™-pro-12-hour-shift-shoes-for-heel-plantar-fasciitis-relief-unisex",
-          "orthora™-pro-12-hour-shift-shoes-for-heel-plantar-fasciitis-relief-unisex-1",
-          "orthora™-pro-12-hour-shift-shoes-for-heel-plantar-fasciitis-relief-unisex-2",
-          "orthora™-pro-12-hour-shift-shoes-for-heel-plantar-fasciitis-relief-unisex-3",
-          "orthora™-pro-12-hour-shift-shoes-for-all-day-foot-knee-back-pain-relief"
-        ],
-        "customers_list": "Someone In California, USA just bought/\nSomeone In Kyoto, Japan just bought/\nSomeone In Paris, France just bought/\nSomeone In Berlin, Germany just bought/\nSomeone In Toronto, Canada just bought/",
-        "position": "bottom-left",
-        "duration": 3,
-        "delay": 3,
-        "where_to_show": "all_pages",
-        "target_pages": "",
-        "content": "Verify"
-      }
     }
   },
   "order": [
     "popup-newsletter",
-    "popup-promotion",
-    "popup-sale-notification"
+    "popup-promotion"
   ]
 }
