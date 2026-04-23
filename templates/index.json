@@ -259,7 +259,7 @@
     "featured-product": {
       "type": "home-featured-product",
       "settings": {
-        "featured_product": "",
+        "featured_product": "orthora™-pro-12-hour-shift-shoes-for-all-day-foot-knee-back-pain-relief-1",
         "subtitle": "OUR BESTSELLER",
         "title": "Featured Product",
         "show_view_btn": true,
@@ -278,7 +278,7 @@
       "settings": {
         "heading_title": "Find The Perfect Shoe For You",
         "heading_align": "center",
-        "collection": "",
+        "collection": "shoe",
         "limit": 4,
         "columns_desktop": 4,
         "columns_mobile": "2",
@@ -308,6 +308,7 @@
         "col-1": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/pain-relief-3_1.webp",
             "title": "General Foot Relief",
             "title_font_size": 22,
             "title_font_weight": 700,
@@ -321,6 +322,7 @@
         "col-2": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/pain-relief-2.webp",
             "title": "Plantar Fasciitis",
             "title_font_size": 22,
             "title_font_weight": 700,
@@ -334,6 +336,7 @@
         "col-3": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/pain-relief-3.webp",
             "title": "Bunions / Hallux Valgus",
             "title_font_size": 22,
             "title_font_weight": 700,
@@ -375,7 +378,7 @@
       "settings": {
         "heading_title": "Finish 12-Hour Shifts Without Foot Pain",
         "heading_align": "center",
-        "collection": "",
+        "collection": "shoe",
         "limit": 4,
         "columns_desktop": 4,
         "columns_mobile": "2",
@@ -494,7 +497,9 @@
         "checklist_color": "#000000",
         "checklist_check_color": "#1eb014",
         "checklist_item_margin_bottom": 12,
+        "image_1": "shopify://shop_images/i7_bd0889c0-fa3f-4ed7-bf3a-f7711e5bf2fd.avif",
         "image_1_border_radius": 8,
+        "image_2": "shopify://shop_images/i8_082adc2e-0eba-44f3-a706-b670b114f32a.avif",
         "image_2_border_radius": 8,
         "images_gap": 16,
         "padding_top": 60,

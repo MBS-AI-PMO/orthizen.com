@@ -72,7 +72,7 @@
         "35d8fac8-113c-46f6-bf0e-e0d721af7e64"
       ],
       "settings": {
-        "width": "wide",
+        "width": "box",
         "fullwidth_margin": 0,
         "copyright": "© Copyright {{ 'now' | date: '%Y' }} | <a href='https://keton-store-newdemo.myshopify.com/' rel='nofollow' target='_blank' class='footer-v14__theme-name'>Keton</a> By <a href='https://shopify.pxf.io/9gPaY0' rel='nofollow' target='_blank' class='footer-v14__shop-name'> ThemeOcean.</a><a href='https://shopify.pxf.io/9gPaY0' rel='nofollow' target='_blank' class='footer-v14__powered-shopify'> Powered by Shopify.</a>",
         "image_payment": "shopify://shop_images/payment_footer.avif",
