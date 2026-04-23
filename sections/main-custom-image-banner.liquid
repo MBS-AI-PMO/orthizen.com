@@ -1,0 +1,723 @@
+{% liquid
+  assign layout = section.settings.layout
+  assign usp_blocks = section.blocks | where: 'type', 'usp_item'
+%}
+
+<section class='hero-banner' id='hero-{{ section.id }}' style='background-color: {{ section.settings.bg_color }};'>
+  <div class='hero-banner__container hero-banner__container--{{ layout }}'>
+
+    <div class='hero-banner__content'>
+      {% if section.settings.show_expert_badge and section.settings.expert_badge_text != blank %}
+        <div class='hero-banner__expert-badge' style='background: {{ section.settings.expert_badge_bg }}; color: {{ section.settings.expert_badge_color }}; border-radius: {{ section.settings.expert_badge_border_radius }}px; font-weight: {{ section.settings.expert_badge_font_weight }};'>
+          {{ section.settings.expert_badge_text }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h1 class='hero-banner__heading' style='color: {{ section.settings.heading_color }}; font-weight: {{ section.settings.heading_font_weight }};'>
+          {{ section.settings.heading }}
+        </h1>
+      {% endif %}
+
+      {% if section.settings.subtext != blank %}
+        <p class='hero-banner__subtext' style='color: {{ section.settings.subtext_color }}; font-weight: {{ section.settings.subtext_font_weight }};'>
+          {{ section.settings.subtext }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.cta_text != blank %}
+        <a href='{{ section.settings.cta_url }}' class='hero-banner__cta' style='background-color: {{ section.settings.cta_bg_color }}; color: {{ section.settings.cta_text_color }}; font-weight: {{ section.settings.cta_font_weight }}; border-radius: {{ section.settings.cta_border_radius }}px;'>
+          {{ section.settings.cta_text }}
+        </a>
+      {% endif %}
+
+      {% if section.settings.show_guarantee_badge and section.settings.guarantee_text != blank %}
+        <p class='hero-banner__guarantee' style='color: {{ section.settings.guarantee_color }}; font-size: {{ section.settings.guarantee_font_size }}px;'>
+          ✓ {{ section.settings.guarantee_text }}
+        </p>
+      {% endif %}
+
+      {% if usp_blocks.size > 0 %}
+        <div class='hero-banner__usp-grid'>
+          {% for block in usp_blocks %}
+            <div class='hero-banner__usp-item' {{ block.shopify_attributes }}>
+              <div class='hero-banner__usp-icon' style='background-color: {{ block.settings.icon_bg_color }};'>
+                {% if block.settings.icon_image != blank %}
+                  <img src='{{ block.settings.icon_image | image_url: width: 60 }}' alt='{{ block.settings.text }}' width='24' height='24' loading='lazy'>
+                {% else %}
+                  <span>✓</span>
+                {% endif %}
+              </div>
+              <span class='hero-banner__usp-text' style='font-size: {{ block.settings.text_font_size }}px; font-weight: {{ block.settings.text_font_weight }}; color: {{ block.settings.text_color }};'>{{ block.settings.text }}</span>
+            </div>
+            {% unless forloop.last %}<div class='hero-banner__usp-divider'></div>{% endunless %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class='hero-banner__media'>
+      {% if section.settings.desktop_image != blank %}
+        <img
+          src='{{ section.settings.desktop_image | image_url: width: 1400 }}'
+          alt='{{ section.settings.heading }}'
+          class='hero-banner__img hero-banner__img--desktop'
+          loading='eager'
+          fetchpriority='high'
+        >
+      {% endif %}
+      {% if section.settings.mobile_image != blank %}
+        <img
+          src='{{ section.settings.mobile_image | image_url: width: 800 }}'
+          alt='{{ section.settings.heading }}'
+          class='hero-banner__img hero-banner__img--mobile'
+          loading='eager'
+        >
+      {% elsif section.settings.desktop_image != blank %}
+        <img
+          src='{{ section.settings.desktop_image | image_url: width: 800 }}'
+          alt='{{ section.settings.heading }}'
+          class='hero-banner__img hero-banner__img--mobile'
+          loading='eager'
+        >
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #hero-{{ section.id }} {
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  }
+  #hero-{{ section.id }} .hero-banner__container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    min-height: {{ section.settings.desktop_min_height }}px;
+  }
+  #hero-{{ section.id }} .hero-banner__container--image_right { flex-direction: row; }
+  #hero-{{ section.id }} .hero-banner__container--image_left  { flex-direction: row-reverse; }
+
+  #hero-{{ section.id }} .hero-banner__content {
+    flex: 0 0 {{ section.settings.desktop_content_max_width }};
+    max-width: {{ section.settings.desktop_content_max_width }};
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    text-align: {{ section.settings.desktop_text_align }};
+  }
+  #hero-{{ section.id }} .hero-banner__expert-badge {
+    display: inline-block;
+    font-size: {{ section.settings.expert_badge_font_size_desktop }}px;
+    padding: {{ section.settings.expert_badge_padding }};
+  }
+  #hero-{{ section.id }} .hero-banner__heading {
+    margin: 0;
+    font-size: {{ section.settings.heading_size_desktop }}px;
+    line-height: {{ section.settings.heading_line_height_desktop }};
+  }
+  #hero-{{ section.id }} .hero-banner__subtext {
+    margin: 0;
+    font-size: {{ section.settings.subtext_font_size_desktop }}px;
+    line-height: {{ section.settings.subtext_line_height }};
+  }
+  #hero-{{ section.id }} .hero-banner__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: {{ section.settings.cta_font_size }}px;
+    letter-spacing: {{ section.settings.cta_letter_spacing }};
+    padding: {{ section.settings.cta_padding }};
+    height: {{ section.settings.cta_height }}px;
+    width: {{ section.settings.cta_width_desktop }};
+    box-sizing: border-box;
+    transition: opacity 0.2s;
+  }
+  #hero-{{ section.id }} .hero-banner__cta:hover { opacity: 0.88; }
+  #hero-{{ section.id }} .hero-banner__guarantee {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  #hero-{{ section.id }} .hero-banner__usp-grid {
+    display: flex;
+    align-items: center;
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 0;
+  }
+  #hero-{{ section.id }} .hero-banner__usp-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    justify-content: center;
+  }
+  #hero-{{ section.id }} .hero-banner__usp-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  #hero-{{ section.id }} .hero-banner__usp-icon img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+  #hero-{{ section.id }} .hero-banner__usp-text { line-height: 1.3; max-width: 85px; }
+  #hero-{{ section.id }} .hero-banner__usp-divider {
+    width: 1px;
+    height: 36px;
+    background: #d0d0d0;
+    flex-shrink: 0;
+    margin: 0 4px;
+  }
+  #hero-{{ section.id }} .hero-banner__media {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  #hero-{{ section.id }} .hero-banner__img { max-width: 100%; height: auto; display: block; }
+  #hero-{{ section.id }} .hero-banner__img--mobile { display: none; }
+
+  @media (max-width: 768px) {
+    #hero-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    #hero-{{ section.id }} .hero-banner__container {
+      flex-direction: column;
+      padding: 0 16px;
+      min-height: unset;
+      gap: 20px;
+    }
+    #hero-{{ section.id }} .hero-banner__content {
+      flex: none;
+      max-width: 100%;
+      width: 100%;
+      text-align: {{ section.settings.mobile_text_align }};
+      align-items: {% if section.settings.mobile_text_align == 'center' %}center{% else %}flex-start{% endif %};
+    }
+    #hero-{{ section.id }} .hero-banner__expert-badge { font-size: {{ section.settings.expert_badge_font_size_mobile }}px; }
+    #hero-{{ section.id }} .hero-banner__heading {
+      font-size: {{ section.settings.heading_size_mobile }}px;
+      line-height: {{ section.settings.heading_line_height_mobile }};
+    }
+    #hero-{{ section.id }} .hero-banner__subtext {
+      font-size: {{ section.settings.subtext_font_size_mobile }}px;
+      margin: {{ section.settings.subtext_margin_mobile }};
+    }
+    #hero-{{ section.id }} .hero-banner__cta { width: {{ section.settings.cta_width_mobile }}; }
+    #hero-{{ section.id }} .hero-banner__media { width: 100%; order: -1; }
+    #hero-{{ section.id }} .hero-banner__img--desktop { display: none; }
+    #hero-{{ section.id }} .hero-banner__img--mobile { display: block; width: 100%; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image position",
+      "options": [
+        { "value": "image_right", "label": "Image right" },
+        { "value": "image_left",  "label": "Image left" }
+      ],
+      "default": "image_right"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "desktop_min_height",
+      "label": "Min height (desktop)",
+      "min": 300,
+      "max": 900,
+      "step": 10,
+      "unit": "px",
+      "default": 620
+    },
+    {
+      "type": "header",
+      "content": "Expert Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_expert_badge",
+      "label": "Show badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "expert_badge_text",
+      "label": "Badge text",
+      "default": "Recommended by Experts"
+    },
+    {
+      "type": "color",
+      "id": "expert_badge_bg",
+      "label": "Badge background",
+      "default": "#ececec"
+    },
+    {
+      "type": "color",
+      "id": "expert_badge_color",
+      "label": "Badge text color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "expert_badge_font_size_desktop",
+      "label": "Font size (desktop)",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "expert_badge_font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "expert_badge_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "text",
+      "id": "expert_badge_padding",
+      "label": "Padding",
+      "default": "7px 10px"
+    },
+    {
+      "type": "range",
+      "id": "expert_badge_font_weight",
+      "label": "Font weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "All-Day Comfort, Genuine Support, Proven Results."
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Font size (desktop)",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "label": "Font weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "default": 600
+    },
+    {
+      "type": "text",
+      "id": "heading_line_height_desktop",
+      "label": "Line height (desktop)",
+      "default": "50px"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_height_mobile",
+      "label": "Line height (mobile)",
+      "default": "40px"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Subtext"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Over 12+ hours of relief with natural toe-box, arch support, and non-slip sole."
+    },
+    {
+      "type": "range",
+      "id": "subtext_font_size_desktop",
+      "label": "Font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtext_font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "subtext_font_weight",
+      "label": "Font weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "text",
+      "id": "subtext_line_height",
+      "label": "Line height",
+      "default": "32px"
+    },
+    {
+      "type": "text",
+      "id": "subtext_margin_mobile",
+      "label": "Margin (mobile)",
+      "default": "0"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Pain-Free Shifts Start Here"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "Button background",
+      "default": "#1f8015"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "cta_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "cta_font_weight",
+      "label": "Font weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "cta_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "text",
+      "id": "cta_padding",
+      "label": "Padding",
+      "default": "10px 20px"
+    },
+    {
+      "type": "text",
+      "id": "cta_letter_spacing",
+      "label": "Letter spacing",
+      "default": "0.6px"
+    },
+    {
+      "type": "range",
+      "id": "cta_height",
+      "label": "Height",
+      "min": 36,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "text",
+      "id": "cta_width_desktop",
+      "label": "Width (desktop)",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "cta_width_mobile",
+      "label": "Width (mobile)",
+      "default": "100%"
+    },
+    {
+      "type": "header",
+      "content": "Guarantee Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_guarantee_badge",
+      "label": "Show guarantee text",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee text",
+      "default": "45-day Comfort Guarantee"
+    },
+    {
+      "type": "range",
+      "id": "guarantee_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "guarantee_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "text",
+      "id": "desktop_content_max_width",
+      "label": "Content width (desktop)",
+      "default": "48%"
+    },
+    {
+      "type": "select",
+      "id": "desktop_text_align",
+      "label": "Text alignment (desktop)",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_align",
+      "label": "Text alignment (mobile)",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp_item",
+      "name": "USP Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image (white PNG/SVG)"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature"
+        },
+        {
+          "type": "color",
+          "id": "icon_bg_color",
+          "label": "Icon circle color",
+          "default": "#1364b0"
+        },
+        {
+          "type": "range",
+          "id": "text_font_size",
+          "label": "Font size",
+          "min": 10,
+          "max": 18,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "text_font_weight",
+          "label": "Font weight",
+          "min": 300,
+          "max": 700,
+          "step": 100,
+          "default": 600
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#1f3b74"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "blocks": [
+        { "type": "usp_item", "settings": { "text": "12 Hours Of Comfort", "icon_bg_color": "#1364b0", "text_color": "#1f3b74" } },
+        { "type": "usp_item", "settings": { "text": "Arch Support",        "icon_bg_color": "#1364b0", "text_color": "#1f3b74" } },
+        { "type": "usp_item", "settings": { "text": "Wide Toe Fit",        "icon_bg_color": "#1364b0", "text_color": "#1f3b74" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

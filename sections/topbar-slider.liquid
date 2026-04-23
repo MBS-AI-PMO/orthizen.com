@@ -1,0 +1,130 @@
+<div
+  class='topbar-slider'
+  id='topbar-slider-{{ section.id }}'
+  style='background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; font-size: {{ section.settings.font_size_mobile }}px; font-weight: {{ section.settings.font_weight }};'
+>
+  <div class='topbar-slider__track'>
+    {% for block in section.blocks %}
+      <div class='topbar-slider__slide{% if forloop.first %} topbar-slider__slide--active{% endif %}'>
+        {% if block.settings.highlight_word != blank %}
+          {% assign parts = block.settings.text | split: block.settings.highlight_word %}
+          {{ parts[0] }}<strong>{{ block.settings.highlight_word }}</strong>{{ parts[1] }}
+        {% else %}
+          {{ block.settings.text }}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .topbar-slider {
+    width: 100%;
+    text-align: center;
+    padding: 8px 40px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 200;
+  }
+  .topbar-slider__slide { display: none; line-height: 1.5; }
+  .topbar-slider__slide--active { display: block; animation: ts-fade 0.4s ease; }
+  @keyframes ts-fade {
+    from { opacity: 0; transform: translateY(3px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (min-width: 768px) {
+    .topbar-slider { display: none !important; }
+  }
+</style>
+
+<script>
+  (function () {
+    var el = document.getElementById('topbar-slider-{{ section.id }}');
+    if (!el) return;
+    var slides = el.querySelectorAll('.topbar-slider__slide');
+    if (slides.length <= 1) return;
+    var i = 0;
+    setInterval(function () {
+      slides[i].classList.remove('topbar-slider__slide--active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('topbar-slider__slide--active');
+    }, {{ section.settings.autoplay_speed }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Topbar Slider (Mobile)",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1364b0"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "font_weight",
+      "label": "Font weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Slide duration (ms)",
+      "min": 1000,
+      "max": 8000,
+      "step": 500,
+      "default": 3000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Slide text",
+          "default": "Announcement text here"
+        },
+        {
+          "type": "text",
+          "id": "highlight_word",
+          "label": "Bold highlight word",
+          "info": "Exact word(s) to make bold"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Topbar Slider (Mobile)",
+      "blocks": [
+        { "type": "slide", "settings": { "text": "45-Day Money-Back Guarantee", "highlight_word": "45-Day" } },
+        { "type": "slide", "settings": { "text": "FREE Shipping on ALL Orders!", "highlight_word": "FREE" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
