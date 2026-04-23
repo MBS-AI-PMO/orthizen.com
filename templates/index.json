@@ -9,7 +9,6 @@
  */
 {
   "sections": {
-
     "topbar-slider": {
       "type": "topbar-slider",
       "blocks": {
@@ -28,7 +27,10 @@
           }
         }
       },
-      "block_order": ["slide-1", "slide-2"],
+      "block_order": [
+        "slide-1",
+        "slide-2"
+      ],
       "settings": {
         "bg_color": "#1364b0",
         "text_color": "#ffffff",
@@ -37,7 +39,6 @@
         "autoplay_speed": 3000
       }
     },
-
     "topbar-desktop": {
       "type": "topbar-desktop",
       "settings": {
@@ -55,7 +56,6 @@
         "hide_last_column_tablet": true
       }
     },
-
     "hero-banner": {
       "type": "main-custom-image-banner",
       "blocks": {
@@ -90,7 +90,11 @@
           }
         }
       },
-      "block_order": ["usp-1", "usp-2", "usp-3"],
+      "block_order": [
+        "usp-1",
+        "usp-2",
+        "usp-3"
+      ],
       "settings": {
         "layout": "image_right",
         "bg_color": "#ffffff",
@@ -134,6 +138,8 @@
         "guarantee_text": "45-day Comfort Guarantee",
         "guarantee_font_size": 14,
         "guarantee_color": "#000000",
+        "desktop_image": "shopify://shop_images/Gemini_Generated_Image_tvnke6tvnke6tvnk.png",
+        "mobile_image": "shopify://shop_images/banner-carousel-mobile_2000x2000_e432e9af-95c7-4a70-9e08-ddcc82ffeb06.webp",
         "desktop_content_max_width": "48%",
         "desktop_text_align": "left",
         "mobile_text_align": "center",
@@ -143,7 +149,6 @@
         "padding_bottom_mobile": 40
       }
     },
-
     "image-with-features": {
       "type": "image-with-list",
       "blocks": {
@@ -213,7 +218,13 @@
           }
         }
       },
-      "block_order": ["feat-1", "feat-2", "feat-3", "feat-4", "feat-5"],
+      "block_order": [
+        "feat-1",
+        "feat-2",
+        "feat-3",
+        "feat-4",
+        "feat-5"
+      ],
       "settings": {
         "bg_color": "#ffffff",
         "section_heading": "Engineered to Finish 12-Hour Shifts Without Foot, Knee or Back Pain.",
@@ -230,6 +241,7 @@
         "subheading_color": "#000000",
         "subheading_text_align": "center",
         "subheading_max_width": "680px",
+        "main_image": "shopify://shop_images/hf_20260116_114222_ccdc73f2-4fa6-46e8-b0ca-d7d595670e17.webp",
         "image_position": "left",
         "image_width_desktop": "50%",
         "image_border_radius": 0,
@@ -244,35 +256,52 @@
         "padding_bottom_mobile": 36
       }
     },
-
     "featured-product": {
       "type": "home-featured-product",
       "settings": {
+        "featured_product": "",
+        "subtitle": "OUR BESTSELLER",
+        "title": "Featured Product",
+        "show_view_btn": true,
+        "view_btn_text": "View Full Product Page",
         "width": "box",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-
     "featured-collection-1": {
       "type": "featured-collection",
       "settings": {
         "heading_title": "Find The Perfect Shoe For You",
         "heading_align": "center",
+        "collection": "",
+        "limit": 4,
         "columns_desktop": 4,
         "columns_mobile": "2",
-        "limit": 4,
         "show_navigation": false,
         "show_navigation_mobile": false,
         "show_pagination": false,
         "show_pagination_mobile": false,
+        "distinct_color_scheme": false,
+        "product_card_color_scheme": "",
         "color_scheme": "background-1",
         "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 36,
         "padding_bottom": 44
       }
     },
-
     "foot-conditions": {
       "type": "multicolumn",
       "blocks": {
@@ -316,7 +345,11 @@
           }
         }
       },
-      "block_order": ["col-1", "col-2", "col-3"],
+      "block_order": [
+        "col-1",
+        "col-2",
+        "col-3"
+      ],
       "settings": {
         "bg_color": "#ffffff",
         "title": "Shoes Proven To Increase Comfort & Foot Mobility",
@@ -325,6 +358,8 @@
         "heading_font_weight": 700,
         "heading_color": "#000000",
         "heading_text_align": "center",
+        "subheading": "",
+        "subheading_color": "#000000",
         "columns_desktop": 3,
         "column_alignment": "center",
         "image_width_desktop": 150,
@@ -335,41 +370,111 @@
         "padding_bottom_mobile": 36
       }
     },
-
     "featured-collection-2": {
       "type": "featured-collection",
       "settings": {
         "heading_title": "Finish 12-Hour Shifts Without Foot Pain",
         "heading_align": "center",
+        "collection": "",
+        "limit": 4,
         "columns_desktop": 4,
         "columns_mobile": "2",
-        "limit": 4,
         "show_navigation": false,
         "show_navigation_mobile": false,
         "show_pagination": false,
         "show_pagination_mobile": false,
+        "distinct_color_scheme": false,
+        "product_card_color_scheme": "",
         "color_scheme": "background-1",
         "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
         "padding_top": 36,
         "padding_bottom": 44
       }
     },
-
     "foot-pain-section": {
       "type": "foot-problem-solve",
       "blocks": {
-        "check-1":  { "type": "checklist_item", "settings": { "text": "Lower Back Pain" } },
-        "check-2":  { "type": "checklist_item", "settings": { "text": "Knee Pain" } },
-        "check-3":  { "type": "checklist_item", "settings": { "text": "Arthritis" } },
-        "check-4":  { "type": "checklist_item", "settings": { "text": "Correct Foot Position" } },
-        "check-5":  { "type": "checklist_item", "settings": { "text": "Plantar Fasciitis" } },
-        "check-6":  { "type": "checklist_item", "settings": { "text": "Pressure Distribution" } },
-        "check-7":  { "type": "checklist_item", "settings": { "text": "Ankle Pain" } },
-        "check-8":  { "type": "checklist_item", "settings": { "text": "Heel Pain" } },
-        "check-9":  { "type": "checklist_item", "settings": { "text": "Swelling" } },
-        "check-10": { "type": "checklist_item", "settings": { "text": "Bunions" } }
+        "check-1": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Lower Back Pain"
+          }
+        },
+        "check-2": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Knee Pain"
+          }
+        },
+        "check-3": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Arthritis"
+          }
+        },
+        "check-4": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Correct Foot Position"
+          }
+        },
+        "check-5": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Plantar Fasciitis"
+          }
+        },
+        "check-6": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Pressure Distribution"
+          }
+        },
+        "check-7": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Ankle Pain"
+          }
+        },
+        "check-8": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Heel Pain"
+          }
+        },
+        "check-9": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Swelling"
+          }
+        },
+        "check-10": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Bunions"
+          }
+        }
       },
-      "block_order": ["check-1","check-2","check-3","check-4","check-5","check-6","check-7","check-8","check-9","check-10"],
+      "block_order": [
+        "check-1",
+        "check-2",
+        "check-3",
+        "check-4",
+        "check-5",
+        "check-6",
+        "check-7",
+        "check-8",
+        "check-9",
+        "check-10"
+      ],
       "settings": {
         "bg_color": "#ffffff",
         "heading": "Foot Pain Doesn't Stop at Your Feet.",
@@ -398,7 +503,6 @@
         "padding_bottom_mobile": 40
       }
     }
-
   },
   "order": [
     "topbar-slider",
