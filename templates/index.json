@@ -41,6 +41,7 @@
     },
     "topbar-desktop": {
       "type": "topbar-desktop",
+      "disabled": true,
       "settings": {
         "bg_color": "#1364b0",
         "text_color": "#ffffff",
