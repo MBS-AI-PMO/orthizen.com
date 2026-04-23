@@ -264,10 +264,10 @@
     "featured-product": {
       "type": "home-featured-product",
       "settings": {
-        "featured_product": "orthora™-pro-12-hour-shift-shoes-for-all-day-foot-knee-back-pain-relief-1",
+        "featured_product": "orthora™-pro-12-hour-shift-shoes-for-heel-plantar-fasciitis-relief-unisex-1",
         "subtitle": "",
         "title": "",
-        "show_view_btn": true,
+        "show_view_btn": false,
         "view_btn_text": "View Full Product Page",
         "width": "box",
         "color_scheme": "",
