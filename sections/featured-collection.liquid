@@ -67,15 +67,15 @@
   }
   #shopify-section-{{ section.id }} .xo-badge-sale {
     display: inline-block;
-    background: #db0404 !important;
-    color: #ffffff !important;
-    font-size: 11px !important;
+    background: {{ section.settings.sale_badge_bg }} !important;
+    color: {{ section.settings.sale_badge_text_color }} !important;
+    font-size: {{ section.settings.badge_font_size }}px !important;
     font-weight: 700 !important;
     font-family: inherit !important;
     text-transform: uppercase !important;
     letter-spacing: 0.6px !important;
     padding: 5px 8px !important;
-    border-radius: 4px !important;
+    border-radius: {{ section.settings.badge_border_radius }}px !important;
     line-height: 1 !important;
     white-space: nowrap;
     transform: none !important;
@@ -88,14 +88,14 @@
     left: 8px !important;
     right: auto !important;
     z-index: 10;
-    background: #111111 !important;
-    color: #ffffff !important;
-    font-size: 11px !important;
+    background: {{ section.settings.label_badge_bg }} !important;
+    color: {{ section.settings.label_badge_text_color }} !important;
+    font-size: {{ section.settings.badge_font_size }}px !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.6px !important;
     padding: 5px 8px !important;
-    border-radius: 4px !important;
+    border-radius: {{ section.settings.badge_border_radius }}px !important;
     line-height: 1 !important;
     white-space: nowrap;
     pointer-events: none;
@@ -221,6 +221,54 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Badge Styling"
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_bg",
+      "label": "Sale badge background",
+      "default": "#db0404"
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_text_color",
+      "label": "Sale badge text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "label_badge_bg",
+      "label": "Label badge background",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "label_badge_text_color",
+      "label": "Label badge text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "label": "Badge font size",
+      "min": 9,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "badge_border_radius",
+      "label": "Badge border radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
     {
       "type": "header",
       "content": "Star Rating"
