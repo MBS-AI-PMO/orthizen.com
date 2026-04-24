@@ -175,6 +175,13 @@
     --bd-hi-bg:      #ff6b35;
   }
 
+  #{{ bd_id }} .bulk-discount__title {
+    font-size: {{ block.settings.title_font_size }}px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin: 0 0 1.1rem;
+  }
   .bulk-discount__title {
     font-size: 1.25rem;
     font-weight: 700;
@@ -262,6 +269,9 @@
     gap: .35rem;
   }
 
+  #{{ bd_id }} .bulk-discount__label {
+    font-size: {{ block.settings.label_font_size }}px !important;
+  }
   .bulk-discount__label {
     font-size: 1.35rem;
     font-weight: 600;
@@ -296,6 +306,16 @@
     flex-shrink: 0;
   }
 
+  #{{ bd_id }} .bulk-discount__total {
+    font-size: {{ block.settings.price_font_size }}px !important;
+  }
+  #{{ bd_id }} .bulk-discount__per-item,
+  #{{ bd_id }} .bulk-discount__savings {
+    font-size: {{ block.settings.sub_font_size }}px !important;
+  }
+  #{{ bd_id }} .bulk-discount__badge {
+    font-size: {{ block.settings.badge_font_size }}px !important;
+  }
   .bulk-discount__total {
     font-size: 1.55rem;
     font-weight: 700;
