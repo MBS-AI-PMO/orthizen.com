@@ -29,12 +29,10 @@
     align-items: flex-start !important;
   }
   #shopify-section-{{ section.id }} .xo-product-card__title {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    white-space: normal;
     text-align: left;
+    white-space: normal;
+    overflow: visible;
+    display: block;
   }
   #shopify-section-{{ section.id }} .xo-product-card__stars {
     justify-content: flex-start;
@@ -137,6 +135,12 @@
     #shopify-section-{{ section.id }} .xo-product-card__information {
       padding-left: 0 !important;
       padding-right: 0 !important;
+    }
+    #shopify-section-{{ section.id }} .xo-product-card__title {
+      display: -webkit-box !important;
+      -webkit-line-clamp: 1 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
     }
     #shopify-section-{{ section.id }} .xo-price__item--accent {
       font-size: {{ section.settings.sale_price_size_mobile }}px !important;
