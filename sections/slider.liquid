@@ -71,102 +71,73 @@
 </section>
 
 <script>
-  function initSliderAutoScroll() {
-    const carousel = document.querySelector('.slider-wrapper xo-carousel');
+  (function () {
+    var sliderStarted = false;
 
-    if (!carousel) {
-      console.warn('Slider carousel not found');
-      return;
-    }
+    function initSliderAutoScroll() {
+      if (sliderStarted) return;
 
-    console.log('Initializing slider auto-scroll...');
+      var carousel = document.querySelector('.slider-wrapper xo-carousel');
+      if (!carousel) return;
 
-    const list = carousel.querySelector('.slider-list');
-    if (!list) {
-      console.warn('Slider list not found');
-      return;
-    }
+      var list = carousel.querySelector('.slider-list');
+      if (!list) return;
 
-    const duration = {{ section.settings.autoplay_duration }} * 1000; // Convert seconds to milliseconds
-    const gap = {{ section.settings.gap }} || 20;
-    console.log('Slider auto-scroll duration:', duration + 'ms', 'Gap:', gap);
+      sliderStarted = true;
 
-    // Get all original slides
-    const originalSlides = Array.from(list.querySelectorAll('.slider-slide'));
-    const slideCount = originalSlides.length;
+      var pxPerSec = {{ section.settings.scroll_speed }};
+      var gap = {{ section.settings.gap }} || 10;
 
-    console.log('Total slides:', slideCount);
+      var originalSlides = Array.from(list.querySelectorAll('.slider-slide'));
+      if (originalSlides.length === 0) return;
 
-    if (slideCount === 0) {
-      console.warn('No slides found');
-      return;
-    }
+      // Clone slides for seamless infinite loop
+      originalSlides.forEach(function (slide) {
+        list.appendChild(slide.cloneNode(true));
+      });
 
-    // Clone all original slides to end for infinite loop
-    originalSlides.forEach(slide => {
-      const clone = slide.cloneNode(true);
-      list.appendChild(clone);
-    });
-    console.log('Cloned ' + slideCount + ' slides for infinite loop');
-
-    const getSlideWidth = () => {
-      const slide = list.querySelector('.slider-slide');
-      if (!slide) return 150;
-      return slide.offsetWidth + gap;
-    };
-
-    let slideWidth = getSlideWidth();
-    const scrollDistancePerCycle = slideWidth * slideCount; // Total distance to scroll before reset
-
-    console.log('Slide width:', slideWidth, 'px');
-    console.log('Scroll distance per cycle:', scrollDistancePerCycle, 'px');
-
-    let startTime = null;
-    let animationRunning = true;
-
-    function smoothScroll(timestamp) {
-      if (!startTime) {
-        startTime = timestamp;
+      function getLoopDistance() {
+        var slide = list.querySelector('.slider-slide');
+        if (!slide) return 1000;
+        return (slide.offsetWidth + gap) * originalSlides.length;
       }
 
-      if (!animationRunning) return;
+      var loopDistance = getLoopDistance();
+      var lastTime = null;
+      var position = 0;
 
-      const elapsed = timestamp - startTime;
+      function tick(ts) {
+        if (lastTime === null) lastTime = ts;
+        var delta = ts - lastTime;
+        lastTime = ts;
 
-      // Calculate progress through one complete cycle (all original slides)
-      const cycleProgress = (elapsed % duration) / duration;
+        // Clamp delta to avoid huge jumps after tab switching
+        if (delta > 100) delta = 100;
 
-      // Calculate scroll position for this frame
-      const targetScroll = cycleProgress * scrollDistancePerCycle;
+        position += (pxPerSec * delta) / 1000;
+        if (position >= loopDistance) position -= loopDistance;
 
-      // Direct scroll without smooth behavior
-      list.scrollLeft = targetScroll;
-
-      // Invisible reset when reaching cloned slides
-      if (targetScroll >= scrollDistancePerCycle - slideWidth) {
-        // Instantly reset to start without animation
-        list.scrollLeft = 0;
-        startTime = timestamp;
+        list.scrollLeft = position;
+        requestAnimationFrame(tick);
       }
 
-      // Continue animation loop
-      requestAnimationFrame(smoothScroll);
+      window.addEventListener('resize', function () {
+        loopDistance = getLoopDistance();
+        if (position >= loopDistance) position = 0;
+      });
+
+      setTimeout(function () { requestAnimationFrame(tick); }, 100);
     }
 
-    // Start animation
-    setTimeout(() => {
-      requestAnimationFrame(smoothScroll);
-      console.log('✓ Carousel auto-scroll started - continuous infinite loop');
-    }, 200);
-  }
-
-  if (document.readyState === 'complete') {
-    initSliderAutoScroll();
-  } else {
-    window.addEventListener('load', initSliderAutoScroll);
-  }
-
-  setTimeout(initSliderAutoScroll, 1500);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      setTimeout(initSliderAutoScroll, 300);
+    } else {
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(initSliderAutoScroll, 300);
+      });
+    }
+    setTimeout(initSliderAutoScroll, 2000);
+  })();
 </script>
 
 <style>
@@ -449,13 +420,13 @@
     },
     {
       "type": "range",
-      "id": "autoplay_duration",
-      "label": "Carousel Speed (Seconds per Slide)",
-      "info": "Increase for slower movement, decrease for faster. Range: 3-20 seconds",
-      "min": 3,
-      "max": 20,
-      "step": 1,
-      "default": 12
+      "id": "scroll_speed",
+      "label": "Scroll Speed (px per second)",
+      "info": "Lower = slower, higher = faster. 30 = slow, 60 = medium, 100 = fast.",
+      "min": 5,
+      "max": 100,
+      "step": 5,
+      "default": 35
     }
   ],
   "blocks": [

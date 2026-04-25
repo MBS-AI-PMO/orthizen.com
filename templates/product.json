@@ -487,7 +487,7 @@
         "padding_bottom": 40,
         "padding_left": 20,
         "padding_right": 20,
-        "autoplay_duration": 20
+        "scroll_speed": 35
       }
     },
     "product-information-tabs": {
