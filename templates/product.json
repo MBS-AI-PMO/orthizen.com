@@ -194,6 +194,11 @@
             "option3_label": "Buy 3 Pairs",
             "option3_badge": "Best Value",
             "option3_discount": 20,
+            "title_font_size": 14,
+            "label_font_size": 14,
+            "price_font_size": 16,
+            "sub_font_size": 12,
+            "badge_font_size": 11,
             "padding_top": 0,
             "padding_bottom": 20
           }
@@ -211,12 +216,16 @@
         "guarantee-block-main": {
           "type": "guarantee",
           "settings": {
+            "item1_image": "shopify://shop_images/guarantee.avif",
             "item1_heading": "45-Day Comfort Guarantee",
             "item1_subtext": "Feel real relief or get a full refund.",
+            "item2_image": "shopify://shop_images/nurse.avif",
             "item2_heading": "Trusted by 500,000+ Workers",
             "item2_subtext": "Built for long shifts on hard concrete floors.",
+            "item3_image": "shopify://shop_images/exchange_1.avif",
             "item3_heading": "Free Shipping & Free Exchanges",
             "item3_subtext": "Fast, tracked delivery right to your door.",
+            "item4_image": "shopify://shop_images/12-hours_d565f8a3-4328-4143-8445-5554dc7e0798.avif",
             "item4_heading": "Finish 12-Hour Shifts Without Foot Pain",
             "item4_subtext": "Support that lasts your entire shift.",
             "heading_font_size": 18,
@@ -237,6 +246,7 @@
         },
         "941018d2-7613-4b60-aa2c-94962df06c94": {
           "type": "trustbadge",
+          "disabled": true,
           "settings": {
             "trustbadge_heading": "<p>Guarantee Safe Checkout</p>",
             "trustbadge_position": "above",
