@@ -194,6 +194,11 @@
             "option3_label": "Buy 3 Pairs",
             "option3_badge": "Best Value",
             "option3_discount": 20,
+            "title_font_size": 14,
+            "label_font_size": 14,
+            "price_font_size": 16,
+            "sub_font_size": 12,
+            "badge_font_size": 11,
             "padding_top": 0,
             "padding_bottom": 20
           }
@@ -211,7 +216,7 @@
         "941018d2-7613-4b60-aa2c-94962df06c94": {
           "type": "trustbadge",
           "settings": {
-            "trustbadge_heading": "<p>Guarantee Safe Checkout</p>",
+            "trustbadge_heading": "<p><strong>45-Day Comfort Guarantee</strong></p><p>Feel real relief or get a full refund</p><p><strong>Trusted by 500,000+ Workers</strong></p><p>Built for long shifts on hard concrete floors.</p><p><strong>Free Shipping & Free Exchanges</strong></p><p>Fast, tracked delivery right to your door.</p><p><strong>Finish 12-Hour Shifts Without Foot Pain</strong></p><p>Support that lasts your entire shift.</p>",
             "trustbadge_position": "above",
             "trustbadge_width": "80%",
             "trustbadge_background": "#f8f8f8",
