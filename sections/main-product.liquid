@@ -1915,6 +1915,236 @@
       ]
     },
     {
+      "type": "guarantee",
+      "name": "Guarantee Block",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Item 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "item1_image",
+          "label": "Item 1 - Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "item1_heading",
+          "label": "Item 1 - Heading",
+          "default": "45-Day Comfort Guarantee"
+        },
+        {
+          "type": "textarea",
+          "id": "item1_subtext",
+          "label": "Item 1 - Subtext",
+          "default": "Feel real relief or get a full refund."
+        },
+        {
+          "type": "header",
+          "content": "Item 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "item2_image",
+          "label": "Item 2 - Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "item2_heading",
+          "label": "Item 2 - Heading",
+          "default": "Trusted by 500,000+ Workers"
+        },
+        {
+          "type": "textarea",
+          "id": "item2_subtext",
+          "label": "Item 2 - Subtext",
+          "default": "Built for long shifts on hard concrete floors."
+        },
+        {
+          "type": "header",
+          "content": "Item 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "item3_image",
+          "label": "Item 3 - Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "item3_heading",
+          "label": "Item 3 - Heading",
+          "default": "Free Shipping & Free Exchanges"
+        },
+        {
+          "type": "textarea",
+          "id": "item3_subtext",
+          "label": "Item 3 - Subtext",
+          "default": "Fast, tracked delivery right to your door."
+        },
+        {
+          "type": "header",
+          "content": "Item 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "item4_image",
+          "label": "Item 4 - Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "item4_heading",
+          "label": "Item 4 - Heading",
+          "default": "Finish 12-Hour Shifts Without Foot Pain"
+        },
+        {
+          "type": "textarea",
+          "id": "item4_subtext",
+          "label": "Item 4 - Subtext",
+          "default": "Support that lasts your entire shift."
+        },
+        {
+          "type": "header",
+          "content": "Desktop Typography"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size",
+          "label": "Heading Font Size (px)",
+          "min": 14,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 18
+        },
+        {
+          "type": "select",
+          "id": "heading_font_weight",
+          "label": "Heading Font Weight",
+          "default": "700",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semi Bold" },
+            { "value": "700", "label": "Bold" },
+            { "value": "800", "label": "Extra Bold" }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "subtext_font_size",
+          "label": "Subtext Font Size (px)",
+          "min": 12,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 15
+        },
+        {
+          "type": "color",
+          "id": "subtext_color",
+          "label": "Subtext Color",
+          "default": "#666666"
+        },
+        {
+          "type": "header",
+          "content": "Mobile Typography"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size_mobile",
+          "label": "Heading Font Size - Mobile (px)",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "subtext_font_size_mobile",
+          "label": "Subtext Font Size - Mobile (px)",
+          "min": 11,
+          "max": 18,
+          "step": 1,
+          "unit": "px",
+          "default": 13
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon Size - Desktop (px)",
+          "min": 24,
+          "max": 72,
+          "step": 4,
+          "unit": "px",
+          "default": 44
+        },
+        {
+          "type": "range",
+          "id": "icon_size_mobile",
+          "label": "Icon Size - Mobile (px)",
+          "min": 20,
+          "max": 60,
+          "step": 4,
+          "unit": "px",
+          "default": 32
+        },
+        {
+          "type": "range",
+          "id": "item_gap",
+          "label": "Gap Between Items (px)",
+          "min": 8,
+          "max": 40,
+          "step": 2,
+          "unit": "px",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "item_gap_mobile",
+          "label": "Gap Between Items - Mobile (px)",
+          "min": 6,
+          "max": 30,
+          "step": 2,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "icon_text_gap",
+          "label": "Icon to Text Gap (px)",
+          "min": 6,
+          "max": 30,
+          "step": 2,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "number",
+          "id": "padding_top",
+          "label": "Padding Top (px)",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "id": "padding_bottom",
+          "label": "Padding Bottom (px)",
+          "default": 20
+        }
+      ]
+    },
+    {
       "type": "image",
       "name": "t:sections.main_product.blocks.image.name",
       "settings": [
