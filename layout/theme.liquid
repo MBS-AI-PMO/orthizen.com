@@ -84,6 +84,8 @@
       .xo-cart-add .xo-btn:hover{background-color:{{ settings.atc_bg_hover_color | default: '#179010' }}!important;border-color:{{ settings.atc_bg_hover_color | default: '#179010' }}!important}
       /* Buy Now button */
       .shopify-payment-button__button--unbranded{background-color:{{ settings.buynow_bg_color | default: '#1364b0' }}!important;color:{{ settings.buynow_text_color | default: '#ffffff' }}!important;font-family:{{ btn_font }}!important}
+      /* Sale badge (Save X%) */
+      .xo-badge-sale{background-color:{{ settings.sale_badge_bg | default: '#000000' }}!important;color:{{ settings.sale_badge_color | default: '#ffffff' }}!important}
       /* Size Guide — clean bordered link style */
       .addon-buttons__trigger{display:inline-flex!important;align-items:center!important;gap:0!important;background:transparent!important;border:1.5px solid #c8c8c8!important;border-radius:20px!important;color:#444!important;font-size:13px!important;font-weight:500!important;letter-spacing:0.3px!important;padding:6px 14px!important;cursor:pointer!important;text-decoration:none!important;box-shadow:none!important;transition:border-color 0.2s,color 0.2s!important;transform:none!important}
       .addon-buttons__trigger::before{content:'\2192\00a0';font-size:13px;color:inherit}

@@ -2001,6 +2001,22 @@
       },
       {
         "type": "header",
+        "content": "Sale Badge (Save X%)"
+      },
+      {
+        "type": "color",
+        "id": "sale_badge_bg",
+        "label": "Badge Background Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "sale_badge_color",
+        "label": "Badge Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
         "content": "Price Font Family"
       },
       {

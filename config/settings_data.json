@@ -70,6 +70,8 @@
     "scrolltop_background_color": "#000000",
     "toolbar_background_color": "#ffffff",
     "favicon": "shopify://shop_images/favicon.png",
+    "sale_badge_bg": "#000000",
+    "sale_badge_color": "#ffffff",
     "sale_price_color": "#1eb014",
     "sale_price_size": 26,
     "sale_price_size_mobile": 22,
