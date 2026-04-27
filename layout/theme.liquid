@@ -79,11 +79,11 @@
         .xo-price__item--accent{font-size:{{ settings.sale_price_size_mobile | default: 20 }}px!important}
         .xo-price__item--del,.xo-price__item--del *{font-size:{{ settings.compare_price_size_mobile | default: 14 }}px!important}
       }
-      /* Add to Cart button */
-      .xo-cart-add .xo-btn{background-color:{{ settings.atc_bg_color | default: '#1eb014' }}!important;border-color:{{ settings.atc_bg_color | default: '#1eb014' }}!important;color:{{ settings.atc_text_color | default: '#ffffff' }}!important;font-size:{{ settings.atc_font_size | default: 16 }}px!important;font-weight:{{ settings.atc_font_weight | default: '600' }}!important;border-radius:{{ settings.atc_border_radius | default: 6 }}px!important;font-family:{{ btn_font }}!important}
-      .xo-cart-add .xo-btn:hover{background-color:{{ settings.atc_bg_hover_color | default: '#179010' }}!important;border-color:{{ settings.atc_bg_hover_color | default: '#179010' }}!important}
-      /* Buy Now button */
-      .shopify-payment-button__button--unbranded{background-color:{{ settings.buynow_bg_color | default: '#1364b0' }}!important;color:{{ settings.buynow_text_color | default: '#ffffff' }}!important;font-family:{{ btn_font }}!important}
+      /* Add to Cart button — override via CSS variables the theme reads */
+      xo-cart-add{--color-light-button:{{ settings.atc_bg_color.red | default: 30 }},{{ settings.atc_bg_color.green | default: 176 }},{{ settings.atc_bg_color.blue | default: 20 }};--color-light-button-text:{{ settings.atc_text_color.red | default: 255 }},{{ settings.atc_text_color.green | default: 255 }},{{ settings.atc_text_color.blue | default: 255 }};--color-dark-button:{{ settings.atc_bg_hover_color.red | default: 23 }},{{ settings.atc_bg_hover_color.green | default: 144 }},{{ settings.atc_bg_hover_color.blue | default: 16 }};--color-dark-button-text:{{ settings.atc_text_color.red | default: 255 }},{{ settings.atc_text_color.green | default: 255 }},{{ settings.atc_text_color.blue | default: 255 }};--buttons-background-opacity:1}
+      .xo-cart-add .xo-btn{font-size:{{ settings.atc_font_size | default: 16 }}px!important;font-weight:{{ settings.atc_font_weight | default: '600' }}!important;border-radius:{{ settings.atc_border_radius | default: 6 }}px!important;font-family:{{ btn_font }}!important}
+      /* Buy Now button font (color/hover handled in buy-button.liquid) */
+      .shopify-payment-button__button--unbranded{font-family:{{ btn_font }}!important}
       /* Sale badge (Save X%) — product cards + product page inline badge */
       .xo-badge-sale{background-color:{{ settings.sale_badge_bg | default: '#000000' }}!important;color:{{ settings.sale_badge_color | default: '#ffffff' }}!important}
       .badge{background-color:{{ settings.sale_badge_bg | default: '#000000' }}!important}
