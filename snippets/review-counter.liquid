@@ -1,0 +1,42 @@
+<script>
+(function () {
+  /* ─── config ─────────────────────────────────────────────────────────────
+     BASE_COUNT : review total as of EPOCH_MS
+     EPOCH_MS   : start timestamp — count grows from here, 1–10 per hour
+     To reset: update both values to "current count" and "right now".
+  ──────────────────────────────────────────────────────────────────────── */
+  var BASE_COUNT = 17920;
+  var EPOCH_MS   = new Date('2026-04-28T00:00:00Z').getTime();
+
+  /* deterministic float 0–1 for any integer seed (consistent per hour) */
+  function seededRand(n) {
+    var x = Math.sin(n * 9301 + 49297) * 233280;
+    return x - Math.floor(x);
+  }
+
+  var hoursElapsed = Math.max(0, Math.floor((Date.now() - EPOCH_MS) / 3600000));
+  var count = BASE_COUNT;
+  for (var h = 0; h < hoursElapsed; h++) {
+    count += Math.floor(seededRand(h) * 10) + 1; /* adds 1–10 each hour */
+  }
+
+  var formatted = count.toLocaleString('en-US');
+
+  function apply() {
+    /* product page — "(17,920 Reviews)" */
+    document.querySelectorAll('.psr__count').forEach(function (el) {
+      el.textContent = el.textContent.replace(/[\d,]+/, formatted);
+    });
+    /* product cards — "(17,920)" */
+    document.querySelectorAll('.xo-product-card__stars-count').forEach(function (el) {
+      el.textContent = '(' + formatted + ')';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', apply);
+  } else {
+    apply();
+  }
+})();
+</script>

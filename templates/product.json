@@ -54,8 +54,8 @@
         "star_rating_3G3Nt7": {
           "type": "star_rating",
           "settings": {
-            "auto_calculate": true,
-            "rating": 50,
+            "auto_calculate": false,
+            "rating": 48,
             "review_count": "17,920",
             "review_label": "Reviews",
             "star_color": "#ffb800",
