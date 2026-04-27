@@ -44,6 +44,12 @@
     {{ 'xo-webcomponents.min.css' | asset_url | stylesheet_tag }}
     {{ 'main.min.css' | asset_url | stylesheet_tag }}
 
+    {%- comment -%} Orthizen brand overrides — survives main.min.css regeneration {%- endcomment -%}
+    <style>
+      .xo-price__item--accent{color:#1eb014!important;font-weight:700!important}
+      .xo-price__item--del,.xo-price__item--del *{color:#999999!important;font-weight:400!important;opacity:1!important}
+    </style>
+
     {% render 'google-fonts-link' %}
 
     {% if settings.font_body_selection == 'shopify_fonts' %}
