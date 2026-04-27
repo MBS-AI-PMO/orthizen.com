@@ -12,8 +12,11 @@
   {% comment %} Size Guide {% endcomment %}
   {% if block.settings.sizeguide %}
     <xo-modal-trigger xo-name='show-sizeguide' class='addon-buttons__trigger'>
-      {% render 'icon', name: 'ruler', icon_size: '18' %}
-      <span>{{ 'products.addon_buttons.size_guide' | t }}</span>
+      {%- if block.settings.sizeguide_label != blank -%}
+        <span>{{ block.settings.sizeguide_label }}</span>
+      {%- else -%}
+        <span>{{ 'products.addon_buttons.size_guide' | t }}</span>
+      {%- endif -%}
     </xo-modal-trigger>
     <xo-modal xo-portal xo-name='show-sizeguide' xo-animate='fade-up' class='addon-buttons__modal'>
       <div class='addon-buttons__modal-content addon-buttons__modal-content--guide'>
