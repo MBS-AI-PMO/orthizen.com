@@ -82,6 +82,8 @@
       /* Add to Cart button — override via CSS variables the theme reads */
       xo-cart-add{--color-light-button:{{ settings.atc_bg_color.red | default: 30 }},{{ settings.atc_bg_color.green | default: 176 }},{{ settings.atc_bg_color.blue | default: 20 }};--color-light-button-text:{{ settings.atc_text_color.red | default: 255 }},{{ settings.atc_text_color.green | default: 255 }},{{ settings.atc_text_color.blue | default: 255 }};--color-dark-button:{{ settings.atc_bg_hover_color.red | default: 23 }},{{ settings.atc_bg_hover_color.green | default: 144 }},{{ settings.atc_bg_hover_color.blue | default: 16 }};--color-dark-button-text:{{ settings.atc_text_color.red | default: 255 }},{{ settings.atc_text_color.green | default: 255 }},{{ settings.atc_text_color.blue | default: 255 }};--buttons-background-opacity:1}
       .xo-cart-add .xo-btn{font-size:{{ settings.atc_font_size | default: 16 }}px!important;font-weight:{{ settings.atc_font_weight | default: '600' }}!important;border-radius:{{ settings.atc_border_radius | default: 6 }}px!important;font-family:{{ btn_font }}!important}
+      /* Product page — match container width to header */
+      xo-product .xo-container--wide{max-width:var(--xo-container-width,1400px)!important;padding-left:var(--xo-container-gap,20px)!important;padding-right:var(--xo-container-gap,20px)!important}
       /* Buy Now button font (color/hover handled in buy-button.liquid) */
       .shopify-payment-button__button--unbranded{font-family:{{ btn_font }}!important}
       /* Sale badge (Save X%) — product cards + product page inline badge */
