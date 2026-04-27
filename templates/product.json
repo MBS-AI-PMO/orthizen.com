@@ -11,11 +11,12 @@
   "sections": {
     "breadcrumb-v1": {
       "type": "breadcrumb-v1",
+      "disabled": true,
       "settings": {
         "width": "box",
         "breadcrumb_align": "flex-start",
         "breadcrumb_hide": false,
-        "breadcrumb_hide_mobile": true,
+        "breadcrumb_hide_mobile": false,
         "breadcrumb_animation": "fade-down",
         "color_scheme": "",
         "background_type": "color",
