@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footers.name",
   "type": "footer",
@@ -8,7 +17,6 @@
         "7f808e41-68d4-4aca-ad5d-bc68ee36cc22": {
           "type": "information",
           "settings": {
-            "logo": "shopify://shop_images/logo.png",
             "logo_width": 160,
             "description": "Praesent nec nisl a purus blandit viverra. Pellentesque habitant morbi tristique senectuse.",
             "address": "Address: 1234 Heaven Stress,USA.",
@@ -16,25 +24,26 @@
             "phone": "Phone: (+84) 1800 68 68"
           }
         },
-        "9eb858f7-0036-4727-9925-b37e697f469e": {
-          "type": "menu",
-          "settings": {
-            "heading": "About us",
-            "menu": "footer-1"
-          }
-        },
         "2dcc3ebc-a2a9-4e8b-86a7-a89a4630a2bb": {
           "type": "menu",
           "settings": {
             "heading": "Categories",
-            "menu": "footer-2"
+            "menu": "main-menu-2"
+          }
+        },
+        "9eb858f7-0036-4727-9925-b37e697f469e": {
+          "type": "menu",
+          "settings": {
+            "heading": "About us",
+            "menu": "information-menu"
           }
         },
         "2dcc3ebc-a2a9-4e8b-86a7-a89a4630a2bc": {
           "type": "menu",
+          "disabled": true,
           "settings": {
             "heading": "Information",
-            "menu": "footer-3"
+            "menu": ""
           }
         },
         "35d8fac8-113c-46f6-bf0e-e0d721af7e64": {
@@ -57,16 +66,16 @@
       },
       "block_order": [
         "7f808e41-68d4-4aca-ad5d-bc68ee36cc22",
-        "9eb858f7-0036-4727-9925-b37e697f469e",
         "2dcc3ebc-a2a9-4e8b-86a7-a89a4630a2bb",
+        "9eb858f7-0036-4727-9925-b37e697f469e",
         "2dcc3ebc-a2a9-4e8b-86a7-a89a4630a2bc",
         "35d8fac8-113c-46f6-bf0e-e0d721af7e64"
       ],
       "settings": {
-        "width": "wide",
+        "width": "box",
         "fullwidth_margin": 0,
-        "copyright": "© Copyright {{ 'now' | date: '%Y' }} | <a href='https://keton-store-newdemo.myshopify.com/' rel='nofollow' target='_blank' class='footer-v14__theme-name'>Keton</a> By <a href='https://shopify.pxf.io/9gPaY0' rel='nofollow' target='_blank' class='footer-v14__shop-name'> ThemeOcean.</a><a href='https://shopify.pxf.io/9gPaY0' rel='nofollow' target='_blank' class='footer-v14__powered-shopify'> Powered by Shopify.</a>",
-        "image_payment": "shopify://shop_images/payment_footer.png",
+        "copyright": "© Copyright {{ 'now' | date: '%Y' }} | <a href='' rel='nofollow' target='_blank' class='footer-v14__theme-name'>Keton</a> By <a href='' rel='nofollow' target='_blank' class='footer-v14__shop-name'> ThemeOcean.</a><a href='' rel='nofollow' target='_blank' class='footer-v14__powered-shopify'> Powered by Shopify.</a>",
+        "image_payment": "shopify://shop_images/payment_footer.avif",
         "color_scheme": "",
         "background_type": "color",
         "background_color": "",

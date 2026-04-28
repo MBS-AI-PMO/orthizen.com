@@ -1,0 +1,306 @@
+{{ 'product-features-v1.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  {% render 'section-bg-image' %}
+  <xo-container {% render 'section-layout' %}>
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="product-features-v1__header" style="--heading-align: {{ section.settings.heading_align }}; text-align: {{ section.settings.heading_align }}">
+        {%- if section.settings.heading != blank -%}
+          <xo-animate xo-cascade>
+            <h2 class="product-features-v1__heading">{{ section.settings.heading }}</h2>
+          </xo-animate>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <xo-animate xo-cascade>
+            <p class="product-features-v1__subheading">{{ section.settings.subheading }}</p>
+          </xo-animate>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <xo-grid
+      class="product-features-v1__grid"
+      style="
+        --xs: 1;
+        --lg: 2;
+        --xo-grid-col-gap: {{ section.settings.gap }}px;
+        --feature-card-bg: {{ section.settings.feature_card_bg }};
+        --feature-card-radius: {{ section.settings.feature_card_radius }}px;
+      "
+    >
+      <xo-animate
+        xo-cascade
+        class="product-features-v1__image-col"
+        {% if section.settings.reverse %}style="--order-lg: 1"{% endif %}
+      >
+        {% render 'image', image: section.settings.image, media_aspect_ratio: section.settings.image_ratio %}
+      </xo-animate>
+
+      <div class="product-features-v1__features-col"
+        {% if section.settings.reverse %}style="--order-lg: -1"{% endif %}
+      >
+        {%- for block in section.blocks -%}
+          <xo-animate xo-cascade class="product-features-v1__feature" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              <div class="product-features-v1__feature-icon" style="--icon-size: {{ section.settings.icon_size }}px; width: {{ section.settings.icon_size }}px; height: {{ section.settings.icon_size }}px;">
+                {% render 'image', image: block.settings.icon, media_aspect_ratio: '1/1' %}
+              </div>
+            {%- endif -%}
+            <div class="product-features-v1__feature-text">
+              {%- if block.settings.title != blank -%}
+                <h3 class="product-features-v1__feature-title">{{ block.settings.title }}</h3>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <p class="product-features-v1__feature-desc">{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
+          </xo-animate>
+        {%- endfor -%}
+      </div>
+    </xo-grid>
+  </xo-container>
+</section>
+
+{% schema %}
+{
+  "name": "Product Features",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:sections.all.width.label",
+      "default": "box",
+      "options": [
+        { "value": "box", "label": "t:sections.all.width.options__1.label" },
+        { "value": "wide", "label": "t:sections.all.width.options__2.label" },
+        { "value": "fullwidth", "label": "t:sections.all.width.options__3.label" }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "fullwidth_margin",
+      "label": "t:sections.all.fullwidth_margin.label",
+      "default": 0,
+      "visible_if": "{{ section.settings.width == 'fullwidth' }}"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Engineered to Finish 12-Hour Shifts Without Foot, Knee or Back Pain"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Each feature of our shoes is carefully engineered to give you the support and the freedom to move comfortably."
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Heading alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_ratio",
+      "label": "Image aspect ratio",
+      "default": "auto",
+      "info": "e.g. auto, 1/1, 4/5, 3/4"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Reverse layout (features on left)",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Gap between columns",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 44
+    },
+    {
+      "type": "color",
+      "id": "feature_card_bg",
+      "label": "Feature card background",
+      "default": "#F4F6FB"
+    },
+    {
+      "type": "range",
+      "id": "feature_card_radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Feature card corner radius",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.heading.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "t:sections.all.background_type.label",
+      "options": [
+        { "value": "color", "label": "t:sections.all.background_type.option__1.label" },
+        { "value": "gradient", "label": "t:sections.all.background_type.option__2.label" },
+        { "value": "image", "label": "t:sections.all.background_type.option__3.label" },
+        { "value": "video", "label": "t:sections.all.background_type.option__4.label" }
+      ],
+      "default": "color"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.background_color.label",
+      "alpha": true,
+      "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.background_gradient.label",
+      "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "t:sections.all.background_image_desktop.label",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "t:sections.all.background_image_mobile.label",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_parallax",
+      "label": "t:sections.all.use_parallax.label",
+      "default": true,
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "number",
+      "id": "background_margin",
+      "label": "t:sections.all.background_margin.label",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image",
+          "info": "Recommended: 80x80px PNG or SVG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Describe this feature benefit here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Features",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Smooth Knit Material",
+            "description": "Adapts to swelling, contours your foot, and eliminates pressure \u2013 perfect for all-day wear."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Roomy Toe Box",
+            "description": "Provides relief and flexibility for wide feet, bunions, or sensitive toes."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Targeted Arch Support",
+            "description": "Cradles your arch to reduce strain and support alignment \u2013 doctor recommended."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Padded, Seamless Interior",
+            "description": "No rubbing, no irritation. Just soft, supportive cushioning for sensitive feet."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Shock Reducing Sole",
+            "description": "Engineered with heel-to-toe impact absorption to ease joint and muscle fatigue."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

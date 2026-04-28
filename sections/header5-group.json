@@ -1,7 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.headers.name",
   "type": "header",
   "sections": {
+    "top-bar": {
+      "type": "top-bar",
+      "blocks": {
+        "tb-block-1": { "type": "announcement", "settings": { "text": "FREE SHIPPING on all orders over $50" } },
+        "tb-block-2": { "type": "announcement", "settings": { "text": "Rated 4.9\/5 by 17,000+ happy customers" } },
+        "tb-block-3": { "type": "announcement", "settings": { "text": "30-Day hassle-free returns" } }
+      },
+      "block_order": ["tb-block-1", "tb-block-2", "tb-block-3"],
+      "settings": {}
+    },
     "header": {
       "type": "header",
       "settings": {
@@ -18,10 +37,8 @@
         "menu_type": "default",
         "event_type": "hover",
         "hamburger_type": "drawer",
-        "hamburger_drawer_text_color": "#000000",
         "hamburger_drawer_background_color": "#ffffff",
         "hamburger_drawer_background_gradient": "",
-        "submenu_text_color": "#000000",
         "submenu_background_color": "#ffffff",
         "submenu_background_gradient": "",
         "color_scheme": "background-1",
@@ -54,13 +71,13 @@
         "link_2": "shopify://pages/home-2",
         "image_3": "shopify://shop_images/home3.jpg",
         "title_3": "Home 3",
-        "link_3": "shopify:\/\/pages\/home-3",
+        "link_3": "shopify://pages/home-3",
         "image_4": "shopify://shop_images/home4.jpg",
         "title_4": "Home 4",
-        "link_4": "shopify:\/\/pages\/home-4",
+        "link_4": "shopify://pages/home-4",
         "image_5": "shopify://shop_images/home5.jpg",
         "title_5": "Home 5",
-        "link_5": "shopify:\/\/pages\/home-5",
+        "link_5": "shopify://pages/home-5",
         "color_scheme": "",
         "background_color": "#ffffff",
         "background_gradient": "",
@@ -133,10 +150,6 @@
         "title_5": "Blog post",
         "blog": "blog-grid",
         "limit": 3,
-        "article_card_show_image": true,
-        "article_card_show_date": true,
-        "article_card_show_excerpt": false,
-        "article_card_color_scheme": "",
         "color_scheme": "",
         "background_color": "#ffffff",
         "background_gradient": "",
@@ -147,6 +160,7 @@
     }
   },
   "order": [
+    "top-bar",
     "header",
     "search",
     "mega-menu-v1",

@@ -138,11 +138,33 @@
           </div>
         {% endif %}
 
-        <h2 class='xo-product-card__title' id="title-{{ section.id }}-{{ product.id }}">
+        <h2 class='xo-product-card__title xo-product-card__title--mobile-limit' id="title-{{ section.id }}-{{ product.id }}">
           <a href='{{ product.url }}' id="CardLink-{{ section.id }}-{{ product.id }}" aria-labelledby="CardLink-{{ section.id }}-{{ product.id }} Badge-{{ section.id }}-{{ product.id }}">
             {{ product.title | escape }}
           </a>
         </h2>
+
+        {% if show_rating %}
+          {% assign rating_value = product.metafields.reviews.rating | default: product.metafields.custom.rating | default: 0 %}
+          {% assign rating_count = product.metafields.reviews.rating_count | default: product.metafields.custom.review_count | default: 0 %}
+          {% assign rating_rounded = rating_value | round: 0 %}
+
+          <div class='xo-product-card__rating'>
+            <span class='xo-product-card__stars'>
+              {% for i in (1..5) %}
+                <span class='xo-star {% if i <= rating_rounded %}xo-star--filled{% endif %}'>★</span>
+              {% endfor %}
+            </span>
+            <span class='xo-product-card__rating-value'>
+              {{ rating_value | round: 1 }}
+            </span>
+            {% if rating_count > 0 %}
+              <span class='xo-product-card__review-count'>({{ rating_count }} {% if rating_count == 1 %}Review{% else %}Reviews{% endif %})</span>
+            {% else %}
+              <span class='xo-product-card__review-count'>(0 Reviews)</span>
+            {% endif %}
+          </div>
+        {% endif %}
 
         {% if show_description%}
           <div class='xo-product-card__description'>

@@ -1905,5 +1905,283 @@
         "info": "t:settings_schema.favicon.settings.favicon.info"
       }
     ]
+  },
+  {
+    "name": "Price Colors & Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Sale / Current Price"
+      },
+      {
+        "type": "color",
+        "id": "sale_price_color",
+        "label": "Sale Price Color",
+        "default": "#1eb014"
+      },
+      {
+        "type": "range",
+        "id": "sale_price_size",
+        "label": "Sale Price Font Size - Desktop (px)",
+        "min": 14,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "default": 22
+      },
+      {
+        "type": "range",
+        "id": "sale_price_size_mobile",
+        "label": "Sale Price Font Size - Mobile (px)",
+        "min": 12,
+        "max": 32,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "select",
+        "id": "sale_price_weight",
+        "label": "Sale Price Font Weight",
+        "default": "700",
+        "options": [
+          {"value": "300", "label": "Light (300)"},
+          {"value": "400", "label": "Regular (400)"},
+          {"value": "500", "label": "Medium (500)"},
+          {"value": "600", "label": "SemiBold (600)"},
+          {"value": "700", "label": "Bold (700)"},
+          {"value": "800", "label": "ExtraBold (800)"},
+          {"value": "900", "label": "Black (900)"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Compare / Original Price"
+      },
+      {
+        "type": "color",
+        "id": "compare_price_color",
+        "label": "Compare Price Color",
+        "default": "#999999"
+      },
+      {
+        "type": "range",
+        "id": "compare_price_size",
+        "label": "Compare Price Font Size - Desktop (px)",
+        "min": 11,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "compare_price_size_mobile",
+        "label": "Compare Price Font Size - Mobile (px)",
+        "min": 10,
+        "max": 26,
+        "step": 1,
+        "unit": "px",
+        "default": 14
+      },
+      {
+        "type": "select",
+        "id": "compare_price_weight",
+        "label": "Compare Price Font Weight",
+        "default": "400",
+        "options": [
+          {"value": "300", "label": "Light (300)"},
+          {"value": "400", "label": "Regular (400)"},
+          {"value": "500", "label": "Medium (500)"},
+          {"value": "600", "label": "SemiBold (600)"},
+          {"value": "700", "label": "Bold (700)"},
+          {"value": "800", "label": "ExtraBold (800)"},
+          {"value": "900", "label": "Black (900)"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Sale Badge (Save X%)"
+      },
+      {
+        "type": "color",
+        "id": "sale_badge_bg",
+        "label": "Badge Background Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "sale_badge_color",
+        "label": "Badge Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Price Font Family"
+      },
+      {
+        "type": "select",
+        "id": "price_font_family",
+        "label": "Font Family",
+        "info": "To use a custom font, add its URL in the Custom Fonts section",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default (theme font)"},
+          {"value": "'Lato', sans-serif", "label": "Lato"},
+          {"value": "'Montserrat', sans-serif", "label": "Montserrat"},
+          {"value": "'Jost', sans-serif", "label": "Jost"},
+          {"value": "'Roboto', sans-serif", "label": "Roboto"},
+          {"value": "'Open Sans', sans-serif", "label": "Open Sans"},
+          {"value": "'Poppins', sans-serif", "label": "Poppins"},
+          {"value": "'Inter', sans-serif", "label": "Inter"},
+          {"value": "'Nunito', sans-serif", "label": "Nunito"},
+          {"value": "'Playfair Display', serif", "label": "Playfair Display"},
+          {"value": "'Raleway', sans-serif", "label": "Raleway"},
+          {"value": "custom_1", "label": "Custom Font 1 (see Custom Fonts)"},
+          {"value": "custom_2", "label": "Custom Font 2 (see Custom Fonts)"}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Button Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Add to Cart Button"
+      },
+      {
+        "type": "color",
+        "id": "atc_bg_color",
+        "label": "Background Color",
+        "default": "#1eb014"
+      },
+      {
+        "type": "color",
+        "id": "atc_bg_hover_color",
+        "label": "Background Hover Color",
+        "default": "#179010"
+      },
+      {
+        "type": "color",
+        "id": "atc_text_color",
+        "label": "Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "range",
+        "id": "atc_font_size",
+        "label": "Font Size (px)",
+        "min": 13,
+        "max": 22,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "atc_font_weight",
+        "label": "Font Weight",
+        "default": "600",
+        "options": [
+          {"value": "400", "label": "Regular (400)"},
+          {"value": "500", "label": "Medium (500)"},
+          {"value": "600", "label": "SemiBold (600)"},
+          {"value": "700", "label": "Bold (700)"},
+          {"value": "800", "label": "ExtraBold (800)"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "atc_border_radius",
+        "label": "Border Radius (px)",
+        "min": 0,
+        "max": 30,
+        "step": 2,
+        "unit": "px",
+        "default": 6
+      },
+      {
+        "type": "header",
+        "content": "Buy Now Button"
+      },
+      {
+        "type": "color",
+        "id": "buynow_bg_color",
+        "label": "Background Color",
+        "default": "#1eb014"
+      },
+      {
+        "type": "color",
+        "id": "buynow_text_color",
+        "label": "Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Button Font Family"
+      },
+      {
+        "type": "select",
+        "id": "button_font_family",
+        "label": "Font Family",
+        "info": "To use a custom font, add its URL in the Custom Fonts section",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default (theme font)"},
+          {"value": "'Lato', sans-serif", "label": "Lato"},
+          {"value": "'Montserrat', sans-serif", "label": "Montserrat"},
+          {"value": "'Jost', sans-serif", "label": "Jost"},
+          {"value": "'Roboto', sans-serif", "label": "Roboto"},
+          {"value": "'Open Sans', sans-serif", "label": "Open Sans"},
+          {"value": "'Poppins', sans-serif", "label": "Poppins"},
+          {"value": "'Inter', sans-serif", "label": "Inter"},
+          {"value": "'Nunito', sans-serif", "label": "Nunito"},
+          {"value": "'Playfair Display', serif", "label": "Playfair Display"},
+          {"value": "'Raleway', sans-serif", "label": "Raleway"},
+          {"value": "custom_1", "label": "Custom Font 1 (see Custom Fonts)"},
+          {"value": "custom_2", "label": "Custom Font 2 (see Custom Fonts)"}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Custom Fonts",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Load custom Google Fonts or any web font via URL. Paste the full stylesheet link from Google Fonts. Then select 'Custom Font 1' or 'Custom Font 2' in other settings and enter the exact font-family name."
+      },
+      {
+        "type": "header",
+        "content": "Custom Font 1"
+      },
+      {
+        "type": "text",
+        "id": "custom_font_url_1",
+        "label": "Font Stylesheet URL",
+        "info": "e.g. https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      },
+      {
+        "type": "text",
+        "id": "custom_font_name_1",
+        "label": "Font Family Name",
+        "info": "Exact name as listed on Google Fonts, e.g. Inter"
+      },
+      {
+        "type": "header",
+        "content": "Custom Font 2"
+      },
+      {
+        "type": "text",
+        "id": "custom_font_url_2",
+        "label": "Font Stylesheet URL"
+      },
+      {
+        "type": "text",
+        "id": "custom_font_name_2",
+        "label": "Font Family Name"
+      }
+    ]
   }
 ]

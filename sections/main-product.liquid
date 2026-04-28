@@ -21,7 +21,96 @@
 
 {% liquid
   assign block_buy_button = section.blocks | where: 'type', 'buy_button' | first
+  assign img_ar = section.settings.image_aspect_ratio
+  assign img_mh = section.settings.image_max_height
 %}
+
+{%- comment -%}── Product image size / aspect-ratio override ──{%- endcomment -%}
+{%- if img_ar != 'auto' or img_mh > 0 -%}
+<style>
+  {%- if img_ar != 'auto' -%}
+  /* Override aspect ratio for all product media styles in this section */
+  #shopify-section-{{ section.id }} [class*='xo-product-info-media'] .xo-image:not(.xo-image--svg) {
+    --xo-ratio-percent: {{ img_ar }} !important;
+  }
+  {%- endif -%}
+  {%- if img_mh > 0 -%}
+  /* Cap maximum height of the image area */
+  #shopify-section-{{ section.id }} [class*='xo-product-info-media'] .xo-image:not(.xo-image--svg) {
+    max-height: {{ img_mh }}px;
+    overflow: hidden;
+  }
+  /* Keep inner carousel at same cap so arrows stay in frame */
+  #shopify-section-{{ section.id }} [class*='xo-product-info-media'] xo-carousel-list,
+  #shopify-section-{{ section.id }} [class*='xo-product-info-media'] xo-carousel-slide {
+    max-height: {{ img_mh }}px;
+  }
+  {%- endif -%}
+</style>
+{%- endif -%}
+
+<style>
+  /* Mobile Product Information Responsive Optimization */
+  @media (max-width: 768px) {
+    .xo-product-info-content {
+      padding: 15px 0 !important;
+    }
+
+    .xo-product-info-content__header {
+      margin-bottom: 12px;
+    }
+
+    .xo-product-info-content__title {
+      font-size: clamp(1.3rem, 5vw, 3rem) !important;
+      margin: 0 !important;
+      line-height: 1.3 !important;
+      word-wrap: break-word;
+    }
+
+    /* Star Rating spacing */
+    .xo-product-info-content__star-rating {
+      margin: 12px 0 20px 0 !important;
+    }
+
+
+    /* Price section spacing */
+    .xo-product-info-content__price {
+      margin: 12px 0 !important;
+    }
+
+    /* Add to cart button spacing */
+    .xo-product-info-content__buy-button {
+      margin-top: 15px !important;
+    }
+
+    /* Variants spacing */
+    .xo-product-info-content__variants {
+      margin: 12px 0 !important;
+    }
+
+    /* Description spacing */
+    .xo-product-info-content__description {
+      margin: 12px 0 !important;
+      font-size: 0.9rem !important;
+      padding-top: 12px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .xo-product-info-content__title {
+      font-size: clamp(1.2rem, 4.5vw, 2.5rem) !important;
+    }
+
+    .product-benefits__text {
+      font-size: 0.85rem !important;
+    }
+
+    .product-benefits__icon {
+      width: 28px !important;
+      height: 28px !important;
+    }
+  }
+</style>
 
 <div {% render 'section-attr', style: 'z-index:99; position: relative' %}>
   {% render 'section-bg-image' %}
@@ -284,6 +373,35 @@
       "id": "product_360",
       "label": "t:sections.main_product.settings.product_360.label",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Image size"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "info": "Controls the height of the product image. 'Auto' uses the image's natural proportions.",
+      "default": "auto",
+      "options": [
+        { "value": "auto",   "label": "Auto (natural image ratio)" },
+        { "value": "0.75",   "label": "Portrait – 3:4 (tall)" },
+        { "value": "1",      "label": "Square – 1:1" },
+        { "value": "1.3333", "label": "Landscape – 4:3" },
+        { "value": "1.7778", "label": "Widescreen – 16:9 (short)" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "image_max_height",
+      "label": "Max image height (px)",
+      "info": "Caps the image height. Set to 0 to disable. Recommended: 500–700 px if the image appears too tall.",
+      "min": 0,
+      "max": 900,
+      "step": 50,
+      "unit": "px",
+      "default": 0
     },
     {
       "type": "select",
@@ -623,6 +741,83 @@
       ]
     },
     {
+      "type": "star_rating",
+      "name": "Star Rating",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "auto_calculate",
+          "label": "Auto-calculate from Reviews section",
+          "info": "When enabled, the rating and count are calculated from the blocks in your Product Reviews section on this page. Manual values below are used as fallback.",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Manual / Fallback values"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star rating (× 10, e.g. 49 = 4.9)",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "default": 49
+        },
+        {
+          "type": "text",
+          "id": "review_count",
+          "label": "Review count",
+          "default": "17,920"
+        },
+        {
+          "type": "text",
+          "id": "review_label",
+          "label": "Review label",
+          "default": "Reviews"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Filled star color",
+          "default": "#FFB800"
+        },
+        {
+          "type": "color",
+          "id": "empty_color",
+          "label": "Empty star color",
+          "default": "#E0E0E0"
+        },
+        {
+          "type": "range",
+          "id": "star_size",
+          "label": "Star size (px)",
+          "min": 16,
+          "max": 48,
+          "step": 2,
+          "default": 28
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link (optional – scrolls to reviews)"
+        },
+        {
+          "type": "number",
+          "id": "padding_top",
+          "label": "Padding top",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "id": "padding_bottom",
+          "label": "Padding bottom",
+          "default": 8
+        }
+      ]
+    },
+    {
       "type": "price",
       "name": "t:sections.main_product.blocks.price.name",
       "limit": 1,
@@ -880,6 +1075,13 @@
           "id": "share",
           "label": "t:sections.main_product.blocks.addon_buttons.share.label",
           "default": true
+        },
+        {
+          "type": "text",
+          "id": "sizeguide_label",
+          "label": "Size Guide Button Text",
+          "default": "Click for Size & Fit Chart",
+          "info": "Text shown on the Size Guide trigger button"
         },
         {
           "type": "header",
@@ -1402,6 +1604,550 @@
           "id": "padding_bottom",
           "label": "t:sections.main_product.blocks.custom_collapse.padding_bottom.label",
           "default": 30
+        }
+      ]
+    },
+    {
+      "type": "bulk_discount",
+      "name": "Bulk Discount",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section heading",
+          "default": "How Many Pairs Do You Need?"
+        },
+        {
+          "type": "header",
+          "content": "Option 1 (Single)"
+        },
+        {
+          "type": "number",
+          "id": "option1_qty",
+          "label": "Quantity",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "option1_label",
+          "label": "Label",
+          "default": "Buy 1 Pair"
+        },
+        {
+          "type": "text",
+          "id": "option1_badge",
+          "label": "Badge text (optional)"
+        },
+        {
+          "type": "range",
+          "id": "option1_discount",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Discount %",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Option 2 (Double)"
+        },
+        {
+          "type": "number",
+          "id": "option2_qty",
+          "label": "Quantity",
+          "default": 2
+        },
+        {
+          "type": "text",
+          "id": "option2_label",
+          "label": "Label",
+          "default": "Buy 2 Pairs"
+        },
+        {
+          "type": "text",
+          "id": "option2_badge",
+          "label": "Badge text (optional)",
+          "default": "Most Popular"
+        },
+        {
+          "type": "range",
+          "id": "option2_discount",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Discount %",
+          "default": 10
+        },
+        {
+          "type": "header",
+          "content": "Option 3 (Triple)"
+        },
+        {
+          "type": "number",
+          "id": "option3_qty",
+          "label": "Quantity",
+          "default": 3
+        },
+        {
+          "type": "text",
+          "id": "option3_label",
+          "label": "Label",
+          "default": "Buy 3 Pairs"
+        },
+        {
+          "type": "text",
+          "id": "option3_badge",
+          "label": "Badge text (optional)",
+          "default": "Best Value"
+        },
+        {
+          "type": "range",
+          "id": "option3_discount",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Discount %",
+          "default": 20
+        },
+        {
+          "type": "header",
+          "content": "Font Sizes"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "label": "Section heading size",
+          "min": 11,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "label_font_size",
+          "label": "Option label size",
+          "min": 11,
+          "max": 22,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "price_font_size",
+          "label": "Price total size",
+          "min": 12,
+          "max": 26,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "sub_font_size",
+          "label": "Per-item & savings size",
+          "min": 10,
+          "max": 18,
+          "step": 1,
+          "unit": "px",
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "badge_font_size",
+          "label": "Badge text size",
+          "min": 9,
+          "max": 16,
+          "step": 1,
+          "unit": "px",
+          "default": 11
+        },
+        {
+          "type": "header",
+          "content": "Spacing"
+        },
+        {
+          "type": "number",
+          "id": "padding_top",
+          "label": "Padding top",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "id": "padding_bottom",
+          "label": "Padding bottom",
+          "default": 20
+        }
+      ]
+    },
+    {
+      "type": "product-benefits",
+      "name": "Product Benefits",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Benefit 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit1_image",
+          "label": "Benefit 1 - Upload Image"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit1_icon",
+          "label": "Benefit 1 - Icon (SVG)",
+          "placeholder": "<svg>...</svg>"
+        },
+        {
+          "type": "text",
+          "id": "benefit1_text",
+          "label": "Benefit 1 - Text",
+          "default": "Relieves heel, knee & back pain"
+        },
+        {
+          "type": "header",
+          "content": "Benefit 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit2_image",
+          "label": "Benefit 2 - Upload Image"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit2_icon",
+          "label": "Benefit 2 - Icon (SVG)",
+          "placeholder": "<svg>...</svg>"
+        },
+        {
+          "type": "text",
+          "id": "benefit2_text",
+          "label": "Benefit 2 - Text",
+          "default": "Developed with podiatrists"
+        },
+        {
+          "type": "header",
+          "content": "Benefit 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit3_image",
+          "label": "Benefit 3 - Upload Image"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit3_icon",
+          "label": "Benefit 3 - Icon (SVG)",
+          "placeholder": "<svg>...</svg>"
+        },
+        {
+          "type": "text",
+          "id": "benefit3_text",
+          "label": "Benefit 3 - Text",
+          "default": "Free shipping & free exchanges"
+        },
+        {
+          "type": "header",
+          "content": "Sizing & Spacing"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon Size (px)",
+          "min": 30,
+          "max": 80,
+          "step": 5,
+          "unit": "px",
+          "default": 60
+        },
+        {
+          "type": "range",
+          "id": "text_font_size",
+          "label": "Text Font Size (rem)",
+          "min": 0.8,
+          "max": 2,
+          "step": 0.1,
+          "unit": "rem",
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "item_gap",
+          "label": "Gap Between Benefits (px)",
+          "min": 10,
+          "max": 40,
+          "step": 2,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "item_gap_mobile",
+          "label": "Gap Between Benefits - Mobile (px)",
+          "min": 6,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "text_icon_gap",
+          "label": "Gap Between Icon and Text (px)",
+          "min": 6,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 15
+        },
+        {
+          "type": "number",
+          "id": "padding_top",
+          "label": "Padding Top (px)",
+          "default": 10
+        },
+        {
+          "type": "number",
+          "id": "padding_bottom",
+          "label": "Padding Bottom (px)",
+          "default": 10
+        }
+      ]
+    },
+    {
+      "type": "guarantee",
+      "name": "Guarantee Block",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Item 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "item1_image",
+          "label": "Item 1 - Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "item1_heading",
+          "label": "Item 1 - Heading",
+          "default": "45-Day Comfort Guarantee"
+        },
+        {
+          "type": "textarea",
+          "id": "item1_subtext",
+          "label": "Item 1 - Subtext",
+          "default": "Feel real relief or get a full refund."
+        },
+        {
+          "type": "header",
+          "content": "Item 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "item2_image",
+          "label": "Item 2 - Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "item2_heading",
+          "label": "Item 2 - Heading",
+          "default": "Trusted by 500,000+ Workers"
+        },
+        {
+          "type": "textarea",
+          "id": "item2_subtext",
+          "label": "Item 2 - Subtext",
+          "default": "Built for long shifts on hard concrete floors."
+        },
+        {
+          "type": "header",
+          "content": "Item 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "item3_image",
+          "label": "Item 3 - Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "item3_heading",
+          "label": "Item 3 - Heading",
+          "default": "Free Shipping & Free Exchanges"
+        },
+        {
+          "type": "textarea",
+          "id": "item3_subtext",
+          "label": "Item 3 - Subtext",
+          "default": "Fast, tracked delivery right to your door."
+        },
+        {
+          "type": "header",
+          "content": "Item 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "item4_image",
+          "label": "Item 4 - Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "item4_heading",
+          "label": "Item 4 - Heading",
+          "default": "Finish 12-Hour Shifts Without Foot Pain"
+        },
+        {
+          "type": "textarea",
+          "id": "item4_subtext",
+          "label": "Item 4 - Subtext",
+          "default": "Support that lasts your entire shift."
+        },
+        {
+          "type": "header",
+          "content": "Desktop Typography"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size",
+          "label": "Heading Font Size (px)",
+          "min": 14,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 18
+        },
+        {
+          "type": "select",
+          "id": "heading_font_weight",
+          "label": "Heading Font Weight",
+          "default": "700",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semi Bold" },
+            { "value": "700", "label": "Bold" },
+            { "value": "800", "label": "Extra Bold" }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "subtext_font_size",
+          "label": "Subtext Font Size (px)",
+          "min": 12,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 15
+        },
+        {
+          "type": "color",
+          "id": "subtext_color",
+          "label": "Subtext Color",
+          "default": "#666666"
+        },
+        {
+          "type": "header",
+          "content": "Mobile Typography"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size_mobile",
+          "label": "Heading Font Size - Mobile (px)",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "subtext_font_size_mobile",
+          "label": "Subtext Font Size - Mobile (px)",
+          "min": 11,
+          "max": 18,
+          "step": 1,
+          "unit": "px",
+          "default": 13
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon Size - Desktop (px)",
+          "min": 24,
+          "max": 72,
+          "step": 4,
+          "unit": "px",
+          "default": 44
+        },
+        {
+          "type": "range",
+          "id": "icon_size_mobile",
+          "label": "Icon Size - Mobile (px)",
+          "min": 20,
+          "max": 60,
+          "step": 4,
+          "unit": "px",
+          "default": 32
+        },
+        {
+          "type": "range",
+          "id": "item_gap",
+          "label": "Gap Between Items (px)",
+          "min": 8,
+          "max": 40,
+          "step": 2,
+          "unit": "px",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "item_gap_mobile",
+          "label": "Gap Between Items - Mobile (px)",
+          "min": 6,
+          "max": 30,
+          "step": 2,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "icon_text_gap",
+          "label": "Icon to Text Gap (px)",
+          "min": 6,
+          "max": 30,
+          "step": 2,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "number",
+          "id": "padding_top",
+          "label": "Padding Top (px)",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "id": "padding_bottom",
+          "label": "Padding Bottom (px)",
+          "default": 20
         }
       ]
     },

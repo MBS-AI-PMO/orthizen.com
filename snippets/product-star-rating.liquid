@@ -1,0 +1,188 @@
+{% comment %}
+  Renders a star rating row for the product page.
+
+  Accepts:
+  - block:   {Object} Block object from main-product section (required)
+  - product: {Product} Shopify product object (required)
+
+  Usage:
+  {% render 'product-star-rating', block: block, product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign psr_id      = 'psr-' | append: block.id
+  assign rating_raw  = block.settings.rating
+  assign star_color  = block.settings.star_color  | default: '#FFB800'
+  assign empty_color = block.settings.empty_color | default: '#E0E0E0'
+  assign star_size   = block.settings.star_size   | default: 28
+
+  assign rating_whole   = rating_raw | divided_by: 10
+  assign rating_decimal = rating_raw | modulo: 10
+  assign rating_pct     = rating_raw | times: 2
+
+  assign review_count = block.settings.review_count
+  assign review_label = block.settings.review_label | default: 'Reviews'
+
+  assign link_url  = block.settings.link_url
+  assign link_text = block.settings.link_text
+-%}
+
+<div class="psr" id="{{ psr_id }}" {{ block.shopify_attributes }}>
+
+  {%- comment -%} ── star track ── {%- endcomment -%}
+  <div class="psr__stars" aria-label="{{ rating_whole }}.{{ rating_decimal }} out of 5 stars">
+    {%- comment -%} empty layer {%- endcomment -%}
+    <div class="psr__row psr__row--empty" aria-hidden="true">
+      {% render 'icon', name: 'star', icon_size: star_size, color: empty_color %}
+      {% render 'icon', name: 'star', icon_size: star_size, color: empty_color %}
+      {% render 'icon', name: 'star', icon_size: star_size, color: empty_color %}
+      {% render 'icon', name: 'star', icon_size: star_size, color: empty_color %}
+      {% render 'icon', name: 'star', icon_size: star_size, color: empty_color %}
+    </div>
+    {%- comment -%} filled layer – width clips to the rating % {%- endcomment -%}
+    <div class="psr__row psr__row--filled" aria-hidden="true" style="width:{{ rating_pct }}%">
+      {% render 'icon', name: 'star', icon_size: star_size, color: star_color %}
+      {% render 'icon', name: 'star', icon_size: star_size, color: star_color %}
+      {% render 'icon', name: 'star', icon_size: star_size, color: star_color %}
+      {% render 'icon', name: 'star', icon_size: star_size, color: star_color %}
+      {% render 'icon', name: 'star', icon_size: star_size, color: star_color %}
+    </div>
+  </div>
+
+  {%- comment -%} ── text: score + count ── {%- endcomment -%}
+  <div class="psr__meta">
+    <span class="psr__score">{{ rating_whole }}.{{ rating_decimal }}</span>
+    {%- if review_count != blank -%}
+      {%- if link_url != blank -%}
+        <a class="psr__count" href="{{ link_url }}">
+          ({{ review_count }} {{ review_label }})
+        </a>
+      {%- else -%}
+        <span class="psr__count">({{ review_count }} {{ review_label }})</span>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+
+</div>
+
+<style>
+  .psr {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── star track ── */
+  .psr__stars {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  .psr__row {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .psr__row svg {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* filled layer sits on top, clipped by its width */
+  .psr__row--filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* ── text ── */
+  .psr__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .psr__score {
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1;
+    color: currentColor;
+  }
+
+  .psr__count {
+    font-size: 1.45rem;
+    font-weight: 500;
+    color: currentColor;
+    opacity: 0.75;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  a.psr__count:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 480px) {
+    .psr__score  { font-size: 1.35rem; }
+    .psr__count  { font-size: 1.25rem; }
+  }
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  var AUTO = {{ block.settings.auto_calculate | json }};
+
+  /* ── format integer with commas, e.g. 12345 → "12,345" ── */
+  function fmtCount(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  /* ── push calculated stats into the DOM ── */
+  function applyStats(avgX10, count) {
+    var whole   = Math.floor(avgX10 / 10);
+    var decimal = avgX10 % 10;
+    var fillPct = avgX10 * 2; /* avgX10 / 50 * 100 */
+
+    var scoreEl  = document.querySelector('#{{ psr_id }} .psr__score');
+    var filledEl = document.querySelector('#{{ psr_id }} .psr__row--filled');
+    var trackEl  = document.querySelector('#{{ psr_id }} .psr__stars');
+    var countEl  = document.querySelector('#{{ psr_id }} .psr__count');
+
+    if (scoreEl)  scoreEl.textContent  = whole + '.' + decimal;
+    if (filledEl) filledEl.style.width = fillPct + '%';
+    if (trackEl)  trackEl.setAttribute('aria-label', whole + '.' + decimal + ' out of 5 stars');
+
+    if (countEl) {
+      var label = '{{ block.settings.review_label | escape }}';
+      countEl.textContent = '(' + fmtCount(count) + ' ' + label + ')';
+    }
+  }
+
+  /* ── read the JSON data tag published by product-reviews.liquid ── */
+  function tryAutoCalculate() {
+    var dataEl = document.getElementById('psr-review-data');
+    if (!dataEl) return;
+    try {
+      var data = JSON.parse(dataEl.textContent);
+      if (data && data.count > 0) applyStats(data.avgX10, data.count);
+    } catch (e) { /* silently ignore parse errors */ }
+  }
+
+  if (AUTO) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', tryAutoCalculate);
+    } else {
+      tryAutoCalculate();
+    }
+  }
+})();
+</script>

@@ -1,0 +1,455 @@
+<section class='img-list' id='img-list-{{ section.id }}' style='background-color: {{ section.settings.bg_color }};'>
+  {% if section.settings.section_heading != blank or section.settings.subheading != blank %}
+    <div class='img-list__header'>
+      {% if section.settings.section_heading != blank %}
+        <h2 class='img-list__heading' style='color: {{ section.settings.heading_color }}; font-weight: {{ section.settings.heading_font_weight }}; max-width: {{ section.settings.heading_max_width }}; text-align: {{ section.settings.heading_text_align }};'>
+          {{ section.settings.section_heading }}
+        </h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class='img-list__subheading' style='color: {{ section.settings.subheading_color }}; font-size: {{ section.settings.subheading_font_size }}px; text-align: {{ section.settings.subheading_text_align }}; max-width: {{ section.settings.subheading_max_width }};'>
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class='img-list__body img-list__body--{{ section.settings.image_position }}'>
+    <div class='img-list__image-col'>
+      {% if section.settings.main_image != blank %}
+        <img
+          src='{{ section.settings.main_image | image_url: width: 1000 }}'
+          alt='{{ section.settings.section_heading }}'
+          class='img-list__img'
+          style='border-radius: {{ section.settings.image_border_radius }}px;'
+          loading='lazy'
+        >
+      {% endif %}
+    </div>
+
+    <div class='img-list__features-col'>
+      {% for block in section.blocks %}
+        {% if block.type == 'feature' %}
+          <div class='img-list__feature-item' style='background: {{ section.settings.feature_items_bg }}; border-radius: {{ section.settings.feature_item_border_radius }}px; padding: {{ section.settings.feature_item_padding }}; margin-bottom: {{ section.settings.feature_item_margin_bottom }}px;' {{ block.shopify_attributes }}>
+            <div class='img-list__feature-icon' style='width: {{ section.settings.feature_item_icon_size }}px; height: {{ section.settings.feature_item_icon_size }}px; flex-shrink: 0;'>
+              {% if block.settings.icon_image != blank %}
+                <img src='{{ block.settings.icon_image | image_url: width: 80 }}' alt='' width='{{ section.settings.feature_item_icon_size }}' height='{{ section.settings.feature_item_icon_size }}' loading='lazy'>
+              {% else %}
+                <div class='img-list__feature-icon-placeholder' style='background: #1364b0; border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700;'>✓</div>
+              {% endif %}
+            </div>
+            <div class='img-list__feature-text'>
+              {% if block.settings.heading != blank %}
+                <h3 class='img-list__feature-heading' style='font-size: {{ block.settings.heading_font_size }}px; font-weight: {{ block.settings.heading_font_weight }}; color: {{ block.settings.heading_color }}; line-height: {{ block.settings.heading_line_height }}; margin: 0 0 4px;'>
+                  {{ block.settings.heading }}
+                </h3>
+              {% endif %}
+              {% if block.settings.description != blank %}
+                <p class='img-list__feature-desc' style='font-size: {{ block.settings.description_font_size }}px; color: {{ block.settings.description_color }}; margin: 0; line-height: 1.55;'>
+                  {{ block.settings.description }}
+                </p>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #img-list-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    box-sizing: border-box;
+  }
+  #img-list-{{ section.id }} .img-list__header {
+    max-width: 1500px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  #img-list-{{ section.id }} .img-list__heading {
+    margin: 0;
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    line-height: {{ section.settings.heading_line_height_desktop }};
+  }
+  #img-list-{{ section.id }} .img-list__subheading { margin: 0; }
+
+  #img-list-{{ section.id }} .img-list__body {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  #img-list-{{ section.id }} .img-list__body--left  { flex-direction: row; }
+  #img-list-{{ section.id }} .img-list__body--right { flex-direction: row-reverse; }
+
+  #img-list-{{ section.id }} .img-list__image-col {
+    flex: 0 0 {{ section.settings.image_width_desktop }};
+    max-width: {{ section.settings.image_width_desktop }};
+  }
+  #img-list-{{ section.id }} .img-list__img { width: 100%; height: auto; display: block; }
+  #img-list-{{ section.id }} .img-list__features-col { flex: 1; }
+  #img-list-{{ section.id }} .img-list__feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    box-sizing: border-box;
+  }
+  #img-list-{{ section.id }} .img-list__feature-text { flex: 1; }
+
+  @media (max-width: 768px) {
+    #img-list-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    #img-list-{{ section.id }} .img-list__header { padding: 0 16px; margin-bottom: 24px; }
+    #img-list-{{ section.id }} .img-list__body {
+      flex-direction: column;
+      padding: 0 16px;
+      gap: 24px;
+    }
+    #img-list-{{ section.id }} .img-list__image-col { flex: none; max-width: 100%; width: 100%; }
+    #img-list-{{ section.id }} .img-list__heading { font-size: {{ section.settings.heading_font_size_mobile }}px; line-height: {{ section.settings.heading_line_height_mobile }}; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Image With Features",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Section Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": "Engineered to Finish 12-Hour Shifts Without Foot, Knee or Back Pain."
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Heading size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading size (mobile)",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "label": "Heading weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "default": 600
+    },
+    {
+      "type": "text",
+      "id": "heading_line_height_desktop",
+      "label": "Line height (desktop)",
+      "default": "normal"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_height_mobile",
+      "label": "Line height (mobile)",
+      "default": "30px"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#0b1428"
+    },
+    {
+      "type": "text",
+      "id": "heading_max_width",
+      "label": "Heading max width",
+      "default": "700px"
+    },
+    {
+      "type": "select",
+      "id": "heading_text_align",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Each feature is crafted with purpose to give you pain-free steps and all-day support."
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size",
+      "label": "Subheading size",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "subheading_text_align",
+      "label": "Subheading alignment",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "subheading_max_width",
+      "label": "Subheading max width",
+      "default": "680px"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image side",
+      "options": [
+        { "value": "left",  "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "image_width_desktop",
+      "label": "Image width (desktop)",
+      "default": "50%"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Feature Cards"
+    },
+    {
+      "type": "color",
+      "id": "feature_items_bg",
+      "label": "Card background",
+      "default": "#eef3fa"
+    },
+    {
+      "type": "range",
+      "id": "feature_item_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "text",
+      "id": "feature_item_padding",
+      "label": "Card padding",
+      "default": "15px 18px"
+    },
+    {
+      "type": "range",
+      "id": "feature_item_margin_bottom",
+      "label": "Gap between cards",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "feature_item_icon_size",
+      "label": "Icon size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Feature Heading"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size",
+          "label": "Heading font size",
+          "min": 14,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 18
+        },
+        {
+          "type": "range",
+          "id": "heading_font_weight",
+          "label": "Heading font weight",
+          "min": 300,
+          "max": 900,
+          "step": 100,
+          "default": 700
+        },
+        {
+          "type": "text",
+          "id": "heading_line_height",
+          "label": "Heading line height",
+          "default": "26px"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading color",
+          "default": "#0b1428"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Feature description goes here."
+        },
+        {
+          "type": "range",
+          "id": "description_font_size",
+          "label": "Description font size",
+          "min": 12,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Description color",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image With Features",
+      "blocks": [
+        { "type": "feature", "settings": { "heading": "StretchFit Knit Material", "description": "Adapts to swelling, contours your foot, and eliminates pressure — perfect for all-day wear." } },
+        { "type": "feature", "settings": { "heading": "Roomy Toe Box", "description": "Provides relief for wide feet, bunions, or sensitive toes without squeezing." } },
+        { "type": "feature", "settings": { "heading": "Targeted Arch Support", "description": "Cradles your arch to reduce strain and support alignment — doctor-recommended comfort." } },
+        { "type": "feature", "settings": { "heading": "Padded, Seamless Interior", "description": "No rubbing, no irritation. Soft, supportive cushioning for sensitive or swollen feet." } },
+        { "type": "feature", "settings": { "heading": "Shock-Reducing Sole", "description": "Engineered heel-to-toe impact absorption to ease pain and keep you moving forward." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,980 @@
+<section class="reviews-wrapper">
+  {% render 'section-bg-image' %}
+  <xo-container {% render 'section-layout' %}>
+    {% if section.settings.title %}
+      <div class="reviews-header">
+        <h2 class="reviews-title">{{ section.settings.title }}</h2>
+        {% if section.settings.description %}
+          <p class="reviews-subtitle">{{ section.settings.description }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <!-- Write a Review Form Section -->
+    {% if section.settings.show_write_form %}
+      <div class="reviews-write-section">
+        <button class="reviews-write-toggle" id="writeReviewToggle">
+          <span class="toggle-text">Write a Review</span>
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="reviews-write-form" id="writeReviewForm" style="display: none;">
+          {%- form 'contact', id: 'ReviewForm', class: 'review-form' -%}
+
+            {% if form.posted_successfully? %}
+              <div class="review-form-success">
+                <p>Thank you for your review! We appreciate your feedback and will review it shortly.</p>
+              </div>
+            {% endif %}
+
+            {% if form.errors %}
+              <div class="review-form-error">
+                <p>Please fill in all required fields.</p>
+              </div>
+            {% endif %}
+
+            <div class="form-group">
+              <label for="ReviewName">Name *</label>
+              <input
+                type="text"
+                id="ReviewName"
+                name="contact[name]"
+                placeholder="Your name"
+                required
+                value="{{ form.name }}"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="ReviewRole">Job Title / Role *</label>
+              <input
+                type="text"
+                id="ReviewRole"
+                name="contact[role]"
+                placeholder="e.g., Nurse, Manager, Teacher"
+                required
+                value="{{ form.role }}"
+              >
+            </div>
+
+            <div class="form-group">
+              <label>Rating *</label>
+              <div class="review-form-stars" id="reviewStars">
+                <button type="button" class="form-star" data-rating="1" title="1 star">★</button>
+                <button type="button" class="form-star" data-rating="2" title="2 stars">★</button>
+                <button type="button" class="form-star" data-rating="3" title="3 stars">★</button>
+                <button type="button" class="form-star" data-rating="4" title="4 stars">★</button>
+                <button type="button" class="form-star" data-rating="5" title="5 stars">★</button>
+              </div>
+              <input type="hidden" id="ReviewRating" name="contact[rating]" value="5" required>
+            </div>
+
+            <div class="form-group">
+              <label for="ReviewText">Your Review *</label>
+              <textarea
+                id="ReviewText"
+                name="contact[body]"
+                placeholder="Share your experience with this product..."
+                required
+                rows="5"
+              >{{ form.body }}</textarea>
+            </div>
+
+            <input type="hidden" name="contact[subject]" value="New Product Review">
+            <input type="hidden" name="contact[tags]" value="product-review">
+
+            <button type="submit" class="review-form-submit">Submit Review</button>
+          {%- endform -%}
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Reviews Grid -->
+    <div class="reviews-container" style="--max-columns: {{ section.settings.max_columns }}">
+      {% if section.blocks.size > 0 %}
+        {%- for block in section.blocks -%}
+          {% if block.settings.reviewer_image %}
+            <!-- Review Card with Image -->
+            <div class="review-card review-card--with-image">
+              <div class="review-card-image">
+                <img
+                  src="{{ block.settings.reviewer_image | image_url: width: 240 }}"
+                  alt="{{ block.settings.author_name }}"
+                  class="review-image"
+                  loading="lazy"
+                >
+              </div>
+              <div class="review-card-body">
+                <div class="review-header">
+                  <div class="review-info">
+                    <h3 class="review-author">{{ block.settings.author_name }}</h3>
+                    <p class="review-role">{{ block.settings.author_role }}</p>
+                  </div>
+                  <div class="review-rating">
+                    {%- for i in (1..5) -%}
+                      {% if i <= block.settings.rating %}
+                        <svg class="review-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                      {% else %}
+                        <svg class="review-star review-star-empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                      {% endif %}
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="review-text">{{ block.settings.review_text }}</p>
+                <p class="review-date">{{ block.settings.review_date }}</p>
+              </div>
+            </div>
+          {% else %}
+            <!-- Review Card Text Only -->
+            <div class="review-card review-card--text-only">
+              <div class="review-header">
+                <div class="review-info">
+                  <h3 class="review-author">{{ block.settings.author_name }}</h3>
+                  <p class="review-role">{{ block.settings.author_role }}</p>
+                </div>
+                <div class="review-rating">
+                  {%- for i in (1..5) -%}
+                    {% if i <= block.settings.rating %}
+                      <svg class="review-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                    {% else %}
+                      <svg class="review-star review-star-empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                    {% endif %}
+                  {%- endfor -%}
+                </div>
+              </div>
+              <p class="review-text">{{ block.settings.review_text }}</p>
+              <p class="review-date">{{ block.settings.review_date }}</p>
+            </div>
+          {% endif %}
+        {%- endfor -%}
+      {% else %}
+        <p class="reviews-empty">No reviews yet. Be the first to review this product!</p>
+      {% endif %}
+    </div>
+  </xo-container>
+
+  {%- comment -%}
+    Hidden data block — read by product-star-rating.liquid to auto-calculate
+    the aggregate rating and review count from the blocks entered in this section.
+  {%- endcomment -%}
+  {%- liquid
+    assign r_count  = 0
+    assign r_sum    = 0
+    for block in section.blocks
+      if block.type == 'customer_review'
+        assign r_count = r_count | plus: 1
+        assign r_sum   = r_sum   | plus: block.settings.rating
+      endif
+    endfor
+    if r_count > 0
+      assign r_avg_x10 = r_sum | times: 10 | divided_by: r_count
+    else
+      assign r_avg_x10 = 0
+    endif
+  -%}
+  <script type="application/json" id="psr-review-data">
+    { "count": {{ r_count }}, "avgX10": {{ r_avg_x10 }} }
+  </script>
+
+</section>
+
+<script>
+  // Write a Review Form Toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('writeReviewToggle');
+    const form = document.getElementById('writeReviewForm');
+    const toggleIcon = toggle.querySelector('.toggle-icon');
+
+    if (toggle && form) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isHidden = form.style.display === 'none';
+        form.style.display = isHidden ? 'block' : 'none';
+        toggleIcon.textContent = isHidden ? '−' : '+';
+      });
+    }
+
+    // Star Rating Selector
+    const stars = document.querySelectorAll('.form-star');
+    const ratingInput = document.getElementById('ReviewRating');
+
+    stars.forEach(star => {
+      star.addEventListener('click', function(e) {
+        e.preventDefault();
+        const rating = this.getAttribute('data-rating');
+        ratingInput.value = rating;
+
+        // Update visual state
+        stars.forEach((s, index) => {
+          if (index < rating) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      });
+
+      // Hover effect
+      star.addEventListener('mouseenter', function() {
+        const rating = this.getAttribute('data-rating');
+        stars.forEach((s, index) => {
+          if (index < rating) {
+            s.style.opacity = '1';
+          } else {
+            s.style.opacity = '0.3';
+          }
+        });
+      });
+    });
+
+    // Reset hover on mouse leave
+    const starsContainer = document.getElementById('reviewStars');
+    if (starsContainer) {
+      starsContainer.addEventListener('mouseleave', function() {
+        stars.forEach(s => {
+          s.style.opacity = '1';
+        });
+      });
+    }
+  });
+</script>
+
+<style>
+/* Product Reviews Section - Completely Isolated */
+
+.reviews-wrapper {
+  all: initial;
+  display: block;
+  width: 100%;
+  margin-top: {{ section.settings.margin_top }}px !important;
+  margin-bottom: {{ section.settings.margin_bottom }}px !important;
+  padding-top: {{ section.settings.padding_top }}px !important;
+  padding-bottom: {{ section.settings.padding_bottom }}px !important;
+  padding-left: {{ section.settings.padding_left }}px !important;
+  padding-right: {{ section.settings.padding_right }}px !important;
+}
+
+.reviews-wrapper * {
+  box-sizing: border-box;
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: {{ section.settings.header_margin }}px;
+}
+
+.reviews-wrapper .reviews-title {
+  font-size: {{ section.settings.title_font_size }}rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: #000;
+  letter-spacing: -0.5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.reviews-wrapper .reviews-subtitle {
+  font-size: {{ section.settings.subtitle_font_size }}rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Write a Review Section */
+.reviews-wrapper .reviews-write-section {
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.reviews-wrapper .reviews-write-toggle {
+  all: unset;
+  display: inline-block;
+  padding: 12px 24px;
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+}
+
+.reviews-wrapper .reviews-write-toggle:hover {
+  background: #333;
+  border-color: #333;
+}
+
+.reviews-wrapper .reviews-write-toggle:active {
+  transform: scale(0.98);
+}
+
+.reviews-wrapper .toggle-icon {
+  margin-left: 8px;
+  font-size: 1.2rem;
+}
+
+.reviews-wrapper .reviews-write-form {
+  margin-top: 20px;
+  padding: 30px;
+  background: #f9f9f9;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reviews-wrapper .review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reviews-wrapper .review-form-success {
+  padding: 15px 20px;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+  color: #155724;
+  font-size: 0.95rem;
+}
+
+.reviews-wrapper .review-form-error {
+  padding: 15px 20px;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 6px;
+  color: #721c24;
+  font-size: 0.95rem;
+}
+
+.reviews-wrapper .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reviews-wrapper .form-group label {
+  font-weight: 600;
+  color: #000;
+  font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.reviews-wrapper .form-group input[type="text"],
+.reviews-wrapper .form-group textarea {
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  transition: border-color 0.2s ease;
+}
+
+.reviews-wrapper .form-group input[type="text"]:focus,
+.reviews-wrapper .form-group textarea:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-wrapper .review-form-stars {
+  display: flex;
+  gap: 12px;
+}
+
+.reviews-wrapper .form-star {
+  all: unset;
+  font-size: 2rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.reviews-wrapper .form-star:hover,
+.reviews-wrapper .form-star.active {
+  color: #ffc107;
+}
+
+.reviews-wrapper .review-form-submit {
+  all: unset;
+  align-self: flex-start;
+  padding: 12px 28px;
+  background: #000;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.reviews-wrapper .review-form-submit:hover {
+  background: #333;
+}
+
+/* Reviews Grid Container */
+.reviews-wrapper .reviews-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--max-columns, 3), 1fr);
+  gap: {{ section.settings.review_gap }}px;
+}
+
+/* Review Cards */
+.reviews-wrapper .review-card {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.reviews-wrapper .review-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-color: #d8d8d8;
+  transform: translateY(-2px);
+}
+
+/* Text-only Card */
+.reviews-wrapper .review-card--text-only {
+  padding: {{ section.settings.card_padding }}px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Card with Image */
+.reviews-wrapper .review-card--with-image {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  grid-column: span 2;
+}
+
+.reviews-wrapper .review-card-image {
+  width: 35%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.reviews-wrapper .review-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.reviews-wrapper .review-card-body {
+  padding: {{ section.settings.card_padding }}px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Review Header and Content */
+.reviews-wrapper .review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 16px;
+}
+
+.reviews-wrapper .review-info {
+  flex: 1;
+}
+
+.reviews-wrapper .review-author {
+  font-size: {{ section.settings.author_font_size }}rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: #000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.reviews-wrapper .review-role {
+  font-size: {{ section.settings.role_font_size }}rem;
+  color: #999;
+  margin: 0;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.reviews-wrapper .review-rating {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.reviews-wrapper .review-star {
+  width: 18px;
+  height: 18px;
+  color: #ffc107;
+  margin: 0;
+  padding: 0;
+}
+
+.reviews-wrapper .review-star-empty {
+  color: #e0e0e0;
+}
+
+.reviews-wrapper .review-text {
+  font-size: {{ section.settings.text_font_size }}rem;
+  color: #333;
+  margin: 0 0 8px 0;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.reviews-wrapper .review-date {
+  font-size: {{ section.settings.date_font_size }}rem;
+  color: #999;
+  margin: 0;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.reviews-wrapper .reviews-empty {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  padding: 40px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .reviews-wrapper .reviews-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reviews-wrapper .review-card--with-image {
+    grid-column: span 1;
+  }
+
+  .reviews-wrapper .reviews-title {
+    font-size: calc({{ section.settings.title_font_size }}rem - 0.3rem);
+  }
+
+  .reviews-wrapper .review-card {
+    padding: {{ section.settings.card_padding | minus: 5 }}px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-wrapper .reviews-container {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-wrapper .review-card--with-image {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+
+  .reviews-wrapper .review-card-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .reviews-wrapper .reviews-title {
+    font-size: calc({{ section.settings.title_font_size }}rem - 0.5rem);
+  }
+
+  .reviews-wrapper .review-header {
+    flex-direction: column;
+  }
+
+  .reviews-wrapper .review-rating {
+    width: 100%;
+  }
+
+  .reviews-wrapper .review-card {
+    padding: {{ section.settings.card_padding | minus: 10 }}px;
+  }
+
+  .reviews-wrapper .reviews-write-form {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .reviews-wrapper .reviews-title {
+    font-size: calc({{ section.settings.title_font_size }}rem - 0.8rem);
+  }
+
+  .reviews-wrapper .review-author {
+    font-size: {{ section.settings.author_font_size | minus: 0.2 }}rem;
+  }
+
+  .reviews-wrapper .review-text {
+    font-size: {{ section.settings.text_font_size | minus: 0.1 }}rem;
+  }
+
+  .reviews-wrapper .form-group input[type="text"],
+  .reviews-wrapper .form-group textarea {
+    font-size: 16px; /* Prevents zoom on mobile */
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Product Reviews",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Subtitle/Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_write_form",
+      "label": "Show Write a Review Form",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "max_columns",
+      "label": "Grid Columns (Desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title Font Size (rem)",
+      "min": 1.5,
+      "max": 3.5,
+      "step": 0.1,
+      "default": 2.2
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "label": "Subtitle Font Size (rem)",
+      "min": 0.8,
+      "max": 1.3,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "author_font_size",
+      "label": "Author Name Font Size (rem)",
+      "min": 0.9,
+      "max": 1.3,
+      "step": 0.1,
+      "default": 1.1
+    },
+    {
+      "type": "range",
+      "id": "role_font_size",
+      "label": "Author Role Font Size (rem)",
+      "min": 0.7,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.8
+    },
+    {
+      "type": "range",
+      "id": "text_font_size",
+      "label": "Review Text Font Size (rem)",
+      "min": 0.8,
+      "max": 1.2,
+      "step": 0.1,
+      "default": 0.9
+    },
+    {
+      "type": "range",
+      "id": "date_font_size",
+      "label": "Date Font Size (rem)",
+      "min": 0.7,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.8
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card Padding (px)",
+      "min": 15,
+      "max": 40,
+      "step": 5,
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "review_gap",
+      "label": "Gap Between Reviews (px)",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "header_margin",
+      "label": "Space Below Title (px)",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top (px)",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom (px)",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left (px)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right (px)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Review",
+      "type": "customer_review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Reviewer Name",
+          "default": "John Doe"
+        },
+        {
+          "type": "text",
+          "id": "author_role",
+          "label": "Reviewer Role/Title",
+          "default": "Verified Customer"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review Text",
+          "default": "Great product! Highly recommend it. Excellent quality and fast shipping."
+        },
+        {
+          "type": "text",
+          "id": "review_date",
+          "label": "Review Date",
+          "default": "3 months ago"
+        },
+        {
+          "type": "image_picker",
+          "id": "reviewer_image",
+          "label": "Reviewer Photo (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Reviews",
+      "blocks": [
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Maria Johnson",
+            "author_role": "Nurse - Hospital",
+            "rating": 5,
+            "review_text": "I work 12-hour shifts in the hospital and these shoes have literally been a lifesaver. My feet feel amazing even after the longest and most demanding days. The arch support is incredible and they're so comfortable I sometimes forget I'm wearing them. My back pain has also improved!",
+            "review_date": "2 weeks ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "James Rodriguez",
+            "author_role": "Warehouse Manager",
+            "rating": 5,
+            "review_text": "Best work shoes I've ever owned in 15 years of warehouse work. Superior arch support and cushioning that actually lasts. I've tried many expensive brands but these are definitely the most comfortable. The durability is outstanding and they still look great after 3 months of heavy use!",
+            "review_date": "1 month ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Sarah Williams",
+            "author_role": "Retail Manager",
+            "rating": 5,
+            "review_text": "My plantar fasciitis pain reduced significantly within the first week of wearing these shoes. I can now work my full 10-hour shifts without the constant stabbing pain I used to experience. The heel cushioning is exceptional and provides immediate relief. Highly recommend!",
+            "review_date": "3 weeks ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Michael Chen",
+            "author_role": "Healthcare Professional",
+            "rating": 5,
+            "review_text": "Comfortable from day one - no break-in period needed. Finally found shoes that don't hurt my feet despite spending 8+ hours on them daily. The quality is outstanding, the materials are premium, and they look professional too. Best investment for my health!",
+            "review_date": "1 month ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Emma Davis",
+            "author_role": "Restaurant Manager",
+            "rating": 5,
+            "review_text": "Standing all day in a busy restaurant is no longer painful. These are absolute game-changers for anyone who spends hours on their feet. The slip-resistant sole is great and the comfort level is unmatched. Customer service was also excellent when I had a question!",
+            "review_date": "2 weeks ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "David Martinez",
+            "author_role": "Factory Worker",
+            "rating": 5,
+            "review_text": "After 10 years of factory work, my feet were in bad shape. These shoes have changed everything. The pain that I thought was permanent has significantly reduced. The orthopedic design is brilliant and the fit is perfect. My coworkers are now buying them too!",
+            "review_date": "2 weeks ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Jennifer Lee",
+            "author_role": "Teacher",
+            "rating": 5,
+            "review_text": "As a teacher who's on my feet all day managing a classroom, these shoes are perfect. The support is firm without being uncomfortable, and the cushioning is just right. My feet don't ache at the end of the day anymore. The styling is also nice - they look professional!",
+            "review_date": "3 weeks ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Robert Wilson",
+            "author_role": "Construction Supervisor",
+            "rating": 5,
+            "review_text": "Finally found shoes that provide real comfort AND stability on job sites. After decades of construction work, my feet are thanking me. The grip is excellent on various surfaces, and the durability is impressive. These are built to last and built for comfort!",
+            "review_date": "1 week ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Amanda Thompson",
+            "author_role": "Fitness Instructor",
+            "rating": 5,
+            "review_text": "I lead classes and train clients for 8-10 hours daily. My back pain and foot pain have improved dramatically since switching to these shoes. The support is perfect for both standing and walking-intensive activities. My studio members have noticed the difference in my energy levels!",
+            "review_date": "3 weeks ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Christopher Brown",
+            "author_role": "Security Guard",
+            "rating": 5,
+            "review_text": "Working 8-12 hour shifts requires footwear that you can trust. These shoes deliver on comfort, support, and durability. The orthopedic design is noticeable immediately, and the build quality is top-notch. I've already recommended them to my entire security team!",
+            "review_date": "2 weeks ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Lisa Anderson",
+            "author_role": "Nurse Practitioner",
+            "rating": 5,
+            "review_text": "Ten hours on my feet daily in the hospital was causing severe foot and leg pain. These shoes have made an enormous difference. The arch support is scientific-level amazing, and the cushioning absorbs impact perfectly. I feel like I'm walking on clouds!",
+            "review_date": "1 week ago"
+          }
+        },
+        {
+          "type": "customer_review",
+          "settings": {
+            "author_name": "Kevin Garcia",
+            "author_role": "Retail Sales Associate",
+            "rating": 5,
+            "review_text": "Working retail means constant walking and standing on hard floors. My feet were killing me by the end of each shift. These shoes are revolutionary! The comfort is immediate, the support is unreal, and they're holding up great after months of daily wear. Worth every penny!",
+            "review_date": "1 month ago"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

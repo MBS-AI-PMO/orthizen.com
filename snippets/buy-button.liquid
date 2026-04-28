@@ -67,6 +67,20 @@
         {{ form | payment_terms }}
       </xo-product-will-change>
     </div>
+    <style>
+      .buy-button__now {
+        --color-foreground: {{ settings.buynow_bg_color.red | default: 30 }}, {{ settings.buynow_bg_color.green | default: 176 }}, {{ settings.buynow_bg_color.blue | default: 20 }};
+        --color-background: {{ settings.buynow_text_color.red | default: 255 }}, {{ settings.buynow_text_color.green | default: 255 }}, {{ settings.buynow_text_color.blue | default: 255 }};
+      }
+      .buy-button__now .shopify-payment-button__button--unbranded {
+        transition: filter 0.2s !important;
+      }
+      .buy-button__now .shopify-payment-button__button--unbranded:hover:not([disabled]) {
+        background-color: rgb({{ settings.buynow_bg_color.red | default: 30 }}, {{ settings.buynow_bg_color.green | default: 176 }}, {{ settings.buynow_bg_color.blue | default: 20 }}) !important;
+        color: rgb({{ settings.buynow_text_color.red | default: 255 }}, {{ settings.buynow_text_color.green | default: 255 }}, {{ settings.buynow_text_color.blue | default: 255 }}) !important;
+        filter: brightness(0.88) !important;
+      }
+    </style>
   {% endif %}
 {%- endform -%}
 

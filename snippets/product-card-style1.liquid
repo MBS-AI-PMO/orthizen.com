@@ -65,6 +65,42 @@
   {% endcapture %}
 {% endcase %}
 
+<style>
+  .xo-product-card__stars {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 2px;
+  }
+  .xo-product-card__stars-track {
+    position: relative;
+    display: inline-block;
+    font-size: var(--star-size, 14px);
+    line-height: 1;
+    letter-spacing: 2px;
+    color: #e0e0e0;
+  }
+  .xo-product-card__stars-track::before {
+    content: '★★★★★';
+  }
+  .xo-product-card__stars-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: var(--star-color, #FFB800);
+  }
+  .xo-product-card__stars-fill::before {
+    content: '★★★★★';
+  }
+  .xo-product-card__stars-count {
+    font-size: calc(var(--star-size, 14px) - 2px);
+    color: var(--star-count-color, rgba(0,0,0,0.55));
+    line-height: 1;
+  }
+</style>
+
 {% if product %}
   <xo-product xo-product-id='{{ product.id }}' xo-section-id='{{section.id}}'>
     {% capture render_header %}
@@ -78,6 +114,16 @@
       {% endif %}
 
       {% if show_badge %}
+        {%- assign label_tag = nil -%}
+        {%- for tag in product.tags -%}
+          {%- if tag contains 'label:' -%}
+            {%- assign label_tag = tag | remove: 'label:' | strip | upcase -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if label_tag != blank -%}
+          <div class='xo-product-card__badge-left'>{{ label_tag }}</div>
+        {%- endif -%}
         <div class='xo-product-card__badge'>
           {% render 'badge-sale', product: product, use_variant: true %}
         </div>
@@ -134,6 +180,28 @@
           {{ product.title | escape }}
         </a>
       </h2>
+
+      {%- liquid
+        assign card_rating = product.metafields.reviews.rating.value
+        assign card_rating_count = product.metafields.reviews.rating_count.value
+        if card_rating != blank
+          assign rating_pct = card_rating | times: 20 | round
+          assign rating_display = card_rating
+          assign count_display = card_rating_count
+        else
+          assign rating_pct = section.settings.fallback_rating | times: 2
+          assign rating_display = section.settings.fallback_rating | divided_by: 10.0
+          assign count_display = section.settings.fallback_review_count
+        endif
+      -%}
+      <div class='xo-product-card__stars' aria-label='{{ rating_display }} out of 5 stars'>
+        <span class='xo-product-card__stars-track' aria-hidden='true'>
+          <span class='xo-product-card__stars-fill' style='width:{{ rating_pct }}%'></span>
+        </span>
+        {%- if count_display != blank -%}
+          <span class='xo-product-card__stars-count'>({{ count_display }})</span>
+        {%- endif -%}
+      </div>
 
       {% if show_description%}
         <div class='xo-product-card__description'>

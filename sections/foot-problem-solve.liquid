@@ -1,0 +1,385 @@
+<section class='foot-pain' id='foot-pain-{{ section.id }}' style='background-color: {{ section.settings.bg_color }};'>
+  <div class='foot-pain__container'>
+
+    <div class='foot-pain__content'>
+      {% if section.settings.heading != blank %}
+        <h2 class='foot-pain__heading' style='color: {{ section.settings.heading_color }}; font-weight: {{ section.settings.heading_font_weight }};'>
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class='foot-pain__subheading' style='color: {{ section.settings.subheading_color }}; font-size: {{ section.settings.subheading_font_size }}px; font-weight: {{ section.settings.subheading_font_weight }};'>
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+
+      {% assign checklist_blocks = section.blocks | where: 'type', 'checklist_item' %}
+      {% if checklist_blocks.size > 0 %}
+        <div class='foot-pain__checklist' style='--check-cols: {{ section.settings.checklist_columns }};'>
+          {% for block in checklist_blocks %}
+            <div class='foot-pain__check-item' style='margin-bottom: {{ section.settings.checklist_item_margin_bottom }}px;' {{ block.shopify_attributes }}>
+              <span class='foot-pain__check-icon' style='color: {{ section.settings.checklist_check_color }};'>✓</span>
+              <span class='foot-pain__check-text' style='font-size: {{ section.settings.checklist_font_size }}px; font-weight: {{ section.settings.checklist_font_weight }}; color: {{ section.settings.checklist_color }};'>{{ block.settings.text }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class='foot-pain__images'>
+      {% if section.settings.image_1 != blank %}
+        <img
+          src='{{ section.settings.image_1 | image_url: width: 700 }}'
+          alt=''
+          class='foot-pain__img'
+          style='border-radius: {{ section.settings.image_1_border_radius }}px;'
+          loading='lazy'
+        >
+      {% endif %}
+      {% if section.settings.image_2 != blank %}
+        <img
+          src='{{ section.settings.image_2 | image_url: width: 700 }}'
+          alt=''
+          class='foot-pain__img'
+          style='border-radius: {{ section.settings.image_2_border_radius }}px;'
+          loading='lazy'
+        >
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #foot-pain-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    box-sizing: border-box;
+  }
+  #foot-pain-{{ section.id }} .foot-pain__container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+  }
+  #foot-pain-{{ section.id }} .foot-pain__content { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+  #foot-pain-{{ section.id }} .foot-pain__heading {
+    margin: 0;
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    line-height: {{ section.settings.heading_line_height_desktop }};
+  }
+  #foot-pain-{{ section.id }} .foot-pain__subheading { margin: 0; line-height: 1.6; }
+  #foot-pain-{{ section.id }} .foot-pain__checklist {
+    display: grid;
+    grid-template-columns: repeat(var(--check-cols, 2), 1fr);
+    gap: 4px 16px;
+  }
+  #foot-pain-{{ section.id }} .foot-pain__check-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  #foot-pain-{{ section.id }} .foot-pain__check-icon { font-size: 16px; flex-shrink: 0; font-weight: 700; }
+  #foot-pain-{{ section.id }} .foot-pain__check-text { line-height: 1.4; }
+
+  #foot-pain-{{ section.id }} .foot-pain__images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ section.settings.images_gap }}px;
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+  #foot-pain-{{ section.id }} .foot-pain__img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+  @media (max-width: 768px) {
+    #foot-pain-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    #foot-pain-{{ section.id }} .foot-pain__container {
+      flex-direction: column;
+      padding: 0 16px;
+      gap: 28px;
+    }
+    #foot-pain-{{ section.id }} .foot-pain__heading { font-size: {{ section.settings.heading_font_size_mobile }}px; line-height: {{ section.settings.heading_line_height_mobile }}; }
+    #foot-pain-{{ section.id }} .foot-pain__images { flex: none; max-width: 100%; width: 100%; }
+    #foot-pain-{{ section.id }} .foot-pain__checklist { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Foot Problem Solve",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Foot Pain Doesn't Stop at Your Feet."
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Heading size (desktop)",
+      "min": 20,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading size (mobile)",
+      "min": 18,
+      "max": 42,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "label": "Font weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "text",
+      "id": "heading_line_height_desktop",
+      "label": "Line height (desktop)",
+      "default": "52px"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_height_mobile",
+      "label": "Line height (mobile)",
+      "default": "38px"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every day, we hear from customers like you who are struggling with the following problems:"
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size",
+      "label": "Subheading size",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_weight",
+      "label": "Subheading weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Checklist"
+    },
+    {
+      "type": "range",
+      "id": "checklist_columns",
+      "label": "Checklist columns",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "checklist_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "checklist_font_weight",
+      "label": "Font weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "color",
+      "id": "checklist_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "checklist_check_color",
+      "label": "Checkmark color",
+      "default": "#1eb014"
+    },
+    {
+      "type": "range",
+      "id": "checklist_item_margin_bottom",
+      "label": "Item spacing",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "range",
+      "id": "image_1_border_radius",
+      "label": "Image 1 border radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "range",
+      "id": "image_2_border_radius",
+      "label": "Image 2 border radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "images_gap",
+      "label": "Gap between images",
+      "min": 0,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "checklist_item",
+      "name": "Checklist Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Item text",
+          "default": "Pain condition"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Foot Problem Solve",
+      "blocks": [
+        { "type": "checklist_item", "settings": { "text": "Lower Back Pain" } },
+        { "type": "checklist_item", "settings": { "text": "Knee Pain" } },
+        { "type": "checklist_item", "settings": { "text": "Arthritis" } },
+        { "type": "checklist_item", "settings": { "text": "Correct Foot Position" } },
+        { "type": "checklist_item", "settings": { "text": "Plantar Fasciitis" } },
+        { "type": "checklist_item", "settings": { "text": "Pressure Distribution" } },
+        { "type": "checklist_item", "settings": { "text": "Ankle Pain" } },
+        { "type": "checklist_item", "settings": { "text": "Heel Pain" } },
+        { "type": "checklist_item", "settings": { "text": "Swelling" } },
+        { "type": "checklist_item", "settings": { "text": "Bunions" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

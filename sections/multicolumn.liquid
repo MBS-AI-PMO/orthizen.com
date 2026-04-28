@@ -1,0 +1,340 @@
+<section class='multicol' id='multicol-{{ section.id }}' style='background-color: {{ section.settings.bg_color }};'>
+  {% if section.settings.title != blank or section.settings.subheading != blank %}
+    <div class='multicol__header'>
+      {% if section.settings.title != blank %}
+        <h2 class='multicol__title' style='color: {{ section.settings.heading_color }}; font-weight: {{ section.settings.heading_font_weight }}; text-align: {{ section.settings.heading_text_align }};'>
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class='multicol__subheading' style='color: {{ section.settings.subheading_color }}; text-align: {{ section.settings.heading_text_align }};'>
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class='multicol__grid' style='--cols-desktop: {{ section.settings.columns_desktop }};'>
+    {% for block in section.blocks %}
+      {% if block.type == 'column' %}
+        <div class='multicol__item multicol__item--{{ section.settings.column_alignment }}' {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <div class='multicol__image-wrap' style='width: {{ section.settings.image_width_desktop }}px;'>
+              <img
+                src='{{ block.settings.image | image_url: width: 400 }}'
+                alt='{{ block.settings.title }}'
+                class='multicol__image'
+                style='border-radius: {{ section.settings.image_border_radius }}px;'
+                loading='lazy'
+                width='{{ section.settings.image_width_desktop }}'
+                height='{{ section.settings.image_width_desktop }}'
+              >
+            </div>
+          {% endif %}
+          {% if block.settings.title != blank %}
+            <h3 class='multicol__item-title' style='color: {{ block.settings.title_color }}; font-size: {{ block.settings.title_font_size }}px; font-weight: {{ block.settings.title_font_weight }};'>
+              {{ block.settings.title }}
+            </h3>
+          {% endif %}
+          {% if block.settings.text != blank %}
+            <p class='multicol__item-text' style='color: {{ block.settings.text_color }}; font-size: {{ block.settings.text_font_size }}px; text-align: {{ block.settings.text_align }};'>
+              {{ block.settings.text }}
+            </p>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  #multicol-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    box-sizing: border-box;
+  }
+  #multicol-{{ section.id }} .multicol__header {
+    max-width: 1500px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  #multicol-{{ section.id }} .multicol__title {
+    margin: 0;
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    line-height: 1.25;
+  }
+  #multicol-{{ section.id }} .multicol__subheading { margin: 0; font-size: 16px; }
+  #multicol-{{ section.id }} .multicol__grid {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(var(--cols-desktop, 3), 1fr);
+    gap: 32px;
+  }
+  #multicol-{{ section.id }} .multicol__item { display: flex; flex-direction: column; gap: 14px; }
+  #multicol-{{ section.id }} .multicol__item--center { align-items: center; }
+  #multicol-{{ section.id }} .multicol__item--left    { align-items: flex-start; }
+  #multicol-{{ section.id }} .multicol__image-wrap { flex-shrink: 0; }
+  #multicol-{{ section.id }} .multicol__image { width: 100%; height: auto; display: block; object-fit: cover; }
+  #multicol-{{ section.id }} .multicol__item-title { margin: 0; line-height: 1.3; }
+  #multicol-{{ section.id }} .multicol__item-text  { margin: 0; line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    #multicol-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    #multicol-{{ section.id }} .multicol__header { padding: 0 16px; }
+    #multicol-{{ section.id }} .multicol__title { font-size: {{ section.settings.heading_font_size_mobile }}px; }
+    #multicol-{{ section.id }} .multicol__grid {
+      grid-template-columns: 1fr;
+      padding: 0 16px;
+      gap: 36px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Multicolumn",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shoes Proven To Increase Comfort & Foot Mobility"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Heading size (desktop)",
+      "min": 18,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading size (mobile)",
+      "min": 16,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "label": "Heading weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "heading_text_align",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "column_alignment",
+      "label": "Column alignment",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "image_width_desktop",
+      "label": "Image size",
+      "min": 60,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Column Title"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "label": "Title font size",
+          "min": 14,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 22
+        },
+        {
+          "type": "range",
+          "id": "title_font_weight",
+          "label": "Title font weight",
+          "min": 300,
+          "max": 900,
+          "step": 100,
+          "default": 700
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color",
+          "default": "#000000"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Column description text goes here."
+        },
+        {
+          "type": "range",
+          "id": "text_font_size",
+          "label": "Text font size",
+          "min": 12,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 15
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#000000"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "options": [
+            { "value": "left",   "label": "Left" },
+            { "value": "center", "label": "Center" }
+          ],
+          "default": "center"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multicolumn",
+      "blocks": [
+        { "type": "column", "settings": { "title": "General Foot Relief", "text": "Sore feet or general pain in the feet cause discomfort and prevent you from carrying out your daily tasks. You need shoes that provide relief and make you feel like you're walking on clouds." } },
+        { "type": "column", "settings": { "title": "Plantar Fasciitis",   "text": "Plantar fasciitis usually begins with a dull, intermittent pain in the heel. You need shoes that support your feet and alleviate this discomfort." } },
+        { "type": "column", "settings": { "title": "Bunions / Hallux Valgus", "text": "Pain caused by bunions is often due to ill-fitting shoes. You need shoes with a wide toe box that give your feet room to breathe." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

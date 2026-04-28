@@ -13,6 +13,31 @@
     style='position: sticky; top: 9.3rem'
   {%- endif -%}
 >
+  <style>
+    .xo-product-info-content__variant-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+
+    .xo-product-info-content__variant-col .xo-product-info-variant {
+      margin: 0;
+    }
+
+    .xo-product-info-content__variant-col .xo-product-info-variant__header {
+      min-height: 2.4rem;
+    }
+
+    @media (max-width: 767px) {
+      .xo-product-info-content__variant-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+  </style>
+
   <xo-collapse-provider>
     {% for block in section.blocks %}
       {% case block.type %}
@@ -73,6 +98,15 @@
             </div>
           </xo-animate>
 
+        {% when 'star_rating' %}
+          <xo-animate
+            xo-cascade
+            {{ block.shopify_attributes }}
+            style='padding-top:{{ block.settings.padding_top | append: 'px' }}; padding-bottom:{{ block.settings.padding_bottom | append: 'px'}}'
+          >
+            {% render 'product-star-rating', block: block, product: product %}
+          </xo-animate>
+
         {% when 'price' %}
           <xo-animate
             xo-cascade
@@ -106,18 +140,37 @@
               {{ block.shopify_attributes }}
               style='padding-top:{{ block.settings.padding_top | append: 'px' }}; padding-bottom:{{ block.settings.padding_bottom | append: 'px'}}'
             >
+              {% assign color_option = blank %}
+              {% assign size_option = blank %}
               {%- for option in product.options_with_values -%}
-                {% if option.name == 'Size' %}
-                  <xo-animate xo-cascade {{ block.shopify_attributes }}>
-                    {% render 'product-info-variant', option: option, style: block.settings.variants_style %}
-                  </xo-animate>
-                {% elsif option.name == 'Color' %}
-                  <xo-animate xo-cascade {{ block.shopify_attributes }}>
-                    {% render 'product-info-variant', option: option, style: block.settings.variants_color_style, media_aspect_ratio: media_aspect_ratio %}
-                  </xo-animate>
-                {% else %}
-                  {% render 'product-info-variant', option: option, style: 'boxed2' %}
+                {% assign option_name_downcase = option.name | downcase %}
+                {% if option_name_downcase contains 'color' or option_name_downcase contains 'colour' %}
+                  {% assign color_option = option %}
+                {% elsif option_name_downcase contains 'size' %}
+                  {% assign size_option = option %}
                 {% endif %}
+              {%- endfor -%}
+
+              {% if color_option != blank or size_option != blank %}
+                <div class='xo-product-info-content__variant-row'>
+                  {% if color_option != blank %}
+                    <xo-animate xo-cascade class='xo-product-info-content__variant-col' {{ block.shopify_attributes }}>
+                      {% render 'product-info-variant', option: color_option, style: block.settings.variants_color_style, media_aspect_ratio: media_aspect_ratio %}
+                    </xo-animate>
+                  {% endif %}
+                  {% if size_option != blank %}
+                    <xo-animate xo-cascade class='xo-product-info-content__variant-col' {{ block.shopify_attributes }}>
+                      {% render 'product-info-variant', option: size_option, style: 'select' %}
+                    </xo-animate>
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              {%- for option in product.options_with_values -%}
+                {% assign option_name_downcase = option.name | downcase %}
+                {% unless option_name_downcase contains 'color' or option_name_downcase contains 'colour' or option_name_downcase contains 'size' %}
+                  {% render 'product-info-variant', option: option, style: 'boxed2' %}
+                {% endunless %}
               {%- endfor -%}
             </div>
           {% endif %}
@@ -294,6 +347,15 @@
             %}
           </xo-animate>
 
+        {% when 'bulk_discount' %}
+          <xo-animate
+            xo-cascade
+            {{ block.shopify_attributes }}
+            style='padding-top:{{ block.settings.padding_top | append: 'px' }}; padding-bottom:{{ block.settings.padding_bottom | append: 'px'}}'
+          >
+            {% render 'bulk-discount', block: block, product: product %}
+          </xo-animate>
+
         {% when 'text' %}
           {% case block.settings.text_style %}
             {% when 'capitalize' %}
@@ -388,6 +450,12 @@
             {% endif %}
           </div>
 
+        {% when 'product-benefits' %}
+          {% render 'product-benefits-block', block: block %}
+
+        {% when 'guarantee' %}
+          {% render 'guarantee-block', block: block %}
+
         {% when 'complementary' %}
           <xo-animate
             xo-cascade
@@ -427,63 +495,3 @@
     {% endfor %}
   </xo-collapse-provider>
 </div>
-
-<script>
-  // Fix variants layout - ensure flex-direction: row on desktop, column on mobile
-  (function() {
-    function applyVariantsLayout() {
-      const variantsContainer = document.querySelector('.xo-product-info-content__variants');
-      if (!variantsContainer) return;
-
-      const viewportWidth = window.innerWidth;
-      const isDesktop = viewportWidth > 540;
-
-      if (isDesktop) {
-        variantsContainer.style.cssText = 'flex-direction: row !important; display: flex !important; gap: 2rem !important; width: 100% !important; align-items: flex-start !important;';
-        const animates = variantsContainer.querySelectorAll(':scope > xo-animate');
-        animates.forEach((el) => {
-          el.style.cssText = 'width: calc(50% - 1rem) !important; flex-shrink: 0 !important; overflow: visible !important;';
-        });
-      } else {
-        variantsContainer.style.cssText = 'flex-direction: column !important; display: flex !important;';
-        const animates = variantsContainer.querySelectorAll(':scope > xo-animate');
-        animates.forEach((el) => {
-          el.style.cssText = 'width: 100% !important; flex: none !important;';
-        });
-      }
-    }
-
-    // Run as soon as possible
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', applyVariantsLayout);
-    } else {
-      applyVariantsLayout();
-    }
-
-    // Apply with delays to catch any conflicting JavaScript
-    setTimeout(applyVariantsLayout, 50);
-    setTimeout(applyVariantsLayout, 200);
-    setTimeout(applyVariantsLayout, 500);
-    setTimeout(applyVariantsLayout, 1000);
-
-    // Watch for DOM changes and re-apply
-    const observer = new MutationObserver(() => {
-      applyVariantsLayout();
-    });
-
-    // Start observing after a brief delay
-    setTimeout(() => {
-      const variantsContainer = document.querySelector('.xo-product-info-content__variants');
-      if (variantsContainer) {
-        observer.observe(variantsContainer, {
-          attributes: true,
-          childList: true,
-          subtree: true
-        });
-      }
-    }, 100);
-
-    // Re-apply on window resize
-    window.addEventListener('resize', applyVariantsLayout);
-  })();
-</script>

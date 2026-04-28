@@ -44,6 +44,61 @@
     {{ 'xo-webcomponents.min.css' | asset_url | stylesheet_tag }}
     {{ 'main.min.css' | asset_url | stylesheet_tag }}
 
+    {%- comment -%} Custom font loading {%- endcomment -%}
+    {%- if settings.custom_font_url_1 != blank -%}
+      <link rel='stylesheet' href='{{ settings.custom_font_url_1 }}'>
+    {%- endif -%}
+    {%- if settings.custom_font_url_2 != blank -%}
+      <link rel='stylesheet' href='{{ settings.custom_font_url_2 }}'>
+    {%- endif -%}
+
+    {%- comment -%} Resolve custom font family names {%- endcomment -%}
+    {%- assign price_font = settings.price_font_family | default: 'inherit' -%}
+    {%- if settings.price_font_family == 'custom_1' -%}
+      {%- assign price_font = settings.custom_font_name_1 | default: 'inherit' -%}
+      {%- unless price_font == 'inherit' -%}{%- assign price_font = price_font | prepend: "'" | append: "', sans-serif" -%}{%- endunless -%}
+    {%- elsif settings.price_font_family == 'custom_2' -%}
+      {%- assign price_font = settings.custom_font_name_2 | default: 'inherit' -%}
+      {%- unless price_font == 'inherit' -%}{%- assign price_font = price_font | prepend: "'" | append: "', sans-serif" -%}{%- endunless -%}
+    {%- endif -%}
+    {%- assign btn_font = settings.button_font_family | default: 'inherit' -%}
+    {%- if settings.button_font_family == 'custom_1' -%}
+      {%- assign btn_font = settings.custom_font_name_1 | default: 'inherit' -%}
+      {%- unless btn_font == 'inherit' -%}{%- assign btn_font = btn_font | prepend: "'" | append: "', sans-serif" -%}{%- endunless -%}
+    {%- elsif settings.button_font_family == 'custom_2' -%}
+      {%- assign btn_font = settings.custom_font_name_2 | default: 'inherit' -%}
+      {%- unless btn_font == 'inherit' -%}{%- assign btn_font = btn_font | prepend: "'" | append: "', sans-serif" -%}{%- endunless -%}
+    {%- endif -%}
+
+    {%- comment -%} Orthizen brand overrides — survives main.min.css regeneration {%- endcomment -%}
+    <style>
+      /* Price colors & typography */
+      .xo-price__item--accent{color:{{ settings.sale_price_color | default: '#1eb014' }}!important;font-weight:{{ settings.sale_price_weight | default: '700' }}!important;font-size:{{ settings.sale_price_size | default: 22 }}px!important;font-family:{{ price_font }}!important}
+      .xo-price__item--del,.xo-price__item--del *{color:{{ settings.compare_price_color | default: '#999999' }}!important;font-weight:{{ settings.compare_price_weight | default: '400' }}!important;font-size:{{ settings.compare_price_size | default: 16 }}px!important;font-family:{{ price_font }}!important;opacity:1!important}
+      @media(max-width:768px){
+        .xo-price__item--accent{font-size:{{ settings.sale_price_size_mobile | default: 20 }}px!important}
+        .xo-price__item--del,.xo-price__item--del *{font-size:{{ settings.compare_price_size_mobile | default: 14 }}px!important}
+      }
+      /* Add to Cart button — override via CSS variables the theme reads */
+      xo-cart-add{--color-light-button:{{ settings.atc_bg_color.red | default: 30 }},{{ settings.atc_bg_color.green | default: 176 }},{{ settings.atc_bg_color.blue | default: 20 }};--color-light-button-text:{{ settings.atc_text_color.red | default: 255 }},{{ settings.atc_text_color.green | default: 255 }},{{ settings.atc_text_color.blue | default: 255 }};--color-dark-button:{{ settings.atc_bg_hover_color.red | default: 23 }},{{ settings.atc_bg_hover_color.green | default: 144 }},{{ settings.atc_bg_hover_color.blue | default: 16 }};--color-dark-button-text:{{ settings.atc_text_color.red | default: 255 }},{{ settings.atc_text_color.green | default: 255 }},{{ settings.atc_text_color.blue | default: 255 }};--buttons-background-opacity:1}
+      .xo-cart-add .xo-btn{font-size:{{ settings.atc_font_size | default: 16 }}px!important;font-weight:{{ settings.atc_font_weight | default: '600' }}!important;border-radius:{{ settings.atc_border_radius | default: 6 }}px!important;font-family:{{ btn_font }}!important}
+      /* Product page — match container width to header */
+      xo-product .xo-container--wide{max-width:var(--xo-container-width,1400px)!important;padding-left:var(--xo-container-gap,20px)!important;padding-right:var(--xo-container-gap,20px)!important}
+      /* Buy Now button font (color/hover handled in buy-button.liquid) */
+      .shopify-payment-button__button--unbranded{font-family:{{ btn_font }}!important}
+      /* Sale badge (Save X%) — product cards + product page inline badge */
+      .xo-badge-sale{background-color:{{ settings.sale_badge_bg | default: '#000000' }}!important;color:{{ settings.sale_badge_color | default: '#ffffff' }}!important}
+      .badge{background-color:{{ settings.sale_badge_bg | default: '#000000' }}!important}
+      .badge span{color:{{ settings.sale_badge_color | default: '#ffffff' }}!important}
+      /* Size Guide — clean bordered link style */
+      .addon-buttons__trigger{display:inline-flex!important;align-items:center!important;gap:0!important;background:transparent!important;border:1.5px solid #c8c8c8!important;border-radius:20px!important;color:#444!important;font-size:13px!important;font-weight:500!important;letter-spacing:0.3px!important;padding:6px 14px!important;cursor:pointer!important;text-decoration:none!important;box-shadow:none!important;transition:border-color 0.2s,color 0.2s!important;transform:none!important}
+      .addon-buttons__trigger::before{content:'\2192\00a0';font-size:13px;color:inherit}
+      .addon-buttons__trigger::after{content:'\00a0\2190';font-size:13px;color:inherit}
+      .addon-buttons__trigger:hover{border-color:#1364b0!important;color:#1364b0!important;background:transparent!important;box-shadow:none!important;transform:none!important}
+      .addon-buttons__trigger svg,.addon-buttons__trigger .icon{display:none!important}
+      .addon-buttons__trigger span{color:inherit!important}
+    </style>
+
     {% render 'google-fonts-link' %}
 
     {% if settings.font_body_selection == 'shopify_fonts' %}
@@ -198,6 +253,8 @@
       {% render 'scroll-top' %}
       {% render 'toolbar' %}
     </div>
+
+    {% render 'review-counter' %}
 
     <script>
       window.shopUrl = '{{ request.origin }}';

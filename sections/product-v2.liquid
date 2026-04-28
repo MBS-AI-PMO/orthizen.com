@@ -13,7 +13,7 @@
           {% assign align = 'end' %}
       {% endcase %}
       <div class='product-v7__heading' style='--align:{{ align }}'>
-        <h2 class='product-v7__title product-v7__title--{{section.settings.heading_align}}'>{{ section.settings.heading_title }}</h2>
+        <h2 class='product-v7__title product-v7__title--{{section.settings.heading_align}} product-v7__title--truncate'>{{ section.settings.heading_title }}</h2>
       </div>
     </xo-animate>
     <xo-animate>
@@ -31,10 +31,11 @@
               perView: 2,
             },
             575: {
-              perView: 1,
+              perView: 2,
             },
           }
         '
+        class='product-v7__carousel'
       >
         <xo-carousel-inner>
           <xo-carousel-list role='list' aria-label='{{ 'general.slider.name' | t }}'>
@@ -62,7 +63,8 @@
                   show_badge: settings.product_card_show_badge,
                   media_aspect_ratio: settings.product_card_aspect_ratio,
                   color_scheme: color_scheme_chosen,
-                  placeholder_image: placeholder_image
+                  placeholder_image: placeholder_image,
+                  show_rating: section.settings.show_product_rating
                 %}
               </xo-carousel-slide>
             {% endfor %}
@@ -73,6 +75,128 @@
     </xo-animate>
   </xo-container>
 </div>
+
+<style>
+  .product-v7__carousel {
+    --star-size: {{ section.settings.star_size }}rem;
+    --char-limit: {{ section.settings.mobile_product_title_limit }}ch;
+  }
+
+  .product-v7__title--truncate {
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  @media (max-width: 767px) {
+    .product-v7__heading {
+      margin-bottom: 15px !important;
+    }
+
+    .product-v7__title--truncate {
+      font-size: 1rem;
+      line-height: 1.2;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      margin: 0 !important;
+    }
+
+    /* Product card title character limit - 15 characters */
+    .xo-product-card__title--mobile-limit {
+      max-width: 15ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+      line-height: 1.3;
+    }
+
+    .xo-product-card__title--mobile-limit a {
+      max-width: 15ch;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* Review stars styling */
+    .xo-product-card__rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 8px;
+      font-size: 1rem;
+    }
+
+    .xo-product-card__stars {
+      display: flex;
+      gap: 2px;
+      font-size: var(--star-size, 1.5rem);
+      line-height: 1;
+    }
+
+    .xo-star {
+      color: #ddd;
+    }
+
+    .xo-star--filled {
+      color: #ffc800;
+    }
+
+    .xo-product-card__rating-value {
+      font-weight: 700;
+      color: #333;
+      font-size: 1.1rem;
+      margin: 0 3px;
+    }
+
+    .xo-product-card__review-count {
+      font-size: 0.95rem;
+      color: #999;
+    }
+
+    .product-v7__carousel {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 15px !important;
+      width: 100% !important;
+    }
+
+    .product-v7__carousel xo-carousel-inner {
+      display: contents !important;
+    }
+
+    .product-v7__carousel xo-carousel-list {
+      display: contents !important;
+      width: 100% !important;
+    }
+
+    .product-v7__carousel xo-carousel-slide {
+      display: block !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .product-v7__carousel xo-carousel-slide:nth-child(n+5) {
+      display: none !important;
+    }
+
+    .product-v7__pagination {
+      display: none !important;
+    }
+
+    /* Hide carousel controls on mobile */
+    .product-v7__carousel::before,
+    .product-v7__carousel::after {
+      display: none !important;
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -114,6 +238,31 @@
       "default": "Section title"
     },
     {
+      "type": "number",
+      "id": "mobile_product_title_limit",
+      "label": "Mobile product title character limit",
+      "info": "Maximum characters for product titles on mobile (< 768px). Set to limit product names.",
+      "default": 25
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_rating",
+      "label": "Show product rating and reviews",
+      "info": "Display star ratings and review count below product titles",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "min": 1,
+      "max": 3,
+      "step": 0.1,
+      "unit": "rem",
+      "label": "Star size",
+      "info": "Control the size of rating stars (1-3 rem)",
+      "default": 1.5
+    },
+    {
       "type": "select",
       "id": "heading_align",
       "label": "t:sections.product_v2.settings.heading_align.label",
@@ -141,7 +290,7 @@
     {
       "type": "range",
       "id": "limit",
-      "min": 2,
+      "min": 4,
       "max": 20,
       "step": 1,
       "label": "t:sections.product_v2.settings.products.label",

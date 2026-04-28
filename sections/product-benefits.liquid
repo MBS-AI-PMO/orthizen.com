@@ -1,0 +1,160 @@
+<div class="product-benefits">
+  <div class="product-benefits__container">
+    {% for block in section.blocks %}
+      <div class="product-benefits__item" {{ block.shopify_attributes }}>
+        {% if block.settings.icon_type == 'svg' and block.settings.icon_svg != blank %}
+          <div class="product-benefits__icon">
+            {{ block.settings.icon_svg }}
+          </div>
+        {% elsif block.settings.icon_type == 'image' and block.settings.icon_image %}
+          <div class="product-benefits__icon product-benefits__icon--image">
+            {% render 'image', image: block.settings.icon_image, alt: block.settings.text %}
+          </div>
+        {% endif %}
+
+        <p class="product-benefits__text">{{ block.settings.text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .product-benefits {
+    width: 100%;
+    padding: 30px 0;
+  }
+
+  .product-benefits__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: start;
+  }
+
+  .product-benefits__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .product-benefits__icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .product-benefits__icon svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .product-benefits__icon--image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .product-benefits__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text, #333);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  @media (max-width: 1024px) {
+    .product-benefits__container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .product-benefits {
+      padding: 20px 0;
+    }
+
+    .product-benefits__container {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .product-benefits__item {
+      flex-direction: row;
+      text-align: left;
+      gap: 15px;
+    }
+
+    .product-benefits__icon {
+      min-width: 45px;
+    }
+
+    .product-benefits__text {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Benefits",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon type",
+          "options": [
+            {
+              "value": "svg",
+              "label": "SVG code"
+            },
+            {
+              "value": "image",
+              "label": "Image"
+            }
+          ],
+          "default": "svg"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "SVG Icon code",
+          "info": "Paste your SVG code here (only for SVG type)",
+          "placeholder": "<svg>...</svg>"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image",
+          "info": "Upload your icon image (only for Image type)"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit text",
+          "placeholder": "Enter benefit text here",
+          "default": "Product benefit"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

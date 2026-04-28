@@ -1,0 +1,358 @@
+<style>
+.tb-topbar {
+  width: 100%;
+  position: relative;
+  z-index: 10001;
+  overflow: hidden;
+}
+.tb-topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: var(--tb-pt) 40px var(--tb-pb);
+  min-height: 2em;
+}
+/* ── Marquee ── */
+.tb-topbar__marquee-wrap { overflow: hidden; width: 100%; }
+.tb-topbar__marquee-track {
+  display: flex;
+  width: max-content;
+  animation: tb-marquee var(--tb-speed, 30s) linear infinite;
+}
+.tb-topbar__marquee-track[data-pause]:hover { animation-play-state: paused; }
+@keyframes tb-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.tb-topbar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0 1.2rem;
+  white-space: nowrap;
+}
+.tb-topbar__sep { opacity: 0.45; margin: 0 0.2em; }
+/* ── Carousel ── */
+.tb-topbar__carousel { position: relative; text-align: center; width: 100%; }
+.tb-topbar__slide {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  text-align: center;
+}
+.tb-topbar__slide--active { display: inline-flex; animation: tb-fadein 0.5s ease; }
+@keyframes tb-fadein {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* ── Common ── */
+.tb-topbar__link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.tb-topbar__link:hover { opacity: 0.75; }
+.tb-topbar__close {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer;
+  color: inherit; opacity: 0.65; padding: 4px; line-height: 0;
+  transition: opacity 0.2s;
+}
+.tb-topbar__close:hover { opacity: 1; }
+@media (max-width: 767px) {
+  .tb-topbar__item { padding: 0 0.7rem; font-size: 0.9em; }
+  .tb-topbar__close { right: 6px; }
+}
+</style>
+
+{%- if section.settings.show_bar and section.blocks.size > 0 -%}
+<div
+  class="tb-topbar tb-topbar--{{ section.settings.display_mode }}"
+  id="tb-topbar-{{ section.id }}"
+  style="
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.font_size }}px;
+    font-weight: {{ section.settings.font_weight }};
+    --tb-speed: {{ section.settings.marquee_speed }}s;
+    --tb-pt: {{ section.settings.padding_top }}px;
+    --tb-pb: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="tb-topbar__inner">
+
+    {%- if section.settings.display_mode == 'marquee' -%}
+      <div class="tb-topbar__marquee-wrap">
+        <div
+          class="tb-topbar__marquee-track"
+          {%- if section.settings.pause_on_hover %} data-pause{%- endif -%}
+        >
+          {%- comment -%}First copy{%- endcomment -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'announcement' -%}
+              <span class="tb-topbar__item" {{ block.shopify_attributes }}>
+                {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" class="tb-topbar__link">{%- endif -%}
+                {%- if block.settings.emoji != blank -%}<span aria-hidden="true">{{ block.settings.emoji }}</span>{%- endif -%}
+                {{- block.settings.text -}}
+                {%- if block.settings.link != blank -%}</a>{%- endif -%}
+                <span class="tb-topbar__sep" aria-hidden="true">{{ section.settings.separator }}</span>
+              </span>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- comment -%}Duplicate for seamless loop{%- endcomment -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'announcement' -%}
+              <span class="tb-topbar__item" aria-hidden="true">
+                {%- if block.settings.emoji != blank -%}<span aria-hidden="true">{{ block.settings.emoji }}</span>{%- endif -%}
+                {{- block.settings.text -}}
+                <span class="tb-topbar__sep" aria-hidden="true">{{ section.settings.separator }}</span>
+              </span>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+    {%- else -%}
+      <div class="tb-topbar__carousel" id="tb-car-{{ section.id }}">
+        {%- assign idx = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'announcement' -%}
+            <div class="tb-topbar__slide{% if idx == 0 %} tb-topbar__slide--active{% endif %}" {{ block.shopify_attributes }}>
+              {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" class="tb-topbar__link">{%- endif -%}
+              {%- if block.settings.emoji != blank -%}<span aria-hidden="true">{{ block.settings.emoji }}</span>{%- endif -%}
+              {{- block.settings.text -}}
+              {%- if block.settings.link != blank -%}</a>{%- endif -%}
+            </div>
+            {%- assign idx = idx | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_close -%}
+      <button class="tb-topbar__close" aria-label="Close" data-tb-close="{{ section.id }}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    {%- endif -%}
+
+  </div>
+</div>
+{%- endif -%}
+
+<script>
+(function(){
+  var sid      = '{{ section.id }}';
+  var barEl    = document.getElementById('tb-topbar-' + sid);
+  var storeKey = 'tb-closed-' + sid;
+
+  // Keep dismissed state across page loads within session
+  if (sessionStorage.getItem(storeKey) && barEl) {
+    barEl.style.display = 'none';
+  }
+
+  // Close button handler
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-tb-close]');
+    if (!btn) return;
+    var bar = document.getElementById('tb-topbar-' + btn.dataset.tbClose);
+    if (!bar) return;
+    bar.style.transition = 'opacity 0.3s, padding 0.35s, max-height 0.35s';
+    bar.style.maxHeight  = bar.offsetHeight + 'px';
+    bar.style.overflow   = 'hidden';
+    requestAnimationFrame(function(){
+      bar.style.opacity   = '0';
+      bar.style.maxHeight = '0';
+      bar.style.paddingTop    = '0';
+      bar.style.paddingBottom = '0';
+    });
+    setTimeout(function(){ bar.style.display = 'none'; }, 380);
+    sessionStorage.setItem('tb-closed-' + btn.dataset.tbClose, '1');
+  });
+
+  // Carousel auto-rotation
+  var car = document.getElementById('tb-car-' + sid);
+  if (car) {
+    var slides  = Array.from(car.querySelectorAll('.tb-topbar__slide'));
+    var current = 0;
+    var delay   = {{ section.settings.rotate_speed | times: 1000 }};
+    if (slides.length > 1) {
+      setInterval(function(){
+        slides[current].classList.remove('tb-topbar__slide--active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('tb-topbar__slide--active');
+      }, delay);
+    }
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Top Bar",
+  "tag": "div",
+  "class": "top-bar-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_bar",
+      "label": "Show top bar",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "display_mode",
+      "label": "Display mode",
+      "default": "marquee",
+      "options": [
+        { "value": "marquee",  "label": "Scrolling marquee" },
+        { "value": "carousel", "label": "Rotating carousel" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size (px)",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "default": "400",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Marquee separator",
+      "default": "✦"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "Scroll speed (s)",
+      "info": "Lower = faster. Only used in marquee mode.",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "s",
+      "default": 30
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause marquee on hover",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rotate_speed",
+      "label": "Carousel interval (s)",
+      "info": "Only used in carousel mode.",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_close",
+      "label": "Show close button",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (px)",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (px)",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji / icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Announcement text",
+          "default": "FREE SHIPPING on orders over $50"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top Bar",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "emoji": "🚚",
+            "text": "FREE SHIPPING on all orders over $50"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "emoji": "⭐",
+            "text": "Rated 4.9\/5 by 17,000+ happy customers"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "emoji": "🔄",
+            "text": "30-Day hassle-free returns"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

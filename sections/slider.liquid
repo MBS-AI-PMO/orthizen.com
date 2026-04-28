@@ -1,0 +1,468 @@
+{% capture breakpoints %}
+  {
+    1440: {
+      perView: 5,
+    },
+    1200: {
+      perView: 4,
+    },
+    1024: {
+      perView: 3,
+    },
+    768: {
+      perView: 2,
+    },
+    480: {
+      perView: 1,
+    },
+  }
+{% endcapture %}
+
+<section class="slider-wrapper">
+  {% render 'section-bg-image' %}
+  <xo-container {% render 'section-layout' %}>
+    {% if section.settings.title %}
+      <div class="slider-header">
+        <h2 class="slider-title">{{ section.settings.title }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="slider-container">
+      <xo-carousel
+        xo-per-view='5'
+        xo-gap='{{ section.settings.gap }}'
+        xo-breakpoints='{{ breakpoints }}'
+        xo-navigation='false'
+        xo-pagination='false'
+        xo-adaptive-height='false'>
+        <xo-carousel-inner>
+          <xo-carousel-list role='list' class="slider-list">
+            {%- for block in section.blocks -%}
+              <xo-carousel-slide class="slider-slide">
+                <div class="slider-image-container">
+                  {% if block.settings.image %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 300 }}"
+                      alt="Slide {{ forloop.index }}"
+                      class="slider-image"
+                      loading="lazy">
+                  {% else %}
+                    <div class="slider-placeholder">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 500" class="slider-placeholder-svg">
+                        <defs>
+                          <linearGradient id="grad-slider-{{ forloop.index }}" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ddd;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#aaa;stop-opacity:1" />
+                          </linearGradient>
+                        </defs>
+                        <rect fill="url(#grad-slider-{{ forloop.index }})" width="200" height="500"/>
+                        <text x="100" y="250" font-size="14" fill="#666" text-anchor="middle" font-family="Arial">Image {{ forloop.index }}</text>
+                      </svg>
+                    </div>
+                  {% endif %}
+                </div>
+              </xo-carousel-slide>
+            {%- endfor -%}
+          </xo-carousel-list>
+        </xo-carousel-inner>
+      </xo-carousel>
+    </div>
+  </xo-container>
+</section>
+
+<script>
+  (function () {
+    var sliderStarted = false;
+
+    function initSliderAutoScroll() {
+      if (sliderStarted) return;
+
+      var carousel = document.querySelector('.slider-wrapper xo-carousel');
+      if (!carousel) return;
+
+      var list = carousel.querySelector('.slider-list');
+      if (!list) return;
+
+      sliderStarted = true;
+
+      var pxPerSec = {{ section.settings.scroll_speed }};
+      var gap = {{ section.settings.gap }} || 10;
+
+      var originalSlides = Array.from(list.querySelectorAll('.slider-slide'));
+      if (originalSlides.length === 0) return;
+
+      // Clone slides for seamless infinite loop
+      originalSlides.forEach(function (slide) {
+        list.appendChild(slide.cloneNode(true));
+      });
+
+      function getLoopDistance() {
+        var slide = list.querySelector('.slider-slide');
+        if (!slide) return 1000;
+        return (slide.offsetWidth + gap) * originalSlides.length;
+      }
+
+      var loopDistance = getLoopDistance();
+      var lastTime = null;
+      var position = 0;
+
+      function tick(ts) {
+        if (lastTime === null) lastTime = ts;
+        var delta = ts - lastTime;
+        lastTime = ts;
+
+        // Clamp delta to avoid huge jumps after tab switching
+        if (delta > 100) delta = 100;
+
+        position += (pxPerSec * delta) / 1000;
+        if (position >= loopDistance) position -= loopDistance;
+
+        list.scrollLeft = position;
+        requestAnimationFrame(tick);
+      }
+
+      window.addEventListener('resize', function () {
+        loopDistance = getLoopDistance();
+        if (position >= loopDistance) position = 0;
+      });
+
+      setTimeout(function () { requestAnimationFrame(tick); }, 100);
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      setTimeout(initSliderAutoScroll, 300);
+    } else {
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(initSliderAutoScroll, 300);
+      });
+    }
+    setTimeout(initSliderAutoScroll, 2000);
+  })();
+</script>
+
+<style>
+/* Slider Section - Completely Isolated */
+
+.slider-wrapper {
+  all: initial;
+  display: block;
+  width: 100%;
+  margin-top: {{ section.settings.margin_top }}px !important;
+  margin-bottom: {{ section.settings.margin_bottom }}px !important;
+  padding-top: {{ section.settings.padding_top }}px !important;
+  padding-bottom: {{ section.settings.padding_bottom }}px !important;
+  padding-left: {{ section.settings.padding_left }}px !important;
+  padding-right: {{ section.settings.padding_right }}px !important;
+}
+
+.slider-wrapper * {
+  box-sizing: border-box;
+}
+
+.slider-wrapper xo-carousel {
+  display: block !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.slider-wrapper .slider-list {
+  display: flex !important;
+  scroll-behavior: auto !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: auto !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 0 !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  will-change: scroll-position !important;
+}
+
+.slider-wrapper .slider-list::-webkit-scrollbar {
+  display: none !important;
+}
+
+.slider-wrapper .slider-list::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+.slider-wrapper .slider-list::-webkit-scrollbar-thumb {
+  display: none !important;
+}
+
+.slider-wrapper .slider-slide {
+  flex-shrink: 0 !important;
+  scroll-snap-align: start !important;
+  width: calc((100% / 5) - 4px) !important;
+  min-width: calc((100% / 5) - 4px) !important;
+  margin-right: {{ section.settings.gap }}px !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+}
+
+.slider-wrapper .slider-header {
+  text-align: center;
+  margin-bottom: {{ section.settings.header_margin }}px;
+}
+
+.slider-wrapper .slider-title {
+  font-size: {{ section.settings.title_font_size }}rem;
+  font-weight: 700;
+  margin: 0;
+  color: #000;
+  letter-spacing: -0.5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.slider-wrapper .slider-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider-wrapper .slider-image-container {
+  width: 100%;
+  height: {{ section.settings.image_height }}px;
+  aspect-ratio: {{ section.settings.image_width }} / {{ section.settings.image_height }};
+  overflow: hidden;
+  border-radius: {{ section.settings.border_radius }}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.slider-wrapper .slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.slider-wrapper .slider-slide:hover .slider-image {
+  transform: scale(1.05);
+}
+
+.slider-wrapper .slider-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+  overflow: hidden;
+}
+
+.slider-wrapper .slider-placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .slider-wrapper .slider-title {
+    font-size: calc({{ section.settings.title_font_size }}rem - 0.3rem);
+  }
+  .slider-wrapper .slider-image-container {
+    height: calc({{ section.settings.image_height }}px - 50px);
+  }
+}
+
+@media (max-width: 768px) {
+  .slider-wrapper .slider-title {
+    font-size: calc({{ section.settings.title_font_size }}rem - 0.5rem);
+  }
+  .slider-wrapper .slider-image-container {
+    height: calc({{ section.settings.image_height }}px - 100px);
+  }
+}
+
+@media (max-width: 576px) {
+  .slider-wrapper .slider-header {
+    margin-bottom: 20px;
+  }
+  .slider-wrapper .slider-title {
+    font-size: calc({{ section.settings.title_font_size }}rem - 0.8rem);
+  }
+  .slider-wrapper .slider-image-container {
+    height: calc({{ section.settings.image_height }}px - 150px);
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Image Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Image Slider"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title Font Size (rem)",
+      "min": 1.5,
+      "max": 3.5,
+      "step": 0.1,
+      "default": 2.2
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Image Height (px)",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image Width (% of height)",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap Between Images (px)",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border Radius (px)",
+      "min": 0,
+      "max": 30,
+      "step": 5,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "header_margin",
+      "label": "Space Below Title (px)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top (px)",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom (px)",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left (px)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right (px)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "label": "Scroll Speed (px per second)",
+      "info": "Lower = slower, higher = faster. 30 = slow, 60 = medium, 100 = fast.",
+      "min": 5,
+      "max": 100,
+      "step": 5,
+      "default": 35
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image",
+      "type": "image_slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Slider",
+      "blocks": [
+        {
+          "type": "image_slide"
+        },
+        {
+          "type": "image_slide"
+        },
+        {
+          "type": "image_slide"
+        },
+        {
+          "type": "image_slide"
+        },
+        {
+          "type": "image_slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

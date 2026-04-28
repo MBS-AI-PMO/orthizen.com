@@ -1,0 +1,463 @@
+<section {% render 'section-attr' %}>
+  {% render 'section-bg-image' %}
+  <xo-container {% render 'section-layout' %}>
+    <div class='body-pain-map'>
+      <div class='body-pain-map__content'>
+        <h2 class='body-pain-map__title'>{{ section.settings.title }}</h2>
+        <p class='body-pain-map__description'>{{ section.settings.description }}</p>
+
+        <div class='body-pain-map__symptoms'>
+          <div class='body-pain-map__column'>
+            {%- for block in section.blocks -%}
+              {% if forloop.index <= 5 %}
+                <div class='body-pain-map__item'>
+                  <svg class='body-pain-map__checkmark' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+                    <polyline points='20 6 9 17 4 12'></polyline>
+                  </svg>
+                  <span class='body-pain-map__symptom'>{{ block.settings.symptom }}</span>
+                </div>
+              {% endif %}
+            {%- endfor -%}
+          </div>
+
+          <div class='body-pain-map__column'>
+            {%- for block in section.blocks -%}
+              {% if forloop.index > 5 %}
+                <div class='body-pain-map__item'>
+                  <svg class='body-pain-map__checkmark' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+                    <polyline points='20 6 9 17 4 12'></polyline>
+                  </svg>
+                  <span class='body-pain-map__symptom'>{{ block.settings.symptom }}</span>
+                </div>
+              {% endif %}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+
+      <div class='body-pain-map__images'>
+        {% if section.settings.image_left != empty %}
+          <div class='body-pain-map__image'>
+            {% render 'image', image: section.settings.image_left %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.image_right != empty %}
+          <div class='body-pain-map__image'>
+            {% render 'image', image: section.settings.image_right %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </xo-container>
+</section>
+
+<style>
+  .body-pain-map {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ section.settings.content_gap }}px;
+    align-items: center;
+  }
+
+  .body-pain-map__title {
+    font-size: {{ section.settings.title_font_size }}rem;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    color: var(--color-text, #000);
+    line-height: 1.2;
+  }
+
+  .body-pain-map__description {
+    font-size: {{ section.settings.description_font_size }}rem;
+    line-height: 1.7;
+    margin: 0 0 30px 0;
+    color: var(--color-text-secondary, #666);
+  }
+
+  .body-pain-map__symptoms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .body-pain-map__column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .body-pain-map__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .body-pain-map__checkmark {
+    width: 24px;
+    height: 24px;
+    color: #22a347;
+    flex-shrink: 0;
+  }
+
+  .body-pain-map__symptom {
+    font-size: {{ section.settings.symptom_font_size }}rem;
+    color: var(--color-text, #000);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .body-pain-map__images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .body-pain-map__image {
+    width: 100%;
+    height: {{ section.settings.image_height }}px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .body-pain-map__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  @media (max-width: 1024px) {
+    .body-pain-map {
+      grid-template-columns: 1fr;
+      gap: {{ section.settings.content_gap | minus: 20 }}px;
+    }
+
+    .body-pain-map__title {
+      font-size: calc({{ section.settings.title_font_size }}rem - 0.5rem);
+    }
+
+    .body-pain-map__images {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .body-pain-map {
+      grid-template-columns: 1fr;
+    }
+
+    .body-pain-map__symptoms {
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .body-pain-map__images {
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .body-pain-map__title {
+      font-size: calc({{ section.settings.title_font_size }}rem - 0.5rem);
+    }
+
+    .body-pain-map__symptom {
+      font-size: calc({{ section.settings.symptom_font_size }}rem - 0.05rem);
+    }
+
+    .body-pain-map__image {
+      height: calc({{ section.settings.image_height }}px * 0.7);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .body-pain-map {
+      gap: {{ section.settings.content_gap | minus: 30 }}px;
+    }
+
+    .body-pain-map__symptoms {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .body-pain-map__images {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .body-pain-map__column {
+      gap: 10px;
+    }
+
+    .body-pain-map__item {
+      gap: 8px;
+    }
+
+    .body-pain-map__checkmark {
+      width: 20px;
+      height: 20px;
+    }
+
+    .body-pain-map__image {
+      height: calc({{ section.settings.image_height }}px * 0.5);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.body_pain_map.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.body_pain_map.settings.title.label",
+      "default": "Foot Pain Doesn't Stop at Your Feet."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:sections.body_pain_map.settings.description.label",
+      "default": "Every day, we hear from customers like you who are struggling with the following problems:"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_left",
+      "label": "t:sections.body_pain_map.settings.image_left.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "t:sections.body_pain_map.settings.image_right.label"
+    },
+    {
+      "type": "header",
+      "content": "Typography & Font Sizes"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title Font Size (rem)",
+      "min": 1.5,
+      "max": 4,
+      "step": 0.1,
+      "default": 2.5
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Description Font Size (rem)",
+      "min": 0.8,
+      "max": 1.5,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "symptom_font_size",
+      "label": "Symptom Text Font Size (rem)",
+      "min": 0.8,
+      "max": 1.5,
+      "step": 0.1,
+      "default": 1.1
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Content Gap (px)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Image Height (px)",
+      "min": 300,
+      "max": 700,
+      "step": 50,
+      "default": 500
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:sections.all.width.label",
+      "default": "wide",
+      "options": [
+        {
+          "value": "box",
+          "label": "t:sections.all.width.options__1.label"
+        },
+        {
+          "value": "wide",
+          "label": "t:sections.all.width.options__2.label"
+        },
+        {
+          "value": "fullwidth",
+          "label": "t:sections.all.width.options__3.label"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "fullwidth_margin",
+      "label": "t:sections.all.fullwidth_margin.label",
+      "default": 0,
+      "visible_if": "{{ section.settings.width == 'fullwidth' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.heading.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "t:sections.all.background_type.label",
+      "options": [
+        {
+          "value": "color",
+          "label": "t:sections.all.background_type.option__1.label"
+        },
+        {
+          "value": "gradient",
+          "label": "t:sections.all.background_type.option__2.label"
+        },
+        {
+          "value": "image",
+          "label": "t:sections.all.background_type.option__3.label"
+        },
+        {
+          "value": "video",
+          "label": "t:sections.all.background_type.option__4.label"
+        }
+      ],
+      "default": "color"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.background_color.label",
+      "alpha": true,
+      "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.background_gradient.label",
+      "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "name": "t:sections.body_pain_map.blocks.name",
+      "type": "symptom",
+      "settings": [
+        {
+          "type": "text",
+          "id": "symptom",
+          "label": "t:sections.body_pain_map.blocks.symptom.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.body_pain_map.presets.name",
+      "blocks": [
+        {
+          "type": "symptom",
+          "settings": {
+            "symptom": "Lower Back Pain"
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "symptom": "Arthritis"
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "symptom": "Plantar Fasciitis"
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "symptom": "Ankle Pain"
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "symptom": "Swelling"
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "symptom": "Knee Pain"
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "symptom": "Correct Foot Position"
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "symptom": "Pressure Distribution"
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "symptom": "Heel Pain"
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "symptom": "Bunions"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

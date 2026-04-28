@@ -1,0 +1,17 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Fix variants layout - force flex-direction: row for side-by-side display
+    const variantsContainer = document.querySelector('.xo-product-info-content__variants');
+    if (variantsContainer) {
+      variantsContainer.style.flexDirection = 'row';
+      variantsContainer.style.display = 'flex';
+
+      const animates = document.querySelectorAll('.xo-product-info-content__variants > xo-animate');
+      animates.forEach((el) => {
+        el.style.width = 'calc(50% - 1rem)';
+        el.style.minWidth = '0';
+        el.style.flexShrink = '0';
+      });
+    }
+  });
+</script>

@@ -26,7 +26,8 @@
 -%}
 
 {% if compare_at_price > price %}
+  {%- assign discount_pct = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price | round -%}
   <div class='xo-badge-sale {{ class }}' id='Badge-{{ section.id }}-{{ product.id }}'>
-    {{ 'products.product.on_sale' | t }}
+    SAVE {{ discount_pct }}%
   </div>
 {% endif %}
