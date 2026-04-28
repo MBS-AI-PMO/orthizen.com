@@ -1,0 +1,266 @@
+{% doc %}
+  @prompt
+    Create a "Best Seller" badge that displays on product cards when a product has the tag "best-seller". The badge should appear as an overlay on the product image (top-left corner), styled with a bold, eye-catching design (e.g., gold or vibrant color background with white text). It should integrate seamlessly with the existing product card layout and only show when the product tag matches "best-seller".
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% if product.tags contains 'best-seller' %}
+  {% style %}
+    .ai-best-seller-badge-{{ ai_gen_id }} {
+      position: absolute;
+      top: {{ block.settings.position_top }}px;
+      left: {{ block.settings.position_left }}px;
+      z-index: 10;
+      display: inline-block;
+    }
+
+    .ai-best-seller-badge__inner-{{ ai_gen_id }} {
+      background: {{ block.settings.badge_background }};
+      {% if block.settings.badge_background_gradient != blank %}
+        background: {{ block.settings.badge_background_gradient }};
+      {% endif %}
+      color: {{ block.settings.badge_text_color }};
+      padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+      font-size: {{ block.settings.font_size }}px;
+      font-weight: {{ block.settings.font_weight }};
+      text-transform: {{ block.settings.text_transform }};
+      border-radius: {{ block.settings.border_radius }}px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, {{ block.settings.shadow_opacity | divided_by: 100.0 }});
+      letter-spacing: 0.5px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    {% if block.settings.show_icon %}
+      .ai-best-seller-badge__inner-{{ ai_gen_id }} {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .ai-best-seller-badge__icon-{{ ai_gen_id }} {
+        width: {{ block.settings.icon_size }}px;
+        height: {{ block.settings.icon_size }}px;
+        fill: currentColor;
+      }
+    {% endif %}
+  {% endstyle %}
+
+  <best-seller-badge-{{ ai_gen_id }}
+    class="ai-best-seller-badge-{{ ai_gen_id }}"
+    {{ block.shopify_attributes }}
+  >
+    <div class="ai-best-seller-badge__inner-{{ ai_gen_id }}">
+      {% if block.settings.show_icon %}
+        <svg
+          class="ai-best-seller-badge__icon-{{ ai_gen_id }}"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      {% endif %}
+      <span>{{ block.settings.badge_text }}</span>
+    </div>
+  </best-seller-badge-{{ ai_gen_id }}>
+
+  <script>
+    (function() {
+      class BestSellerBadge{{ ai_gen_id }} extends HTMLElement {
+        constructor() {
+          super();
+          this.style.display = 'block';
+        }
+      }
+
+      customElements.define('best-seller-badge-{{ ai_gen_id }}', BestSellerBadge{{ ai_gen_id }});
+    })();
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Best seller badge",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Badge content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Best Seller"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show star icon",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 10,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Badge position"
+    },
+    {
+      "type": "range",
+      "id": "position_top",
+      "label": "Distance from top",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "position_left",
+      "label": "Distance from left",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Badge style"
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Background color",
+      "default": "#D4AF37"
+    },
+    {
+      "type": "color_background",
+      "id": "badge_background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding",
+      "min": 2,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 4,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "shadow_opacity",
+      "label": "Shadow opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best seller badge"
+    }
+  ]
+}
+{% endschema %}
